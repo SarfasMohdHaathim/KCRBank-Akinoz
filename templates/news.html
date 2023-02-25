@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content%}
+
+<style>
+    .breadcrumb-area-bg{
+        background-image: url("{% static 'assets/images/kcrb/contact-us-banner.jpg' %}");
+    }
+</style>
+
+
+        <!--Start breadcrumb area-->
+        <section class="breadcrumb-area">
+            <div class="breadcrumb-area-bg"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="inner-content">
+                            <div class="title">
+                                <h2>News & Events</h2>
+                            </div>
+                            <div class="breadcrumb-menu">
+                                <ul>
+                                    <li class="breadcrumb-item"><a href="/">Home &nbsp;</a></li>
+                                    <li class="breadcrumb-item">News & Events</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End breadcrumb area-->
+
+        <!--Start Accounts Style1 Area-->
+        <div data-elementor-type="wp-page" data-elementor-id="197" class="elementor elementor-197">
+            <section class="elementor-section elementor-top-section elementor-element elementor-element-aadfb75 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="aadfb75" data-element_type="section">
+                <div class="elementor-container elementor-column-gap-default">
+                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-ac98914" data-id="ac98914" data-element_type="column">
+                        <div class="elementor-widget-wrap elementor-element-populated">
+                            <div class="elementor-element elementor-element-0322b1f elementor-widget elementor-widget-finbank_grid_view_news" data-id="0322b1f" data-element_type="widget" data-widget_type="finbank_grid_view_news.default">
+                                <div class="elementor-widget-container">
+
+                                    <!--Start Blog Style1 Area-->
+                                    <section class="blog-page-one">
+                                        <div class="container">
+                                            <div class="row">
+                                                <!--Start Single blog Style1-->
+                                                {% for x in news %}
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <a href="{% url 'newsingle' x.id %}">
+                                                    <div class="single-blog-style1 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                                                        <div class="img-holder">
+                                                            <div class="inner">
+                                                                <img loading="lazy" width="350" height="270" src="{{x.img1.url}}" class="attachment-finbank_350x270 size-finbank_350x270 wp-post-image" alt="" decoding="async" />
+                                                                
+                                                                <div class="overlay-icon">
+                                                                    <a href="{% url 'newsingle' x.id %}">
+                                                                        <span class="icon-right-arrow"></span>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="category-date-box">
+                                                                <div class="category">
+                                                                    <span class="icon-play-button-1"></span>
+                                                                    <h5><a href="{% url 'newsingle' x.id %}" rel="category tag">{{x.category}}</a></h5>
+                                                                </div>
+                                                                <div class="date">
+                                                                    <h5>{{x.posted_date}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-holder">
+                                                            <h3 class="blog-title">
+                                                                <a href="{% url 'newsingle' x.id %}">{{x.title}}</a>
+                                                            </h3>
+                                                            <div class="bottom">
+                                                                <div class="meta-box">
+                                                                    <ul class="meta-info">
+                                                                        <li><span class="icon-clock"></span> <a href="{% url 'newsingle' x.id %}">Posted : {{x.posted_time}}</a></li>
+                                                                        
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- <div class="share-btn">
+                                                                    <a href="news-single.html"><span class="icon-share"></span></a>
+                                                                </div> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        </a>
+                                                </div>
+                                                {% endfor %}
+                                                <!--End Single blog Style1-->
+                                                <!--Start Single blog Style1-->
+                                                
+                                                <!--End Single blog Style1-->
+                                                <!--Start Single blog Style1-->
+                                                <!-- </div> -->
+                                                <!--End Single blog Style1-->
+                                            </div>
+                                           <!-- <div class="row">
+                                                <div class="col-xl-12">
+                                                    <div class="styled-pagination clearfix">
+                                                        <ul class="pagination">
+                                                            <li><span class="page-numbers current">1</span></li>
+                                                            <li><a class="page-numbers" href="page/2/index.html">2</a></li>
+                                                            <li><a class="next page-numbers" href="page/2/index.html">Next <i class="fas fa-arrow-right right"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>-->
+                                        </div>
+                                    </section>
+                                    <!--End Blog Style1 Area-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!--End Accounts Style1 Area-->
+        {% endblock content%}

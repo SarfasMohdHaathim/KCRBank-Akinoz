@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+
+
+        <!--Start breadcrumb area-->
+        <section class="breadcrumb-area">
+            <div class="breadcrumb-area-bg" ></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="inner-content">
+                            <div class="title">
+                                <h2>Gallery Category</h2>
+                            </div>
+                            <div class="breadcrumb-menu">
+                                <ul>
+                                    <li class="breadcrumb-item"><a href="/">Home &nbsp;</a></li>
+                                    <li class="breadcrumb-item">Gallery Category</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End breadcrumb area-->
+
+        <!--Start Accounts Style1 Area-->
+        <section class="account-style1-area" id="about">
+            <div class="container">
+                <div class="sec-title text-center">
+                    <h2>Let’s Think of saving Money</h2>
+                    <div class="sub-title">
+                        <p>Convenient banking options for you.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--Start Single Account Box Style1-->
+                    {% for x in gallery %}
+                    <div class="col-xl-4 col-lg-4">
+                        <a href="{% url 'galleryview' x.id %}">
+                        <div class="single-account-box-style1">
+                            <div class="img-holder">
+                                <img loading="lazy" width="350" height="370" src="{{x.cover.url}}" class="attachment-full size-full wp-post-image" alt="" decoding="async" sizes="(max-width: 350px) 100vw, 350px" /> </div>
+                            <div class="text-holder">
+                                <h3><a href="#">{{x.title}}</a></h3>
+                                <p>{{x.des}}</p>
+                            </div>
+                        </div></a>
+                    </div>
+                    {% endfor %}
+                    <!--End Single Account Box Style1-->
+                    <!--Start Single Account Box Style1-->
+                    <!-- <div class="col-xl-4 col-lg-4">
+                         <a href="gallery-view.html">
+                        <div class="single-account-box-style1">
+                            <div class="img-holder">
+                                <img width="350" height="370" src="assets/images/kcrb/bank.jpg" class="attachment-full size-full wp-post-image" alt="" decoding="async" loading="lazy" srcset="assets/images/kcrb/bank.jpg, " sizes="(max-width: 350px) 100vw, 350px" /> </div>
+                            <div class="text-holder">
+                                <h3><a href="#">Particular Event </a></h3>
+                                <p>Particular Event Details</p>
+                            </div>
+                        </div>
+                        </a>
+                    </div> -->
+                    <!--End Single Account Box Style1-->
+                </div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="account-style1-area_btn">
+                            <a href="index.html"><span class="icon-right-arrow"></span>View All Gallery</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End Accounts Style1 Area-->
+        <style>
+            .breadcrumb-area-bg{
+                background-image: url("{% static '/assets/images/backgrounds/breadcrumb-area-bg.jpg' %}");
+            }
+        </style>
+        {% endblock content%}

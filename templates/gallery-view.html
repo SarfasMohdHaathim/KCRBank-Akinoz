@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+
+
+        <!--Start breadcrumb area-->
+        <section class="breadcrumb-area">
+            <div class="breadcrumb-area-bg" ></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="inner-content">
+                            <div class="title">
+                                <h2>Gallery</h2>
+                            </div>
+                            <div class="breadcrumb-menu">
+                                <ul>
+                                    <li class="breadcrumb-item"><a href="./">Home &nbsp;</a></li>
+                                    <li class="breadcrumb-item">Gallery</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End breadcrumb area-->
+
+        <!--Start Accounts Style1 Area-->
+        <section class="account-style1-area">
+            <div class="container">
+                <div class="sec-title text-center">
+                    <h2>{{gallery.title}}</h2>
+                    <div class="sub-title">
+                        <p>{{gallery.des}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for x in galleryimg %}
+                    <a href="" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                        <img src="{{x.img1.url}}" class="img-fluid">
+                    </a>
+                    {% endfor %}
+                    <!-- <a href="assets/images/kcrb/CONFERENCE%20HALL.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                        <img src="assets/images/kcrb/CONFERENCE%20HALL.jpg" class="img-fluid">
+                    </a>
+                    <a href="assets/images/kcrb/HEAD%20OFICE%20LOBBY.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                        <img src="assets/images/kcrb/HEAD%20OFICE%20LOBBY.jpg" class="img-fluid">
+                    </a>
+                     <a href="assets/images/kcrb/MANAGER%20CABIN.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                        <img src="assets/images/kcrb/MANAGER%20CABIN.jpg" class="img-fluid">
+                    </a>
+                    <a href="assets/images/kcrb/PRESIDENT%20CABIN.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                        <img src="assets/images/kcrb/PRESIDENT%20CABIN.jpg" class="img-fluid">
+                    </a>
+                    <a href="assets/images/kcrb/SECRETARY%20CABIN.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                        <img src="assets/images/kcrb/SECRETARY%20CABIN.jpg" class="img-fluid">
+                    </a>
+                     <a href="assets/images/kcrb/KUNNAMANGALAM%20CO-OPERATIVE%20RURAL%20BANK%20-%20PATHIMANGALAM%20BRANCH.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                        <img src="assets/images/kcrb/KUNNAMANGALAM%20CO-OPERATIVE%20RURAL%20BANK%20-%20PATHIMANGALAM%20BRANCH.jpg" class="img-fluid">
+                    </a> -->
+                    
+                </div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="account-style1-area_btn">
+                            <a href="index.html"><span class="icon-right-arrow"></span>View All Accounts</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End Accounts Style1 Area-->
+
+
+
+        <!--Start footer area -->
+        <footer class="footer-area footer-area--style3">
+            <!--Start Footer Top-->
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+
+                        <!--Start single footer widget-->
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 single-widget">
+                            <div class="single-footer-widget single-footer-widget--link-box">
+                                <div class="our-company-info">
+                                    <div class="footer-logo-style1">
+                                        <a href="index-2.html">
+                                            <img src="assets/images/resources/logo-3.png" alt="Awesome Logo" title="">
+                                        </a>
+                                    </div>
+                                    <!--<div class="bottom-text">
+                                        <p>Our goal is to help our companies all maintains of achieve best position
+                                            team work occurings works the wise man therefore always holds these in
+                                            matters to this principle.</p>
+                                    </div>-->
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--End single footer widget-->
+
+                        <!--Start single footer widget-->
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 single-widget">
+                            <div class="single-footer-widget single-footer-widget--link-box">
+                                <div class="title">
+                                    <h3>Useful Links</h3>
+                                </div>
+                                <div class="footer-widget-links">
+                                    <ul>
+                                        <li><a href="#">Our Story</a></li>
+                                        <li><a href="#">Board of Directors</a></li>
+                                        <li><a href="#">News& Events</a></li>
+                                        <li><a href="#">Gallery</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End single footer widget-->
+                        <style>
+                            .breadcrumb-area-bg{
+                                background-image: url("{% static '/assets/images/backgrounds/breadcrumb-area-bg.jpg' %}");
+                            }
+                        </style>
+                        {% endblock content%}

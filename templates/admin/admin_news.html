@@ -1,0 +1,50 @@
+{% extends 'admin/admin_home.html' %}
+
+{% load static %}
+{% block contentadmin %}
+        <div class="container">
+            <div class="row">
+                <form action="{% url 'adminnews' %}" method="post">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Title</label>
+                        <input class="form-control" type="text" placeholder="Default input" name="title">
+                      </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Category</label>
+                        <input class="form-control" type="text" placeholder="Default input" name="category">
+                      </div>
+                      <div class="mb-3">
+                        <label for="formFile" class="form-label">Cover Image</label>
+                        <input class="form-control" type="file" id="formFile" name="img3">
+                      </div>
+                      <div class="mb-3">
+                        <label for="formFile" class="form-label">Image1</label>
+                        <input class="form-control" type="file" id="formFile" name="img">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Section Title</label>
+                        <input class="form-control" type="text" placeholder="Default input" name="section_title">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Paragraph 1</label>
+                        <input class="form-control" type="text" placeholder="Default input" name="phar1">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Paragraph 2</label>
+                        <input class="form-control" type="text" placeholder="Default input" name="phar2">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Paragraph 3</label>
+                        <input class="form-control" type="text" placeholder="Default input" name="phar3">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Paragraph 4</label>
+                        <input class="form-control" type="text" placeholder="Default input" name="phar4">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Primary</button>
+                </form>
+            </div>
+        </div>
+
+
+{% endblock contentadmin %}

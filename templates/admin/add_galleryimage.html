@@ -1,0 +1,49 @@
+{% extends 'admin/admin_home.html' %}
+
+{% load static %}
+{% block contentadmin %}
+
+    <div class="container">
+        <div class="row w-50">
+            <form action="{% url 'admingalleryimageadd' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    
+                    <label for="exampleFormControlInput1" class="form-label">Title </label>
+                    <input class="form-control form-control-sm" type="text" value="{{gallery.title}}" readonly class="form-control-plaintext" aria-label=".form-control-sm example" >
+                  </div>
+                  <input type="hidden" name="id" value="{{gallery.id}}">
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Image1</label>
+                    <input class="form-control" type="file" id="formFile" name="img1">
+                  </div>
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Image2</label>
+                    <input class="form-control" type="file" id="formFile" name="img2">
+                  </div>
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Image3</label>
+                    <input class="form-control" type="file" id="formFile" name="img3">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="row">
+            {% for x in galleryimg %}
+
+            <div class="card" style="width: 18rem;">
+            {% if img1 %}
+            <img src="{{x.img1.url}}" class="card-img-top" alt="...">
+            {% endif %}
+            
+
+                
+              </div>
+              {% endfor %}
+        </div>
+    </div>
+
+
+
+{% endblock contentadmin %}
+
