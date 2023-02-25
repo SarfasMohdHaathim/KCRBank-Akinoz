@@ -10,6 +10,7 @@ urlpatterns = [
     path('services/',services,name='services'),
     path('gallery/',gallery,name='gallery'),
     path('emicalculator/',emicalculator,name='emicalculator'),
+    path('getcontact/',getcontact,name='getcontact'),
     path('galleryview/<str:id>',galleryview,name='galleryview'),
     path('newsingle/<str:id>',newsingle,name='newsingle'),
     path('admin/',adminlogin,name='adminlogin'),
@@ -21,4 +22,5 @@ urlpatterns = [
     path('adminadd/',adminadd,name='adminadd'),
     path('admincontactview/',admincontactview,name='admincontactview'),
     path('admingalleryimage/<str:id>/',admingalleryimage,name='admingalleryimage'),
+    path('contactviewsingle/<str:id>/',contactviewsingle,name='contactviewsingle'),
 ]

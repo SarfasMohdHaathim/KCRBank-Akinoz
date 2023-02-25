@@ -1,0 +1,44 @@
+{% extends 'admin/admin_home.html' %}
+
+{% load static %}
+{% block contentadmin %}
+
+    <div class="container">
+        <div class="row" id=" contactcard" style="margin-top: 150px;">
+            <div class="card " style="width: 23rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{contact.name}}</h5>
+                  <p class="card-text"> {{contact.email}}</p>
+                  <p class="card-text"> {{contact.phone}}</p>
+                  <p class="card-text">Date: {{contact.date}}</p>
+                </div>
+              </div>
+        <div class="row" style="margin-top:0">
+            <div class="card " style="width: 23rem;">
+                <div class="card-body">
+                  <p class="card-text">Subject: {{contact.subject}}</p>
+                  <p class="card-text">Message {{contact.message}}</p>
+                  <p class="card-text">State: {{contact.state}}</p>
+                  <p class="card-text">City: {{contact.city}}</p>
+                  <a href="#" class="btn btn-primary"></a>
+                </div>
+              </div>
+        </div>
+    </div>
+
+<style>
+    #contactcard{
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    margin-top: 150px;
+}
+.contactcarditem{
+    height: 50%;
+
+}
+</style>
+
+
+
+{% endblock contentadmin %}

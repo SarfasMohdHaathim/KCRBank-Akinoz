@@ -24,7 +24,7 @@
                             </div>
                             <div class="breadcrumb-menu">
                                 <ul>
-                                    <li class="breadcrumb-item"><a href="../index.html">Home &nbsp;</a></li>
+                                    <li class="breadcrumb-item"><a href="/">Home &nbsp;</a></li>
                                     <li class="breadcrumb-item">Contact Us</li>
                                 </ul>
                             </div>
@@ -63,7 +63,7 @@
                                                                     <p role="status" aria-live="polite" aria-atomic="true"></p>
                                                                     <ul></ul>
                                                                 </div>
-                                                                <form action="" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
+                                                                <form action="{% url 'getcontact' %}" method="post" class="wpcf7-form init">
                                                                     <div style="display: none;">
                                                                         <input type="hidden" name="_wpcf7" value="99" />
                                                                         <input type="hidden" name="_wpcf7_version" value="5.6.3" />
@@ -75,14 +75,14 @@
                                                                     <div class="row">
                                                                         <div class="col-xl-6">
                                                                             <div class="form-group">
-                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="text-147"><input type="text" name="text-147" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" id="formName" aria-required="true" aria-invalid="false" placeholder="Your Name" /></span>
+                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="text-147"><input type="text" name="fname" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" id="formName" aria-required="true" aria-invalid="false" placeholder="Your Name" /></span>
                                                                                     <div class="icon"><i class="fas fa-user"></i></div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-xl-6">
                                                                             <div class="form-group">
-                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="email-663"><input type="email" name="email-663" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" id="formEmail" aria-required="true" aria-invalid="false" placeholder="Email" /></span>
+                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="email-663"><input type="email" name="email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" id="formEmail" aria-required="true" aria-invalid="false" placeholder="Email" /></span>
                                                                                     <div class="icon"><i class="fas fa-envelope-open"></i></div>
                                                                                 </div>
                                                                             </div>
@@ -91,14 +91,14 @@
                                                                     <div class="row">
                                                                         <div class="col-xl-6">
                                                                             <div class="form-group">
-                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="text-148"><input type="text" name="text-148" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" id="formPhone" aria-required="true" aria-invalid="false" placeholder="Phone" /></span>
+                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="text-148"><input type="tel" id="telinput" name="phone" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" id="formPhone" aria-required="true" aria-invalid="false" placeholder="Phone" /></span>
                                                                                     <div class="icon"><i class="fas fa-phone-alt"></i></div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-xl-6">
                                                                             <div class="form-group">
-                                                                                <div class="select-box clearfix"><span class="wpcf7-form-control-wrap" data-name="menu-296"><select name="menu-296" class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required wide" aria-required="true" aria-invalid="false">
+                                                                                <div class="select-box clearfix"><span class="wpcf7-form-control-wrap" data-name="menu-296"><select name="state" class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required wide" aria-required="true" aria-invalid="false">
                                                                                             <option value="State">State</option>
                                                                                             <option value="Alaska">Alaska</option>
                                                                                             <option value="Florida">Florida</option>
@@ -111,7 +111,7 @@
                                                                     <div class="row">
                                                                         <div class="col-xl-6">
                                                                             <div class="form-group">
-                                                                                <div class="select-box clearfix"><span class="wpcf7-form-control-wrap" data-name="menu-297"><select name="menu-297" class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required wide" aria-required="true" aria-invalid="false">
+                                                                                <div class="select-box clearfix"><span class="wpcf7-form-control-wrap" data-name="menu-297"><select name="city" class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required wide" aria-required="true" aria-invalid="false">
                                                                                             <option value="City">City</option>
                                                                                             <option value="Alaska">Alaska</option>
                                                                                             <option value="Florida">Florida</option>
@@ -266,5 +266,24 @@
             .slogan-content-box-bg{
                 background-image: url("{% static 'assets/images/backgrounds/slogan-content-box-bg.jpg' %}");
             }
+
+           #telinput {
+  position: relative;
+  display: block;
+  background: #ffffff;
+  border: 0px solid #f0f0f0;
+  width: 100%;
+  height: 50px;
+  color: #7f7873;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 0px;
+  transition: all 500ms ease;
+  font-family: var(--thm-font);
+}
+
         </style>
         {% endblock content%}

@@ -17,24 +17,22 @@
                     <label for="formFile" class="form-label">Image1</label>
                     <input class="form-control" type="file" id="formFile" name="img1">
                   </div>
-                  <div class="mb-3">
-                    <label for="formFile" class="form-label">Image2</label>
-                    <input class="form-control" type="file" id="formFile" name="img2">
-                  </div>
-                  <div class="mb-3">
-                    <label for="formFile" class="form-label">Image3</label>
-                    <input class="form-control" type="file" id="formFile" name="img3">
-                  </div>
+                 
                   <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
         <div class="row">
             {% for x in galleryimg %}
 
-           
-            <!-- {% if img1 %} -->
-            <img src="{{x.img1.url}}" class="card-img-top" alt="...">
-            <!-- {% endif %} -->
+           <div class="col">
+            <div class="card" style="width: 18rem;">
+              <img src="{{x.img1.url}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{x.title}}</h5>
+                <p class="card-text">{{x.des}}</p>
+              </div>
+            </div>
+          </div>
             
 
                 

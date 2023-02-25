@@ -44,8 +44,8 @@
                             <div class="img-holder">
                                 <img loading="lazy" width="350" height="370" src="{{x.cover.url}}" class="attachment-full size-full wp-post-image" alt="" decoding="async" sizes="(max-width: 350px) 100vw, 350px" /> </div>
                             <div class="text-holder">
-                                <h3><a href="#">{{x.title}}</a></h3>
-                                <p>{{x.des}}</p>
+                                <h3><a href="{% url 'galleryview' x.id %}">{{x.title}}</h3>
+                                <p>{{x.des}}</p></a>
                             </div>
                         </div></a>
                     </div>

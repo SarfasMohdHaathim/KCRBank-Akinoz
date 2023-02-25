@@ -101,25 +101,30 @@
                                     </div>
 
                                     <div class="blog-details-page__prev-next-option">
+                                    {% if f1 %}
+
                                         <div class="single-box left">
-                                            <a href="../non-us-citizens-can-open-a-bank-account/index.html">
+                                            <a href="{% url 'newsingle' count2 %}">
                                                 <div class="icon-box">
                                                     <span class="icon-right-arrow"></span> Prev Post </div>
                                                 <div class="title-box">
-                                                    <h3>Non-US Citizens can Open a Bank Account</h3>
+                                                    <h3>{{news2}}</h3>
                                                 </div>
                                             </a>
                                         </div>
+                                        {% endif %}
+                                        {% if f %}
                                         <div class="single-box right">
-                                            <a href="../board-approves-capital-raise-of-rs-2000-crores/index.html">
+                                            <a href="{% url 'newsingle' count1 %}">
                                                 <div class="icon-box">
                                                     Next Post <span class="icon-right-arrow"></span>
                                                 </div>
                                                 <div class="title-box">
-                                                    <h3>Board Approves Capital Raise of Rs. 2000 Crores</h3>
+                                                    <h3>{{news1}}</h3>
                                                 </div>
                                             </a>
                                         </div>
+                                        {% endif %}
                                     </div>
 
                                     <!--<div class="author-box-holder">
@@ -343,7 +348,7 @@
                                                     <div class="img-box">
                                                         <img width="270" height="120" src="{{x.cover.url}}" class="attachment-finbank_270x120 size-finbank_270x120 wp-post-image" alt="" decoding="async" loading="lazy" />
                                                         <div class="overlay-content">
-                                                            <a href="../how-non-us-citizens-can-open-a-bank-account/index.html">
+                                                            <a href="{% url 'newsingle' x.id %}">
                                                                 <i class="fa fa-link" aria-hidden="true"></i>
                                                             </a>
                                                         </div>
@@ -351,7 +356,7 @@
                                                     <div class="title-box">
                                                         <div class="post-date">{{x.posted_date}}}}</div>
                                                         <h4>
-                                                            <a href="../how-non-us-citizens-can-open-a-bank-account/index.html">{{x.title}}</a>
+                                                            <a href="{% url 'newsingle' x.id %}">{{x.title}}</a>
                                                         </h4>
                                                     </div>
                                                 </li>

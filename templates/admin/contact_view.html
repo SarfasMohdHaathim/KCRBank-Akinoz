@@ -19,16 +19,17 @@ Customer Contact Details
                     </tr>
                   </thead>
                   {% for c in contact %}
+                  <a href="{% url 'contactviewsingle' c.id %}">
                   <tbody>
                     <tr>
-                      <th scope="row">1</th>
+                      <th scope="row"><a href="{% url 'contactviewsingle' c.id %}"><button>ss</button></a></th>
                       <td>{{c.name}}</td>
                       <td>{{c.phone}}</td>
                       <td>{{c.subject}}</td>
                       <td>{{c.date}}</td>
                     </tr>
-        
                   </tbody>
+                </a>
                   {% endfor %}
                 </table>
               </div>

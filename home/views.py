@@ -47,17 +47,35 @@ def services(request):
     return render(request,'service.html')
     
 def newsingle(request,id):
+    print(id,'=======================')
     context={'a':1}
     news=News.objects.get(id=id)
     count=News.objects.all().count()
     print(count)
+    count1=int(id)+1
+    count2=int(id)-1
+    count1=(count1)
+    if count1<=count:
+        f=1
+        news1=News.objects.get(id=count1)
+        print(news1,'======news1=========')
+        context.update({'f':f,'news1':news1})
+
+
+    if count2>0:
+        f1=1
+        news2=News.objects.get(id=count2)
+
+        context.update({'f1':f1,'news2':news2})
+
+
     if count>=2:
         recent=News.objects.all()[count-2:count]
         context.update({'recent':recent})
     print(recent)
 
 
-    context.update({'news':news})
+    context.update({'news':news,'count1':count1,'count2':count2})
     return render(request,'news-single.html',context)
 
 def news(request):
@@ -130,6 +148,32 @@ def contactus(request):
 
 
 
+
+def getcontact(request):
+    if request.method=="POST":
+        name=request.POST['fname']
+        phone=request.POST['phone']
+        state=request.POST['state']
+        city=request.POST['city']
+        email=request.POST['email']
+        Contact.objects.create(name=name,email=email,phone=phone,
+                              state=state,city=city ).save()
+        try:
+            message = f'Hi {name} ,Thanks For Your Message, we will contact you to the {phone} shortly'
+
+            recipient_list = [email]
+            email_from = settings.EMAIL_HOST_USER
+            send_mail( sub, message, email_from, recipient_list )
+            print('erorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
+            return redirect('home')
+                
+        except:
+            messages.warning(request, 'Email Failed')
+            return redirect('about')
+    return render(request,'contact.html')
+
+
+
 # ADMIN
 
 
@@ -185,11 +229,7 @@ def admingalleryimageadd(request):
         print(img1,'===================+++++++++++++++')
         gallery=Gallery.objects.get(id=id)
         GalleryImage.objects.create(title=gallery,img1=img1).save()
-        galleryimg=GalleryImage.objects.filter(title=id)
-
-        print(galleryimg,'=====================00======')
-        context={'galleryimg':galleryimg}
-
+        return redirect('admingalleryimage',gallery.id)
     return render(request,'admin/add_galleryimage.html',context)
 
 
@@ -198,7 +238,7 @@ def admingalleryimage(request,id):
     gallery=Gallery.objects.get(id=id)
     galleryimg=GalleryImage.objects.filter(title=id)
     print(galleryimg,'==========999995555555559999=====')
-    context={'gallery':gallery,'galleryimg':galleryimg}
+    context={'galleryimg':galleryimg}
 
     return render(request,'admin/add_galleryimage.html',context)
 
@@ -245,6 +285,16 @@ def adminadd(request):
 
 
 def admincontactview(request):
-    contact=Contact.objects.all().order_by('-date')
+    contact=Contact.objects.all().order_by('-id')
     context={'contact':contact}
     return render(request,'admin/contact_view.html',context)
+
+
+def contactviewsingle(request,id):
+    contact=Contact.objects.get(id=id)
+    context={'contact':contact}
+    return render(request,'admin/contact_single.html',context)
+
+
+
+
