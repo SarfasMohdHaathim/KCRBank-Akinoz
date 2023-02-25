@@ -49,6 +49,8 @@ class Contact(models.Model):
     message=models.TextField(blank=True,null=True)
     state=models.CharField(max_length=100,blank=True,null=True)
     city=models.CharField(max_length=100,blank=True,null=True)
+    date = models.DateField(auto_now_add=True, blank=True,null=True)
+
 
 
 class Emi(models.Model):

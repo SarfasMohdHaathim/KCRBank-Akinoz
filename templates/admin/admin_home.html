@@ -26,6 +26,10 @@
     <body id="body-pd">
         <header class="header" id="header">
             <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+            <h4>{% block titlehead %}
+            {% endblock titlehead %}
+
+            </h4>
             <div class="header_img"> <img src="{% static 'assets/images/resources/logo-2.png' %}" alt=""> </div>
         </header>
         <div class="l-navbar" id="nav-bar">
@@ -37,7 +41,7 @@
                      </a> <a href="\adminnews" class="nav_link">
                       <i class="bi bi-calendar4-event"></i><span class="nav_name">News and Events</span> </a> <a href="\adminadd" class="nav_link">
                         <i class="bi bi-person-plus-fill"></i> <span class="nav_name">Add Admin</span> </a>
-                          <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>
+                          <a href="\admincontactview" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Message</span> </a>
                            <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span> </a>
                             <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> 
                       <span class="nav_name">Stats</span> </a> </div>
@@ -53,6 +57,26 @@
   <main>
     {% block contentadmin %}
     {% endblock contentadmin %}
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </main>
   <footer>
     <!-- place footer here -->

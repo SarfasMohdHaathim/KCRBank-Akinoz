@@ -19,5 +19,6 @@ urlpatterns = [
     path('admingalleryimageadd/',admingalleryimageadd,name='admingalleryimageadd'),
     path('adminnews/',adminnews,name='adminnews'),
     path('adminadd/',adminadd,name='adminadd'),
-    path('admingalleryimage<str:id>/',admingalleryimage,name='admingalleryimage'),
+    path('admincontactview/',admincontactview,name='admincontactview'),
+    path('admingalleryimage/<str:id>/',admingalleryimage,name='admingalleryimage'),
 ]

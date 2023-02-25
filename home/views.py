@@ -117,8 +117,9 @@ def contactus(request):
         try:
             message = f'Hi {name} ,Thanks For Your Message, we will contact you to the {phone} shortly'
 
-            recipient_list = [settings.EMAIL_HOST_USER]
-            send_mail( sub, message, email, recipient_list )
+            recipient_list = [email]
+            email_from = settings.EMAIL_HOST_USER
+            send_mail( sub, message, email_from, recipient_list )
             print('erorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
             return redirect('home')
                 
@@ -148,7 +149,7 @@ def adminlogin(request):
 
             # print(user.password,'===========================================')
             
-            return redirect('adminhome')
+            return redirect('admincontactview')
         except:
             message="INVALID"
 
@@ -160,6 +161,7 @@ def adminlogout(request):
 
 
 def adminhome(request):
+
     return render(request,'admin/admin_home.html')
 
 
@@ -239,3 +241,10 @@ def adminadd(request):
         else:
             messages.warning(request, 'Confrim Password is Missmatch')
     return render(request,'admin/add_admin.html')
+
+
+
+def admincontactview(request):
+    contact=Contact.objects.all().order_by('-date')
+    context={'contact':contact}
+    return render(request,'admin/contact_view.html',context)
