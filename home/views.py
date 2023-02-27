@@ -6,16 +6,25 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.urls import reverse
 from django.db.models import Q
-from datetime import datetime
+from datetime import datetime,timedelta
 from django.contrib import messages
+
+
+
 # Create your views here.
 def home(request):
     emi=Emi.objects.all()
     print(emi)
     context={'emi':emi}
     count=News.objects.all().count()
+    
     print(count)
-    if count>=2:
+    if count==1:
+        print('=======================recentsingle')
+        singlerecent=News.objects.all()
+        context.update({'singlerecent':singlerecent})
+
+    elif count>=2:
         
         recent=News.objects.all()[count-2:count]
         print(recent)
@@ -58,21 +67,29 @@ def newsingle(request,id):
     if count1<=count:
         f=1
         news1=News.objects.get(id=count1)
-        print(news1,'======news1=========')
+        print(count,'======news1=========')
         context.update({'f':f,'news1':news1})
 
+    try:
+        if count>=2:
+            recent=News.objects.all()[count-2:count]
+            context.update({'recent':recent})
+            print(recent)
+        if count2>0:
+            f1=1
+            news2=News.objects.get(id=count2)
+            context.update({'f1':f1,'news2':news2})
+        if(count==1):
+            recent=News.objects.all()
+            context.update({'x':recent})
 
-    if count2>0:
-        f1=1
-        news2=News.objects.get(id=count2)
 
-        context.update({'f1':f1,'news2':news2})
+    
+    except:
+        messages.warning(request, 'Something Will Happen')
 
 
-    if count>=2:
-        recent=News.objects.all()[count-2:count]
-        context.update({'recent':recent})
-    print(recent)
+    
 
 
     context.update({'news':news,'count1':count1,'count2':count2})
@@ -93,6 +110,7 @@ def news(request):
 
 def emicalculator(request):
     context={}
+    emi=000000
     if request.method=="POST":
         amount=request.POST['amount']
         loanterm=request.POST['loanterm']
@@ -111,10 +129,14 @@ def emicalculator(request):
         print(b)
         b=int(b[1])
         c=int(c[1])
+        totalamount=(a*c*(1+a)**(b*12))//((1+a)**(b*12)-1)
+        monthlyemi=totalamount//(b*12)
+        intrestamount=a*c//100
         
         Emi.objects.all().delete()
-        Emi.objects.create(loanamout=a,loanterm=b,intrestrate=c).save()
+        Emi.objects.create(loanamout=a,loanterm=b,intrestrate=c,monthlyemi=monthlyemi,intrestamount=intrestamount,totalamount=totalamount).save()
         print(Emi.objects.all())
+        
 
         print(amount,loanterm,interest,'==============emicalculator==========')
         context={'amount':amount,'loanterm':loanterm,'interest':interest}
@@ -158,12 +180,13 @@ def getcontact(request):
         email=request.POST['email']
         Contact.objects.create(name=name,email=email,phone=phone,
                               state=state,city=city ).save()
+        
         try:
             message = f'Hi {name} ,Thanks For Your Message, we will contact you to the {phone} shortly'
 
             recipient_list = [email]
             email_from = settings.EMAIL_HOST_USER
-            send_mail( sub, message, email_from, recipient_list )
+            send_mail( 'KCRBank', message, email_from, recipient_list )
             print('erorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
             return redirect('home')
                 
@@ -201,7 +224,7 @@ def adminlogin(request):
 
 def adminlogout(request):
     logout(request)
-    return redirect('home')
+    return redirect('adminlogin')
 
 
 def adminhome(request):
@@ -210,13 +233,15 @@ def adminhome(request):
 
 
 def admingallery(request):
+    cover=None
+    context={}
     if request.method=='POST':
         title=request.POST['title']
         des=request.POST['des']
         cover=request.FILES['coverimg']
         Gallery.objects.create(title=title,des=des,cover=cover)
-    gallery=Gallery.objects.all()
-    context={'gallery':gallery}
+        if cover:
+            context.update({'cover':cover})
 
     return render(request,'admin/add_gallary.html',context)
 
@@ -224,13 +249,12 @@ def admingallery(request):
 def admingalleryimageadd(request):
     if request.method=='POST':
         id=request.POST['id']
-        print(id,'00000000000000000')
         img1=request.FILES['img1']
         print(img1,'===================+++++++++++++++')
         gallery=Gallery.objects.get(id=id)
         GalleryImage.objects.create(title=gallery,img1=img1).save()
         return redirect('admingalleryimage',gallery.id)
-    return render(request,'admin/add_galleryimage.html',context)
+    return render(request,'admin/add_galleryimage.html')
 
 
 
@@ -248,8 +272,8 @@ def adminnews(request):
     if request.method=='POST':
         title=request.POST['title']
         category=request.POST['category']
-        coverimage=request.POST['img3']
-        image=request.POST['img']
+        coverimage=request.FILES['img3']
+        image=request.FILES['img']
         section_title=request.POST['section_title']
         phar1=request.POST['phar1']
         phar2=request.POST['phar2']
@@ -292,8 +316,64 @@ def admincontactview(request):
 
 def contactviewsingle(request,id):
     contact=Contact.objects.get(id=id)
-    context={'contact':contact}
+    a=contact.date+ timedelta(days=-10)
+    context={'contact':contact,'a':a}
     return render(request,'admin/contact_single.html',context)
+
+
+
+
+def adminviewgallery(request):
+    gallery=Gallery.objects.all()
+    
+    context={'gallery':gallery}
+    return render(request,'admin/aview_gallery.html',context)
+
+
+
+def adminnewsview(request):
+    news=News.objects.all()
+    context={'news':news}
+
+    return render(request,'admin/anews_view.html',context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

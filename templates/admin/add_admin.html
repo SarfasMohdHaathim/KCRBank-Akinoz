@@ -6,7 +6,7 @@ Add Admin
             {% endblock titlehead %}
 {% block contentadmin %}
   <main>
-        <div class="container signup">
+        <div class="container signup mt-5">
             <div class="row signup_admin">
               <form action="{% url 'adminadd' %}" method="post">
                 {% csrf_token %}

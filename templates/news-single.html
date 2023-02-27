@@ -46,7 +46,7 @@
                             <div class="thm-unit-test">
                                 <div class="blog-details-img-box">
                                     <div class="inner">
-                                        <img width="840" height="500" src="{{news.img1.url}}" class="attachment-full size-full wp-post-image" alt="" decoding="async" srcset="http://fastwpdemo.com/newwp/finbank/wp-content/uploads/2022/09/blog-v3-3.jpg 840w, http://fastwpdemo.com/newwp/finbank/wp-content/uploads/2022/09/blog-v3-3-300x179.jpg 300w, http://fastwpdemo.com/newwp/finbank/wp-content/uploads/2022/09/blog-v3-3-768x457.jpg 768w" sizes="(max-width: 840px) 100vw, 840px" /> </div>
+                                        <img width="840" height="500" src="{{news.cover.url}}" class="attachment-full size-full wp-post-image" alt="" decoding="async"  sizes="(max-width: 840px) 100vw, 840px" /> </div>
                                 </div>
                                 <div class="blog-details-text-box">
 
@@ -312,7 +312,10 @@
                             <div id="finbank_popular_post-2" class="widget single-sidebar-box widget_finbank_popular_post">
                                 <div class="sidebar-title">
                                     <div class="dot-box"></div>
+                                    {% if not x %}
+                                    
                                     <h3>Recent Post</h3>
+                                    {% endif %}
                                 </div>
                                 <div class="sidebar-blog-post">
                                     <div class="owl-carousel owl-theme thm-owl__carousel sidebar-blog-carousel owl-nav-style-one" data-owl-options='{
@@ -342,8 +345,10 @@
 
                                         <!--Start Single Sidebar Blog Post Colum-->
                                         <div class="single-sidebar-blog-post-colum">
+                                            {% if not x %}
+                                            {% for x in recent %}
+                                            
                                             <ul>
-                                                {% for x in recent %}
                                                 <li class="sidebar-blog-post-single">
                                                     <div class="img-box">
                                                         <img width="270" height="120" src="{{x.cover.url}}" class="attachment-finbank_270x120 size-finbank_270x120 wp-post-image" alt="" decoding="async" loading="lazy" />
@@ -360,7 +365,7 @@
                                                         </h4>
                                                     </div>
                                                 </li>
-                                                {% endfor %}
+                                                
                                                 <!-- <li class="sidebar-blog-post-single">
                                                     <div class="img-box">
                                                         <img width="270" height="120" src="../../../../wp-content/uploads/2022/09/blog-v3-2-270x120.jpg" class="attachment-finbank_270x120 size-finbank_270x120 wp-post-image" alt="" decoding="async" loading="lazy" />
@@ -379,10 +384,12 @@
                                                 </li> -->
 
                                             </ul>
+                                            {% endfor %}
+                                            {%endif%}
                                         </div>
                                         <!--End Single Sidebar Blog Post Colum-->
                                         <!--Start Single Sidebar Blog Post Colum-->
-                                        <div class="single-sidebar-blog-post-colum">
+                                        <!-- <div class="single-sidebar-blog-post-colum">
                                             <ul>
                                                 <li class="sidebar-blog-post-single">
                                                     <div class="img-box">
@@ -417,7 +424,7 @@
                                                     </div>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div> -->
 
                                     </div>
                                 </div>

@@ -3,11 +3,11 @@
 {% load static %}
 {% block titlehead %}
 News
-            {% endblock titlehead %}
+{% endblock titlehead %}
 {% block contentadmin %}
-        <div class="container">
+        <div class="container" id="newscontainer">
             <div class="row">
-                <form action="{% url 'adminnews' %}" method="post">
+                <form action="{% url 'adminnews' %}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Title</label>
                         <input class="form-control" type="text" placeholder="Default input" name="title">
@@ -48,6 +48,10 @@ News
                 </form>
             </div>
         </div>
-
+<style>
+  #newscontainer{
+    margin-top: 110px;
+  }
+</style>
 
 {% endblock contentadmin %}

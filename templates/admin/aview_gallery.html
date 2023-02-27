@@ -1,0 +1,29 @@
+{% extends 'admin/admin_home.html' %}
+{% load static %}
+{% block titlehead %}
+View Gallery
+{% endblock titlehead %}
+{% block contentadmin %}
+
+    <div class="container" id="galleryview">
+        <div class="row">
+            {% for x in gallery %}
+
+            <div class="card" style="width: 18rem;">
+                <a href="{% url 'admingalleryimage' x.id %}"><img src="{{x.cover.url}}" class="card-img-top" alt="..."></a>
+                <div class="card-body">
+                  <h5 class="card-title">{{x.title}}</h5>
+                  <p class="card-text">{{x.des}}</p>
+                </div>
+              </div>
+              {% endfor %}
+        </div>
+    </div>
+<style>
+    #galleryview{
+        margin-top: 200px;
+    }
+</style>
+
+
+{% endblock contentadmin %}

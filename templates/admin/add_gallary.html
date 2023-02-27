@@ -1,14 +1,14 @@
 {% extends 'admin/admin_home.html' %}
-
 {% load static %}
 {% block titlehead %}
 Gallery
-            {% endblock titlehead %}
+{% endblock titlehead %}
 {% block contentadmin %}
 
-    <div class="container">
+    <div class="container mt-5" id="condainer1">
         <div class="row w-50">
-            <form action="{% url 'admingallery' %}" method="post" enctype="multipart/form-data">
+            <form action="{% url 'admingallery' %}" method="post" id="image-form" enctype="multipart/form-data">
+              {% csrf_token %}
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Title </label>
                     <input class="form-control form-control-sm" type="text" aria-label=".form-control-sm example" name="title">
@@ -19,24 +19,103 @@ Gallery
                   </div>
                   <div class="mb-3">
                     <label for="formFile" class="form-label">Cover Image</label>
-                    <input class="form-control" type="file" id="formFile" name="coverimg">
+                    <input class="form-control" type="file" id="formFile" name="coverimg" >
                   </div>
-                  <button type="submit" class="btn btn-primary">Primary</button>
+                  <button type="submit" class="btn btn-primary" >Primary</button>
             </form>
         </div>
         <div class="row">
-            {% for x in gallery %}
-
-            <div class="card" style="width: 18rem;">
-                <a href="{% url 'admingalleryimage' x.id %}"><img src="{{x.cover.url}}" class="card-img-top" alt="..."></a>
-                <div class="card-body">
-                  <h5 class="card-title">{{x.title}}</h5>
-                  <p class="card-text">{{x.des}}</p>
-                </div>
-              </div>
-              {% endfor %}
+          <div id="alert-box"></div>
+          <div class="image-area mb-3"><div id="image-box">
+            <img src="{{cover}}" id="image" width="700px">
+          </div></div>
+          <button class="btn btn-primary mt-3 not-visible" id="confirm-btn">Confirm</button>
         </div>
+
     </div>
+    <style>
+      #upload {
+          opacity: 0;
+      }
+      .image-area {
+          border: 2px solid rgba(255, 255, 255, 0.7);
+          padding: 1rem;
+      }
+      #condainer1{
+        margin-top: 160px !important;
+      }.not-visible {
+  display: none;
+}
+      </style>
+      
+  <script>
+    const alertBox = document.getElementById('alert-box')
+    const imageBox = document.getElementById('image-box')
+    const imageForm = document.getElementById('image-form')
+    const confirmBtn = document.getElementById('confirm-btn')
+    const input = document.getElementById('formFile')
+     
+    const csrf = document.getElementsByName('csrfmiddlewaretoken')
+    console.log(input)
+    if (input){
+    input.addEventListener('change', ()=>{
+        alertBox.innerHTML = ""
+        confirmBtn.classList.remove('not-visible')
+        // const img_data = input.files[0]
+        // const url = URL.createObjectURL(img_data)
+     
+        imageBox.innerHTML = `<img src="{{cover}}" id="image" width="700px">`
+        var $image = $('#image')
+        console.log($image)
+
+     
+        $image.cropper({
+            aspectRatio: 16 / 9,
+            crop: function(event) {
+                console.log(event.detail.x);
+                console.log(event.detail.y);
+                console.log(event.detail.width);
+                console.log(event.detail.height);
+                console.log(event.detail.rotate);
+                console.log(event.detail.scaleX);
+                console.log(event.detail.scaleY);
+            }
+        });
+         
+        var cropper = $image.data('cropper');
+        confirmBtn.addEventListener('click', ()=>{
+            cropper.getCroppedCanvas().toBlob((blob) => {
+                console.log('confirmed')
+                const fd = new FormData();
+                fd.append('csrfmiddlewaretoken', csrf[0].value)
+                fd.append('file', blob, 'my-image.png');
+     
+                $.ajax({
+                    type:'POST',
+                    url: admingallery.action,
+                    enctype: 'multipart/form-data',
+                    data: fd,
+                    success: function(response){
+                        console.log('success', response)
+                        alertBox.innerHTML = `<div class="alert alert-success" role="alert">
+                                                Successfully saved and cropped the selected image
+                                            </div>`
+                    },
+                    error: function(error){
+                        console.log('error', error)
+                        alertBox.innerHTML = `<div class="alert alert-danger" role="alert">
+                                                Ups...something went wrong
+                                            </div>`
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                })
+            })
+        })
+    })
+  }
+    </script>
 
 
 

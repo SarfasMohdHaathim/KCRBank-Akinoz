@@ -1,0 +1,35 @@
+{% extends 'admin/admin_home.html' %}
+{% load static %}
+{% block titlehead %}
+News and Events
+{% endblock titlehead %}
+{% block contentadmin %}
+
+    <div class="container" id="newscontainer">
+        <div class="row">
+            {% for news in news %}
+            <div class="card" style="width: 18rem;">
+                <img  src="{{news.cover.url}}" alt="Card image cap">
+                <img  src="{{news.img1.url}}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{news.title}}</h5>
+                  <p class="card-text">{{news.paragraph1}}</p>
+                  <p class="card-text">{{news.paragraph2}}</p>
+                  <p class="card-text">{{news.paragraph3}}</p>
+                  <p class="card-text">{{news.paragraph4}}</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+              
+              {% endfor %}
+        </div>
+    </div>
+<style>
+    #newscontainer{
+        margin-top: 150px;
+    }
+</style>
+
+
+
+{% endblock contentadmin %}

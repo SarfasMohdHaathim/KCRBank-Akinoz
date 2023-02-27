@@ -154,10 +154,10 @@
                 <!-- If we need navigation buttons -->
                 <div class="main-slider__nav main-slider__nav--style3">
                     <div class="swiper-button-prev" id="main-slider__swiper-button-next">
-                        <i class="icon-chevron left"></i>
+                        <i class="bi bi-chevron-left"></i>
                     </div>
                     <div class="swiper-button-next" id="main-slider__swiper-button-prev">
-                        <i class="icon-chevron right"></i>
+                        <i class="bi bi-chevron-right"></i>
                     </div>
                 </div>
 
@@ -819,17 +819,17 @@
                             </div>
 
                             <div class="emi-calculator-tab-content-box-outer">
-                                <form action="{% url 'emicalculator' %}" method="post" id="emiform">
+                                <form action="{% url 'emicalculator' %}" method="post" >
                                     {% csrf_token %}
                                 <!--Start Tabs Content Box-->
                                 <div class="tabs-content-box">
                                     <!--Tab-->
                                     <div class="tab-content-box-item tab-content-box-item-active" id="home-loan1">
                                         <div class="emi-calculator-tab-content-box-item">
+                                                   {% for emi in emi %}
 
                                             <div class="range-box">
                                                 <div class="row">
-                                                   {% for emi in emi %}
                                                     <div class="col-lg-12 column">
                                                         <div class="price-range-box">
                                                             <div class="inner">
@@ -880,11 +880,11 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                {% endfor %}
+                                                
                                                 </div>
                                             </div>
 
-                                            <div class="emi-calculator-output-box clearfix">
+                                            <div class="emi-calculator-output-box clearfix" id="emiform">
                                                 <div class="left-box">
                                                     <div class="top">
                                                         <div class="icon">
@@ -892,7 +892,7 @@
                                                         </div>
                                                         <div class="inner-title">
                                                             <h3>Your Monthly EMI</h3>
-                                                            <h2><span>$</span>10,250</h2>
+                                                            <h2><span>$ {{emi.monthlyemi}}</span></h2>
                                                         </div>
                                                     </div>
                                                     <div class="btns-box">
@@ -911,8 +911,8 @@
                                                                     <span class="icon-right-arrow"></span>
                                                                 </div>
                                                                 <div class="text">
-                                                                    <a href="#">Interest Amount</a>
-                                                                    <p>$720,260</p>
+                                                                    <a href="#">Intrest Amount</a>
+                                                                    <p>$ {{emi.intrestamount}}</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -924,7 +924,7 @@
                                                                 </div>
                                                                 <div class="text">
                                                                     <a href="#">Total Amount Payble</a>
-                                                                    <p>$720,260</p>
+                                                                    <p>$ {{emi.totalamount}}</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -932,7 +932,7 @@
                                                     </ul>
                                                 </div>
                                             </div>
-
+                                            {% endfor %}
                                         </div>
                                     </div>
                                     <!--Tab-->
@@ -1239,9 +1239,10 @@
                         </a>
                     </div>
                 </div>
-
+{% if recent %}
                 <div class="row">
                     <!--Start Single blog Style2-->
+                    
                     {% for recent in recent %}
                     <div class="col-xl-6 col-6">
                         <div class="single-blog-style1 single-blog-style1--style2">
@@ -1287,6 +1288,60 @@
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="row">
+                    <!--Start Single blog Style2-->
+                    
+                    {% for singlerecent in singlerecent %}
+                    <div class="col-xl-6 col-6">
+                        <div class="single-blog-style1 single-blog-style1--style2">
+                            <div class="img-holder">
+                                <div class="inner">
+                                    <img  src="{% static 'assets/images/blog/blog-v2-1.JPG' %}" alt="">
+                                    <div class="overlay-icon">
+                                        <a href="news-single.html">
+                                            <span class="icon-right-arrow"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="category-date-box">
+                                    <div class="category">
+                                        <span class="icon-play-button-1"></span>
+                                        <h5>{{singlerecent.category}}</h5>
+                                    </div>
+                                    <div class="date">
+                                        <h5>{{singlerecent.posted_date}}</h5>
+                                    </div>
+                                    <!-- <div class="author">
+                                        <h5>By <a href="#">Henry Theo</a></h5>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="text-holder">
+                                <h3 class="blog-title">
+                                    <a href="">
+                                        {{singlerecent.title}}
+                                    </a>
+                                </h3>
+                                <div class="bottom">
+                                    <div class="read-more-btn">
+                                        <a href="{% url 'newsingle' singlerecent.id %}"><span class="icon-right-arrow"></span>Read More</a>
+                                    </div>
+                                    <div class="meta-box">
+                                        <!-- <ul class="meta-info">
+                                            <li><span class="icon-clock"></span> <a href="#">6 Mins Read</a></li>
+                                            <li><span class="icon-comment"></span> <a href="#">10 Cmnts</a></li>
+                                        </ul> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
                     <!--End Single blog Style2-->
 
                     <!--Start Single blog Style2-->
@@ -1335,8 +1390,7 @@
                         </div>
                     </div> -->
                     <!--End Single blog Style2-->
-                    {% endfor %}
-                </div>
+                  
 
             </div>
         </section>
@@ -1407,7 +1461,7 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <i class="fab fa-instagram"></i>
+                                                <i class="fa-brands fa-instagram"></i>
                                             </a>
                                         </li>
                                         <li>
