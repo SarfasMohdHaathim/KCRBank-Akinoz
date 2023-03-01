@@ -44,7 +44,9 @@
     
 }
 
-
+.input-box textarea{
+    height: 150px;width: 100%;border: 0;
+}
 
 
 
@@ -244,9 +246,7 @@ select:focus {
   border-color: #43c3ea;
   outline: none;
 }
-#contact{
-  background-color: #F0F5F6;
-}
+
 #contact-form input[type="text"].error {
   border-color: red;
 }
@@ -9843,9 +9843,7 @@ li.single-benefits-box-colum:nth-child(6) .single-benefits-box .icon {
 }
 
 #apply-form .form-group input[type="text"],
-#apply-form .form-group input[type="email"] ,
-#apply-form .form-group input[type="tel"] 
-{
+#apply-form .form-group input[type="email"] {
   position: relative;
   display: block;
   background: #ffffff;

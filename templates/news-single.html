@@ -309,14 +309,16 @@
                                 </ul>
 
                             </div> -->
+                            {% if  x %}
                             <div id="finbank_popular_post-2" class="widget single-sidebar-box widget_finbank_popular_post">
                                 <div class="sidebar-title">
                                     <div class="dot-box"></div>
-                                    {% if not x %}
+                                   
                                     
                                     <h3>Recent Post</h3>
-                                    {% endif %}
+                                    
                                 </div>
+                                {% endif %}
                                 <div class="sidebar-blog-post">
                                     <div class="owl-carousel owl-theme thm-owl__carousel sidebar-blog-carousel owl-nav-style-one" data-owl-options='{
                 "loop": true,
@@ -359,7 +361,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="title-box">
-                                                        <div class="post-date">{{x.posted_date}}}}</div>
+                                                        <div class="post-date">{{x.posted_date}}</div>
                                                         <h4>
                                                             <a href="{% url 'newsingle' x.id %}">{{x.title}}</a>
                                                         </h4>

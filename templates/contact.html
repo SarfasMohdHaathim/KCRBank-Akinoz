@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
-
 {% load static %}
 {% block content%}
-    <style>
-        .breadcrumb-area-bg{
-            background-image: url("{% static 'assets\images\backgrounds\breadcrumb-area-bg-6.jpg' %}");
-        }
-        .apply-form-box-bg{
-            background-image: url("{% static 'assets/images/kcrb/KUNNAMANGALAM%20CO-OPERATIVE%20RURAL%20BANK%20-%20PATHIMANGALAM%20BRANCH.jpg' %}");
-        }
-    </style>
-
-
+<style>
+    .breadcrumb-area-bg{
+        background-image: url("{% static 'assets/images/backgrounds/breadcrumb-area-bg-6.jpg' %}");
+    }
+    .apply-form-box-bg{
+        background-image: url("{% static 'assets/images/kcrb/KUNNAMANGALAM%20CO-OPERATIVE%20RURAL%20BANK%20-%20PATHIMANGALAM%20BRANCH.jpg' %}");
+    }
+    .input-box textarea {
+    height: 150px;
+    width: 100%;
+    border: 0;
+}
+</style>
         <!--Start breadcrumb area-->
         <section class="breadcrumb-area">
-            <div class="breadcrumb-area-bg" ></div>
+            <div class="breadcrumb-area-bg"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -49,7 +51,7 @@
                                         <div class="row">
                                             <div class="col-xl-12">
                                                 <div class="apply-form-box clearfix">
-                                                    <div class="apply-form-box-bg" ></div>
+                                                    <div class="apply-form-box-bg"></div>
                                                     <div class="apply-form-box__content">
                                                         <div class="sec-title">
                                                             <h2>Send Your Request &amp;<br> Get Call Back</h2>
@@ -63,7 +65,8 @@
                                                                     <p role="status" aria-live="polite" aria-atomic="true"></p>
                                                                     <ul></ul>
                                                                 </div>
-                                                                <form action="{% url 'getcontact' %}" method="post" class="wpcf7-form init">
+                                                                <form action="{% url 'getcontact' %}" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
+                                                                    {% csrf_token %}
                                                                     <div style="display: none;">
                                                                         <input type="hidden" name="_wpcf7" value="99" />
                                                                         <input type="hidden" name="_wpcf7_version" value="5.6.3" />
@@ -75,14 +78,15 @@
                                                                     <div class="row">
                                                                         <div class="col-xl-6">
                                                                             <div class="form-group">
-                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="text-147"><input type="text" name="fname" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" id="formName" aria-required="true" aria-invalid="false" placeholder="Your Name" /></span>
+                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="text-147">
+                                                                                    <input type="text" name="fname" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" id="formName" aria-required="true" aria-invalid="false" placeholder="Your Name" /></span>
                                                                                     <div class="icon"><i class="fas fa-user"></i></div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-xl-6">
                                                                             <div class="form-group">
-                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="email-663"><input type="email" name="email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" id="formEmail" aria-required="true" aria-invalid="false" placeholder="Email" /></span>
+                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="email-663"><input name="email" type="email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" id="formEmail" aria-required="true" aria-invalid="false" placeholder="Email" /></span>
                                                                                     <div class="icon"><i class="fas fa-envelope-open"></i></div>
                                                                                 </div>
                                                                             </div>
@@ -91,27 +95,14 @@
                                                                     <div class="row">
                                                                         <div class="col-xl-6">
                                                                             <div class="form-group">
-                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="text-148"><input type="tel" id="telinput" name="phone" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" id="formPhone" aria-required="true" aria-invalid="false" placeholder="Phone" /></span>
+                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="text-148"><input type="tel" name="phone" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" id="formPhone" aria-required="true" aria-invalid="false" placeholder="Phone" /></span>
                                                                                     <div class="icon"><i class="fas fa-phone-alt"></i></div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-xl-6">
                                                                             <div class="form-group">
-                                                                                <div class="select-box clearfix"><span class="wpcf7-form-control-wrap" data-name="menu-296"><select name="state" class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required wide" aria-required="true" aria-invalid="false">
-                                                                                            <option value="State">State</option>
-                                                                                            <option value="Alaska">Alaska</option>
-                                                                                            <option value="Florida">Florida</option>
-                                                                                            <option value="Georgia">Georgia</option>
-                                                                                            <option value="Indiana">Indiana</option>
-                                                                                        </select></span></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-xl-6">
-                                                                            <div class="form-group">
-                                                                                <div class="select-box clearfix"><span class="wpcf7-form-control-wrap" data-name="menu-297"><select name="city" class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required wide" aria-required="true" aria-invalid="false">
+                                                                               <div class="select-box clearfix"><span class="wpcf7-form-control-wrap" data-name="menu-297"><select name="city" class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required wide" aria-required="true" aria-invalid="false">
                                                                                             <option value="City">City</option>
                                                                                             <option value="Alaska">Alaska</option>
                                                                                             <option value="Florida">Florida</option>
@@ -120,10 +111,17 @@
                                                                                         </select></span></div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-xl-6">
+                                                                    </div>
+                                                                 
+                                                                    <div class="row">
+                                                                        <div class="col-xl-12 col-12">
                                                                             <div class="form-group">
-                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="date"><input type="text" name="date" value="" size="40" class="wpcf7-form-control wpcf7-text hasDatepicker" id="datepicker" aria-invalid="false" placeholder="Date" /></span>
-                                                                                    <div class="icon"><i class="fas fa-calendar"></i></div>
+                                                                                <label>Message</label>
+                                                                                <div class="input-box ">
+                                                                  
+                                                                                    <textarea id="formMessage" placeholder="" required="" name="message">
+                                                                                    
+                                                                                    </textarea>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -154,15 +152,16 @@
 
 
 
-        
+
         <!--Google Maps automatically generates the required HTML iFrames code to embed Google Maps.-->
-        
+
         <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31300.928430172575!2d75.83164510571297!3d11.289608624488974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65cc2c5152cbf%3A0x5ef9048f11e5c645!2sKunnamangalam%20Co-Operative%20Rural%20Bank%20Ltd.!5e0!3m2!1sen!2sin!4v1672645986782!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
-                    
-        
-        
+
+
+
+
         <section class="partner-style2-area">
             <div class="container">
                 <div class="brand-content">
@@ -225,12 +224,11 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <!--End Accounts Style1 Area-->
+        </section>        <!--End Accounts Style1 Area-->
         <section class="slogan-area slogan-area--style2">
             <div class="container">
                 <div class="slogan-content-box slogan-content-box--style2">
-                    <div class="slogan-content-box-bg" ></div>
+                    <div class="slogan-content-box-bg"></div>
                     <div class="inner-title">
                         <h2>Experience a New Digital World.</h2>
                         <p>Mobile banking application with new & exciting features.</p>
@@ -262,12 +260,12 @@
                 </div>
             </div>
         </section>
+        <!--Start footer area -->
         <style>
             .slogan-content-box-bg{
                 background-image: url("{% static 'assets/images/backgrounds/slogan-content-box-bg.jpg' %}");
             }
-
-           #telinput {
+           /* #telinput {
   position: relative;
   display: block;
   background: #ffffff;
@@ -283,7 +281,7 @@
   border-radius: 0px;
   transition: all 500ms ease;
   font-family: var(--thm-font);
-}
+} */
 
         </style>
-        {% endblock content%}
+        {% endblock content %}

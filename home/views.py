@@ -8,8 +8,7 @@ from django.urls import reverse
 from django.db.models import Q
 from datetime import datetime,timedelta
 from django.contrib import messages
-
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
@@ -17,43 +16,72 @@ def home(request):
     print(emi)
     context={'emi':emi}
     count=News.objects.all().count()
+    print('===================count',count)
     
     print(count)
     if count==1:
         print('=======================recentsingle')
         singlerecent=News.objects.all()
         context.update({'singlerecent':singlerecent})
+        print('========================single==')
 
     elif count>=2:
         
         recent=News.objects.all()[count-2:count]
         print(recent)
         context.update({'recent':recent})
+    if count>0:
+        flag=1
+        context.update({'flag':flag})
+
     return render(request,'index.html',context)
 def gallery(request):
-    gallery=Gallery.objects.all()
+    gallery=Gallery.objects.all().order_by('-id')
     context={'gallery':gallery}
+    count=News.objects.all().count()
+    if count>0:
+        flag=1
+        context.update({'flag':flag})
     return render(request,'gallery.html',context)
 
 def galleryview(request,id):
     gallery=Gallery.objects.get(id=id)
     galleryimg=GalleryImage.objects.filter(title=id)
     context={'gallery':gallery,'galleryimg':galleryimg}
+    count=News.objects.all().count()
+    if count>0:
+        flag=1
+        context.update({'flag':flag})
     return render(request,'gallery-view.html',context)
 
 
 def contactpage(request):
-    return render(request,'contact.html')
+    context={}
+    count=News.objects.all().count()
+    if count>0:
+        flag=1
+        context.update({'flag':flag})
+    return render(request,'contact.html',context)
     
 
 
 def about(request):
-    return render(request,'about.html')
+    context={}
+    count=News.objects.all().count()
+    if count>0:
+        flag=1
+        context.update({'flag':flag})
+    return render(request,'about.html',context)
     
 
 
 def services(request):
-    return render(request,'service.html')
+    context={}
+    count=News.objects.all().count()
+    if count>0:
+        flag=1
+        context.update({'flag':flag})
+    return render(request,'service.html',context)
     
 def newsingle(request,id):
     print(id,'=======================')
@@ -69,6 +97,10 @@ def newsingle(request,id):
         news1=News.objects.get(id=count1)
         print(count,'======news1=========')
         context.update({'f':f,'news1':news1})
+    count=News.objects.all().count()
+    if count>0:
+        flag=1
+        context.update({'flag':flag})
 
     try:
         if count>=2:
@@ -104,6 +136,10 @@ def news(request):
         recent=News.objects.filter(Q(posted_date__gte = datetime.now()))[count-2:count]
         context.update({'recent':recent})
     context={'news':news}
+    count=News.objects.all().count()
+    if count>0:
+        flag=1
+        context.update({'flag':flag})
     return render(request,'news.html',context)
 
 
@@ -172,14 +208,15 @@ def contactus(request):
 
 
 def getcontact(request):
+    context={}
     if request.method=="POST":
         name=request.POST['fname']
         phone=request.POST['phone']
-        state=request.POST['state']
+        message=request.POST['message']
         city=request.POST['city']
         email=request.POST['email']
         Contact.objects.create(name=name,email=email,phone=phone,
-                              state=state,city=city ).save()
+                              message=message,city=city ).save()
         
         try:
             message = f'Hi {name} ,Thanks For Your Message, we will contact you to the {phone} shortly'
@@ -193,6 +230,11 @@ def getcontact(request):
         except:
             messages.warning(request, 'Email Failed')
             return redirect('about')
+        
+    count=News.objects.all().count()
+    if count>0:
+        flag=1
+        context.update({'flag':flag})
     return render(request,'contact.html')
 
 
@@ -213,10 +255,13 @@ def adminlogin(request):
         
         try:
             user=authenticate(request,username=username,password=password)
-
-            # print(user.password,'===========================================')
             
-            return redirect('admincontactview')
+            # print(user.password,'===========================================')
+            if user is not None:
+                login(request,user)
+                return redirect('admincontactview')
+            else:
+                print('invalid Credential')
         except:
             message="INVALID"
 
@@ -231,7 +276,7 @@ def adminhome(request):
 
     return render(request,'admin/admin_home.html')
 
-
+@login_required(login_url='adminlogin')
 def admingallery(request):
     cover=None
     context={}
@@ -240,8 +285,8 @@ def admingallery(request):
         des=request.POST['des']
         cover=request.FILES['coverimg']
         Gallery.objects.create(title=title,des=des,cover=cover)
-        if cover:
-            context.update({'cover':cover})
+        return redirect('adminviewgallery')
+        
 
     return render(request,'admin/add_gallary.html',context)
 
@@ -262,7 +307,7 @@ def admingalleryimage(request,id):
     gallery=Gallery.objects.get(id=id)
     galleryimg=GalleryImage.objects.filter(title=id)
     print(galleryimg,'==========999995555555559999=====')
-    context={'galleryimg':galleryimg}
+    context={'galleryimg':galleryimg,'gallery':gallery}
 
     return render(request,'admin/add_galleryimage.html',context)
 
@@ -378,3 +423,27 @@ def adminnewsview(request):
 
 
 
+# CROPPER
+from .forms import PhotoForm
+from django.views import View
+
+
+class PhotoView(View):
+	def get(self, request):
+		photos = Photo.objects.all()
+		form = PhotoForm
+		context = {
+			'photos': photos,
+			'form': form
+		}
+		return render(request, 'admin/add_photo.html', context)
+
+	def post(self, request):
+		form = PhotoForm(request.POST, request.FILES)
+		if form.is_valid():
+			form.save()
+			messages.success(request, "Image has been saved")
+			return redirect('photos')
+		else:
+			messages.error(request, "Correct the following errors")
+			return redirect('photos')

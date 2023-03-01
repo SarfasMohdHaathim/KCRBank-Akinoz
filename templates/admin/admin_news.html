@@ -8,6 +8,7 @@ News
         <div class="container" id="newscontainer">
             <div class="row">
                 <form action="{% url 'adminnews' %}" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
                     <div class="form-group">
                         <label for="exampleInputEmail1">Title</label>
                         <input class="form-control" type="text" placeholder="Default input" name="title">
@@ -16,13 +17,19 @@ News
                         <label for="exampleInputEmail1">Category</label>
                         <input class="form-control" type="text" placeholder="Default input" name="category">
                       </div>
+                      <div class="row" id="newscon">
+                        <div id="image-box" class="image-container"></div>
+                        <div class="row">
+                        <button class="btn btn-outline-info" id="crop-btn" style="width: 30%; margin-top: 50px; display: none;" type="button">Crop</button>
+                      </div>          
+                      </div>
                       <div class="mb-3">
                         <label for="formFile" class="form-label">Cover Image</label>
-                        <input class="form-control" type="file" id="formFile" name="img3">
+                        <input class="form-control" type="file"  name="img3" id="id_image">
                       </div>
                       <div class="mb-3">
                         <label for="formFile" class="form-label">Image1</label>
-                        <input class="form-control" type="file" id="formFile" name="img">
+                        <input class="form-control" type="file" id="id_image1" name="img">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Section Title</label>
@@ -44,8 +51,11 @@ News
                         <label for="exampleInputEmail1">Paragraph 4</label>
                         <input class="form-control" type="text" placeholder="Default input" name="phar4">
                       </div>
-                      <button type="submit" class="btn btn-primary">Primary</button>
+                      <button type="submit" class="btn btn-primary" id="confirm-btn">Primary</button>
                 </form>
+                
+                </div>
+  
             </div>
         </div>
 <style>
@@ -53,5 +63,112 @@ News
     margin-top: 110px;
   }
 </style>
+
+<style>
+  #upload {
+      opacity: 0;
+  }
+  .image-area {
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      padding: 1rem;
+  }
+  #condainer1{
+    margin-top: 160px !important;
+  }.not-visible {
+display: none;
+} #image-box{
+padding: 20px;
+height: 450px;
+width: 50%;
+}
+  </style>
+
+
+<script>
+const imagebox = document.getElementById('image-box')
+const crop_btn = document.getElementById('crop-btn')
+const input = document.getElementById('id_image')
+const input1 = document.getElementById('id_image1')
+const newscon = document.getElementById('newscon').style.display="none"
+
+input.addEventListener('change', ()=>{
+const img_data = input.files[0]
+const url = URL.createObjectURL(img_data)
+
+imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+
+const image = document.getElementById('image')
+
+document.getElementById('image-box').style.display = 'block'
+document.getElementById('crop-btn').style.display = 'block'
+document.getElementById('confirm-btn').style.display = 'none'
+document.getElementById('newscon').style.display="block"
+const cropper = new Cropper(image, {
+autoCropArea: 1,
+viewMode: 1,
+scalable: true,
+zoomable: false,
+movable: false,
+minCropBoxWidth: 350,
+minCropBoxHeight: 250,
+})
+
+crop_btn.addEventListener('click', ()=>{
+  cropper.getCroppedCanvas().toBlob((blob)=>{
+    
+    let fileInputElement = document.getElementById('id_image');
+    let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+    let container = new DataTransfer();
+    container.items.add(file);
+    fileInputElement.files = container.files;
+
+    document.getElementById('image-box').style.display = 'none'
+    document.getElementById('crop-btn').style.display = 'none'
+    document.getElementById('confirm-btn').style.display = 'block'
+    document.getElementById('newscon').style.display="none"
+
+    });
+  });
+});	
+input1.addEventListener('change', ()=>{
+const img_data = input.files[0]
+const url = URL.createObjectURL(img_data)
+
+imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+
+const image = document.getElementById('image')
+
+document.getElementById('image-box').style.display = 'block'
+document.getElementById('crop-btn').style.display = 'block'
+document.getElementById('confirm-btn').style.display = 'none'
+document.getElementById('newscon').style.display="block"
+const cropper = new Cropper(image, {
+autoCropArea: 1,
+viewMode: 1,
+scalable: true,
+zoomable: false,
+movable: false,
+minCropBoxWidth: 350,
+minCropBoxHeight: 250,
+})
+
+crop_btn.addEventListener('click', ()=>{
+  cropper.getCroppedCanvas().toBlob((blob)=>{
+    
+    let fileInputElement = document.getElementById('id_image');
+    let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+    let container = new DataTransfer();
+    container.items.add(file);
+    fileInputElement.files = container.files;
+
+    document.getElementById('image-box').style.display = 'none'
+    document.getElementById('crop-btn').style.display = 'none'
+    document.getElementById('confirm-btn').style.display = 'block'
+    document.getElementById('newscon').style.display="none"
+
+    });
+  });
+});	
+</script>
 
 {% endblock contentadmin %}

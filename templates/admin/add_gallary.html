@@ -19,20 +19,22 @@ Gallery
                   </div>
                   <div class="mb-3">
                     <label for="formFile" class="form-label">Cover Image</label>
-                    <input class="form-control" type="file" id="formFile" name="coverimg" >
+                    <input class="form-control" type="file" id="id_image" name="coverimg">
                   </div>
-                  <button type="submit" class="btn btn-primary" >Primary</button>
+                  <button type="submit" class="btn btn-primary" id="confirm-btn">Primary</button>
             </form>
         </div>
         <div class="row">
-          <div id="alert-box"></div>
-          <div class="image-area mb-3"><div id="image-box">
-            <img src="{{cover}}" id="image" width="700px">
-          </div></div>
-          <button class="btn btn-primary mt-3 not-visible" id="confirm-btn">Confirm</button>
+          <div id="image-box" class="image-container"></div>
+          <div class="row">
+    			<button class="btn btn-outline-info" id="crop-btn" style="width: 30%; margin-top: 50px; display: none;" type="button">Crop</button>
+			  </div>
+      </div>
         </div>
+        
 
     </div>
+    
     <style>
       #upload {
           opacity: 0;
@@ -45,77 +47,56 @@ Gallery
         margin-top: 160px !important;
       }.not-visible {
   display: none;
+} #image-box{
+  padding: 20px;
+  height: 450px;
+  width: 50%;
 }
       </style>
-      
-  <script>
-    const alertBox = document.getElementById('alert-box')
-    const imageBox = document.getElementById('image-box')
-    const imageForm = document.getElementById('image-form')
-    const confirmBtn = document.getElementById('confirm-btn')
-    const input = document.getElementById('formFile')
-     
-    const csrf = document.getElementsByName('csrfmiddlewaretoken')
-    console.log(input)
-    if (input){
-    input.addEventListener('change', ()=>{
-        alertBox.innerHTML = ""
-        confirmBtn.classList.remove('not-visible')
-        // const img_data = input.files[0]
-        // const url = URL.createObjectURL(img_data)
-     
-        imageBox.innerHTML = `<img src="{{cover}}" id="image" width="700px">`
-        var $image = $('#image')
-        console.log($image)
 
-     
-        $image.cropper({
-            aspectRatio: 16 / 9,
-            crop: function(event) {
-                console.log(event.detail.x);
-                console.log(event.detail.y);
-                console.log(event.detail.width);
-                console.log(event.detail.height);
-                console.log(event.detail.rotate);
-                console.log(event.detail.scaleX);
-                console.log(event.detail.scaleY);
-            }
-        });
-         
-        var cropper = $image.data('cropper');
-        confirmBtn.addEventListener('click', ()=>{
-            cropper.getCroppedCanvas().toBlob((blob) => {
-                console.log('confirmed')
-                const fd = new FormData();
-                fd.append('csrfmiddlewaretoken', csrf[0].value)
-                fd.append('file', blob, 'my-image.png');
-     
-                $.ajax({
-                    type:'POST',
-                    url: admingallery.action,
-                    enctype: 'multipart/form-data',
-                    data: fd,
-                    success: function(response){
-                        console.log('success', response)
-                        alertBox.innerHTML = `<div class="alert alert-success" role="alert">
-                                                Successfully saved and cropped the selected image
-                                            </div>`
-                    },
-                    error: function(error){
-                        console.log('error', error)
-                        alertBox.innerHTML = `<div class="alert alert-danger" role="alert">
-                                                Ups...something went wrong
-                                            </div>`
-                    },
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                })
-            })
-        })
-    })
-  }
-    </script>
+<script>
+  const imagebox = document.getElementById('image-box')
+	const crop_btn = document.getElementById('crop-btn')
+	const input = document.getElementById('id_image')
+
+	input.addEventListener('change', ()=>{
+	  const img_data = input.files[0]
+	  const url = URL.createObjectURL(img_data)
+	  
+	  imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+
+	  const image = document.getElementById('image')
+
+	  document.getElementById('image-box').style.display = 'block'
+	  document.getElementById('crop-btn').style.display = 'block'
+	  document.getElementById('confirm-btn').style.display = 'none'
+	  const cropper = new Cropper(image, {
+	  autoCropArea: 1,
+	  viewMode: 1,
+	  scalable: true,
+	  zoomable: false,
+	  movable: false,
+	  minCropBoxWidth: 350,
+	  minCropBoxHeight: 250,
+	  })
+
+	  crop_btn.addEventListener('click', ()=>{
+	    cropper.getCroppedCanvas().toBlob((blob)=>{
+	      
+	      let fileInputElement = document.getElementById('id_image');
+	      let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+	      let container = new DataTransfer();
+	      container.items.add(file);
+	      fileInputElement.files = container.files;
+
+	      document.getElementById('image-box').style.display = 'none'
+	      document.getElementById('crop-btn').style.display = 'none'
+	      document.getElementById('confirm-btn').style.display = 'block'
+
+	      });
+	    });
+	});	
+</script>
 
 
 

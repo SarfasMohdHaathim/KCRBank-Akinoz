@@ -25,4 +25,6 @@ urlpatterns = [
     path('admincontactview/',admincontactview,name='admincontactview'),
     path('admingalleryimage/<str:id>/',admingalleryimage,name='admingalleryimage'),
     path('contactviewsingle/<str:id>/',contactviewsingle,name='contactviewsingle'),
+
+    path('photos', PhotoView.as_view(), name='photos'),
 ]

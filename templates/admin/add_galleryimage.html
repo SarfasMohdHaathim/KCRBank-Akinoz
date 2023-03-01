@@ -1,5 +1,4 @@
 {% extends 'admin/admin_home.html' %}
-
 {% load static %}
 {% block contentadmin %}
 
@@ -15,11 +14,19 @@
                   <input type="hidden" name="id" value="{{gallery.id}}">
                   <div class="mb-3">
                     <label for="formFile" class="form-label">Image1</label>
-                    <input class="form-control" type="file" id="formFile" name="img1">
+                    <input class="form-control" type="file" id="id_image" name="img1">
                   </div>
                  
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary" id="confirm-btn">Submit</button>
             </form>
+        </div>
+        <div class="row">
+          <div id="image-box" class="image-container"></div>
+          <div class="row">
+    			<button class="btn btn-outline-info" id="crop-btn" style="width: 30%; margin-top: 50px; display: none;" type="button">Crop</button>
+        </div>
+				<!-- <button class="btn btn-outline-info" id="confirm-btn" style="width: 100%; margin-top: 10px;" type="submit">Post</button>             -->
+			  </div>
         </div>
         <div class="row">
             {% for x in galleryimg %}
@@ -39,7 +46,76 @@
             
               {% endfor %}
         </div>
+        <!-- Button trigger modal -->
+
     </div>
+
+
+   
+
+    <style>
+      #upload {
+          opacity: 0;
+      }
+      .image-area {
+          border: 2px solid rgba(255, 255, 255, 0.7);
+          padding: 1rem;
+      }
+      #condainer1{
+        margin-top: 160px !important;
+      }.not-visible {
+  display: none;
+} #image-box{
+  padding: 20px;
+  height: 450px;
+  width: 50%;
+}
+      </style>
+
+    
+<script>
+  const imagebox = document.getElementById('image-box')
+	const crop_btn = document.getElementById('crop-btn')
+	const input = document.getElementById('id_image')
+
+	input.addEventListener('change', ()=>{
+	  const img_data = input.files[0]
+	  const url = URL.createObjectURL(img_data)
+	  
+	  imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+
+	  const image = document.getElementById('image')
+
+	  document.getElementById('image-box').style.display = 'block'
+	  document.getElementById('crop-btn').style.display = 'block'
+	  document.getElementById('confirm-btn').style.display = 'none'
+	  const cropper = new Cropper(image, {
+	  autoCropArea: 1,
+	  viewMode: 1,
+	  scalable: true,
+	  zoomable: false,
+	  movable: false,
+	  minCropBoxWidth: 350,
+	  minCropBoxHeight: 250,
+	  })
+
+	  crop_btn.addEventListener('click', ()=>{
+	    cropper.getCroppedCanvas().toBlob((blob)=>{
+	      
+	      let fileInputElement = document.getElementById('id_image');
+	      let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+	      let container = new DataTransfer();
+	      container.items.add(file);
+	      fileInputElement.files = container.files;
+
+	      document.getElementById('image-box').style.display = 'none'
+	      document.getElementById('crop-btn').style.display = 'none'
+	      document.getElementById('confirm-btn').style.display = 'block'
+
+	      });
+	    });
+	});	
+</script>
 
 
 

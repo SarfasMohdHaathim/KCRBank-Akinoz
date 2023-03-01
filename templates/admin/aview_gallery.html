@@ -5,8 +5,8 @@ View Gallery
 {% endblock titlehead %}
 {% block contentadmin %}
 
-    <div class="container" id="galleryview">
-        <div class="row">
+    <div class="container">
+        <div class="row" id="galleryview">
             {% for x in gallery %}
 
             <div class="card" style="width: 18rem;">
@@ -21,6 +21,7 @@ View Gallery
     </div>
 <style>
     #galleryview{
+        padding-top: 200px;
         margin-top: 200px;
     }
 </style>

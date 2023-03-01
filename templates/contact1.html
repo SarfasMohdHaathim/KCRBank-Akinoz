@@ -1,0 +1,290 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content%}
+    <style>
+        .breadcrumb-area-bg{
+            background-image: url("{% static 'assets\images\backgrounds\breadcrumb-area-bg-6.jpg' %}");
+        }
+        .apply-form-box-bg{
+            background-image: url("{% static 'assets/images/kcrb/KUNNAMANGALAM%20CO-OPERATIVE%20RURAL%20BANK%20-%20PATHIMANGALAM%20BRANCH.jpg' %}");
+        }
+    </style>
+
+
+        <!--Start breadcrumb area-->
+        <section class="breadcrumb-area">
+            <div class="breadcrumb-area-bg" ></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="inner-content">
+                            <div class="title">
+                                <h2>Contact</h2>
+                            </div>
+                            <div class="breadcrumb-menu">
+                                <ul>
+                                    <li class="breadcrumb-item"><a href="/">Home &nbsp;</a></li>
+                                    <li class="breadcrumb-item">Contact Us</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End breadcrumb area-->
+
+        <!--Start Accounts Style1 Area-->
+        <section class="" data-id="aacb9c1" data-element_type="section">
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-05348be" data-id="05348be" data-element_type="column">
+                    <div class="elementor-widget-wrap elementor-element-populated">
+                        <div class="elementor-element elementor-element-af5c9e5 elementor-widget elementor-widget-finbank_send_your_request" data-id="af5c9e5" data-element_type="widget" data-widget_type="finbank_send_your_request.default">
+                            <div class="elementor-widget-container">
+
+                                <!--Start Apply Form Area-->
+                                <section class="apply-form-area">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-xl-12">
+                                                <div class="apply-form-box clearfix">
+                                                    <div class="apply-form-box-bg" ></div>
+                                                    <div class="apply-form-box__content">
+                                                        <div class="sec-title">
+                                                            <h2>Send Your Request &amp;<br> Get Call Back</h2>
+                                                            <div class="sub-title">
+                                                                <p>Fill all the necessary details and Get call from experts.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div id="apply-form" class="default-form2">
+                                                            <div role="form" class="wpcf7" id="wpcf7-f99-p78-o1" lang="en-US" dir="ltr">
+                                                                <div class="screen-reader-response">
+                                                                    <p role="status" aria-live="polite" aria-atomic="true"></p>
+                                                                    <ul></ul>
+                                                                </div>
+                                                                <form action="{% url 'getcontact' %}" method="post" class="wpcf7-form init">
+                                                                    {% csrf_token %}
+                                                                    <div style="display: none;">
+                                                                        <input type="hidden" name="_wpcf7" value="99" />
+                                                                        <input type="hidden" name="_wpcf7_version" value="5.6.3" />
+                                                                        <input type="hidden" name="_wpcf7_locale" value="en_US" />
+                                                                        <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f99-p78-o1" />
+                                                                        <input type="hidden" name="_wpcf7_container_post" value="78" />
+                                                                        <input type="hidden" name="_wpcf7_posted_data_hash" value="" />
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xl-6">
+                                                                            <div class="form-group">
+                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="text-147"><input type="text" name="fname" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" id="formName" aria-required="true" aria-invalid="false" placeholder="Your Name" /></span>
+                                                                                    <div class="icon"><i class="fas fa-user"></i></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xl-6">
+                                                                            <div class="form-group">
+                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="email-663"><input type="email" name="email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" id="formEmail" aria-required="true" aria-invalid="false" placeholder="Email" /></span>
+                                                                                    <div class="icon"><i class="fas fa-envelope-open"></i></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xl-6">
+                                                                            <div class="form-group">
+                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="text-148"><input type="tel" id="telinput" name="phone" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" id="formPhone" aria-required="true" aria-invalid="false" placeholder="Phone" /></span>
+                                                                                    <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xl-6">
+                                                                            <div class="form-group">
+                                                                                <div class="select-box clearfix"><span class="wpcf7-form-control-wrap" data-name="menu-296"><select name="state" class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required wide" aria-required="true" aria-invalid="false">
+                                                                                            <option value="State">State</option>
+                                                                                            <option value="Alaska">Alaska</option>
+                                                                                            <option value="Florida">Florida</option>
+                                                                                            <option value="Georgia">Georgia</option>
+                                                                                            <option value="Indiana">Indiana</option>
+                                                                                        </select></span></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xl-6">
+                                                                            <div class="form-group">
+                                                                                <div class="select-box clearfix"><span class="wpcf7-form-control-wrap" data-name="menu-297"><select name="city" class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required wide" aria-required="true" aria-invalid="false">
+                                                                                            <option value="City">City</option>
+                                                                                            <option value="Alaska">Alaska</option>
+                                                                                            <option value="Florida">Florida</option>
+                                                                                            <option value="Georgia">Georgia</option>
+                                                                                            <option value="Indiana">Indiana</option>
+                                                                                        </select></span></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xl-6">
+                                                                            <div class="form-group">
+                                                                                <div class="input-box"><span class="wpcf7-form-control-wrap" data-name="date"><input type="text" name="date" value="" size="40" class="wpcf7-form-control wpcf7-text hasDatepicker" id="datepicker" aria-invalid="false" placeholder="Date" /></span>
+                                                                                    <div class="icon"><i class="fas fa-calendar"></i></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xl-12">
+                                                                            <div class="button-box"><button class="btn-one" type="submit"><span class="txt">Send Request</span></button></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="wpcf7-response-output" aria-hidden="true"></div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <!--End Apply Form Area-->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        
+        <!--Google Maps automatically generates the required HTML iFrames code to embed Google Maps.-->
+        
+        <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31300.928430172575!2d75.83164510571297!3d11.289608624488974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65cc2c5152cbf%3A0x5ef9048f11e5c645!2sKunnamangalam%20Co-Operative%20Rural%20Bank%20Ltd.!5e0!3m2!1sen!2sin!4v1672645986782!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+                    
+        
+        
+        <section class="partner-style2-area">
+            <div class="container">
+                <div class="brand-content">
+                    <div class="owl-carousel owl-theme thm-owl__carousel partner-carousel" data-owl-options='{
+                        "loop": false,
+                        "autoplay": true,
+                        "margin": 25,
+                        "nav": false,
+                        "dots": false,
+                        "smartSpeed": 500,
+                        "autoplayTimeout": 10000,
+                        "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
+                        "responsive": {
+                                "0": {
+                                    "items": 1
+                                },
+                                "768": {
+                                    "items": 3
+                                },
+                                "992": {
+                                    "items": 4
+                                },
+                                "1200": {
+                                    "items": 6
+                                }
+                            }
+                        }'>
+
+
+                        <!--Start Single Partner Logo Box-->
+                        <div class="single-partner-logo-box">
+                            <a href="#"><img src="{% static 'assets/images/brand/brand-1-1.png' %}" alt="Awesome Image"></a>
+                        </div>
+                        <!--End Single Partner Logo Box-->
+                        <!--Start Single Partner Logo Box-->
+                        <div class="single-partner-logo-box">
+                            <a href="#"><img src="{% static 'assets/images/brand/brand-1-2.png' %}" alt="Awesome Image"></a>
+                        </div>
+                        <!--End Single Partner Logo Box-->
+                        <!--Start Single Partner Logo Box-->
+                        <div class="single-partner-logo-box">
+                            <a href="#"><img src="{% static 'assets/images/brand/brand-1-3.png' %}" alt="Awesome Image"></a>
+                        </div>
+                        <!--End Single Partner Logo Box-->
+                        <!--Start Single Partner Logo Box-->
+                        <div class="single-partner-logo-box">
+                            <a href="#"><img src="{% static 'assets/images/brand/brand-1-4.png' %}" alt="Awesome Image"></a>
+                        </div>
+                        <!--End Single Partner Logo Box-->
+                        <!--Start Single Partner Logo Box-->
+                        <div class="single-partner-logo-box">
+                            <a href="#"><img src="{% static 'assets/images/brand/brand-1-5.png' %}" alt="Awesome Image"></a>
+                        </div>
+                        <!--End Single Partner Logo Box-->
+                        <!--Start Single Partner Logo Box-->
+                        <div class="single-partner-logo-box">
+                            <a href="#"><img src="{% static 'assets/images/brand/brand-1-6.png' %}" alt="Awesome Image"></a>
+                        </div>
+                        <!--End Single Partner Logo Box-->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End Accounts Style1 Area-->
+        <section class="slogan-area slogan-area--style2">
+            <div class="container">
+                <div class="slogan-content-box slogan-content-box--style2">
+                    <div class="slogan-content-box-bg" ></div>
+                    <div class="inner-title">
+                        <h2>Experience a New Digital World.</h2>
+                        <p>Mobile banking application with new & exciting features.</p>
+                    </div>
+                    <div class="get-app-box">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <span class="icon-play-store"></span>
+                                    </div>
+                                    <div class="text">
+                                        <h4>Download</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="style2" href="#">
+                                    <div class="icon">
+                                        <span class="icon-apple"></span>
+                                    </div>
+                                    <div class="text">
+                                        <h4>Download</h4>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <style>
+            .slogan-content-box-bg{
+                background-image: url("{% static 'assets/images/backgrounds/slogan-content-box-bg.jpg' %}");
+            }
+
+           #telinput {
+  position: relative;
+  display: block;
+  background: #ffffff;
+  border: 0px solid #f0f0f0;
+  width: 100%;
+  height: 50px;
+  color: #7f7873;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 0px;
+  transition: all 500ms ease;
+  font-family: var(--thm-font);
+}
+
+        </style>
+        {% endblock content%}
