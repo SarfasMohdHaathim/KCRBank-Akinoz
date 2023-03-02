@@ -17,6 +17,8 @@ class Gallery(models.Model):
 class GalleryImage(models.Model):
     title=models.ForeignKey(Gallery,on_delete=models.CASCADE)
     img1=models.ImageField(upload_to="media",blank=True,null=True)
+    def __str__(self):
+        return self.title.title
 
     
 class News(models.Model):
@@ -51,6 +53,8 @@ class Contact(models.Model):
     state=models.CharField(max_length=100,blank=True,null=True)
     city=models.CharField(max_length=100,blank=True,null=True)
     date = models.DateField(auto_now_add=True, blank=True,null=True)
+    def __str__(self):
+        return self.name
 
 
 
@@ -61,6 +65,8 @@ class Emi(models.Model):
     monthlyemi=models.PositiveIntegerField(null=True, blank=True)
     intrestamount=models.PositiveIntegerField(null=True, blank=True)
     totalamount=models.PositiveIntegerField(null=True, blank=True)
+    
+    
 
 
 class Photo(models.Model):

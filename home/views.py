@@ -91,13 +91,16 @@ def newsingle(request,id):
     print(count)
     count1=int(id)+1
     count2=int(id)-1
-    count1=(count1)
-    if count1<=count:
-        f=1
-        news1=News.objects.get(id=count1)
-        print(count,'======news1=========')
-        context.update({'f':f,'news1':news1})
+    if count1>count:
+        try:
+            news1=News.objects.get(id=count1)
+            f=1
+            print(count,'======news1=========')
+            context.update({'f':f,'news1':news1})
+        except:
+            print('next will be none')
     count=News.objects.all().count()
+    print(count1,count,'=========count')
     if count>0:
         flag=1
         context.update({'flag':flag})
@@ -211,10 +214,12 @@ def getcontact(request):
     context={}
     if request.method=="POST":
         name=request.POST['fname']
-        phone=request.POST['phone']
+        phone=request.POST.get('phone','0000000000')
         message=request.POST['message']
         city=request.POST['city']
         email=request.POST['email']
+        if not phone:
+            return redirect('home')
         Contact.objects.create(name=name,email=email,phone=phone,
                               message=message,city=city ).save()
         
@@ -250,20 +255,25 @@ def adminlogin(request):
         password=request.POST['password']
         print(username,password,'===========================================')
         user=User.objects.filter(username=username)
-
+        if not user:
+            messages.warning(request,'Admin Not Found ')
+        else:
+            try:
+                User.objects.get(username=username,password=password)
+            except:
+                messages.warning(request,'')
 
         
         try:
             user=authenticate(request,username=username,password=password)
             
-            # print(user.password,'===========================================')
             if user is not None:
                 login(request,user)
                 return redirect('admincontactview')
             else:
-                print('invalid Credential')
+                messages.warning(request,'')
         except:
-            message="INVALID"
+            messages.warning(request,'Password is Incorrect')
 
     return render(request,'admin/admin_login.html')
 
@@ -290,7 +300,7 @@ def admingallery(request):
 
     return render(request,'admin/add_gallary.html',context)
 
-
+@login_required(login_url='adminlogin')
 def admingalleryimageadd(request):
     if request.method=='POST':
         id=request.POST['id']
@@ -302,7 +312,7 @@ def admingalleryimageadd(request):
     return render(request,'admin/add_galleryimage.html')
 
 
-
+@login_required(login_url='adminlogin')
 def admingalleryimage(request,id):
     gallery=Gallery.objects.get(id=id)
     galleryimg=GalleryImage.objects.filter(title=id)
@@ -312,7 +322,7 @@ def admingalleryimage(request,id):
     return render(request,'admin/add_galleryimage.html',context)
 
 
-
+@login_required(login_url='adminlogin')
 def adminnews(request):
     if request.method=='POST':
         title=request.POST['title']
@@ -332,42 +342,42 @@ def adminnews(request):
         paragraph3=phar3,
         paragraph4=phar4,
         )
-        return redirect('news')
+        return redirect('adminnewsview')
     return render(request,'admin/admin_news.html')
 
-
+@login_required(login_url='adminlogin')
 def adminadd(request):
     if request.method=='POST':
         username=request.POST['username']
         email=request.POST['email']
         password=request.POST['password']
         repassword=request.POST['repassword']
-        print('=====')
-        if not password != repassword:
-            print('=====')
-
+        if password and repassword and password != repassword:
+            messages.warning(request,'Password Missmatch')
+        try:
             User.objects.create_superuser(username=username,email=email,password=password)
-        else:
-            messages.warning(request, 'Confrim Password is Missmatch')
+        except:
+            messages.warning(request, 'Admin is Already Exist')
     return render(request,'admin/add_admin.html')
 
 
-
+@login_required(login_url='adminlogin')
 def admincontactview(request):
     contact=Contact.objects.all().order_by('-id')
+    a=datetime.now().date() + timedelta(days=-5)
+    print(a,'0000000000')
+    print(a)
     context={'contact':contact}
     return render(request,'admin/contact_view.html',context)
 
-
+@login_required(login_url='adminlogin')
 def contactviewsingle(request,id):
     contact=Contact.objects.get(id=id)
     a=contact.date+ timedelta(days=-10)
-    context={'contact':contact,'a':a}
+    context={'contact':contact,}
     return render(request,'admin/contact_single.html',context)
 
-
-
-
+@login_required(login_url='adminlogin')
 def adminviewgallery(request):
     gallery=Gallery.objects.all()
     
@@ -375,7 +385,7 @@ def adminviewgallery(request):
     return render(request,'admin/aview_gallery.html',context)
 
 
-
+@login_required(login_url='adminlogin')
 def adminnewsview(request):
     news=News.objects.all()
     context={'news':news}
@@ -447,3 +457,9 @@ class PhotoView(View):
 		else:
 			messages.error(request, "Correct the following errors")
 			return redirect('photos')
+
+
+
+def deletecontact(request,id):
+    Contact.objects.get(id=id).delete()
+    return redirect('admincontactview')

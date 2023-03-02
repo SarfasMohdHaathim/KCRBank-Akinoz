@@ -16,6 +16,7 @@ Customer Contact Details
                       <th scope="col">Phone</th>
                       <th scope="col">Subject</th>
                       <th scope="col">Date</th>
+                      <th scope="col">Delete</th>
                     </tr>
                   </thead>
                   {% for c in contact %}
@@ -27,6 +28,7 @@ Customer Contact Details
                       <td>{{c.phone}}</td>
                       <td>{{c.subject}}</td>
                       <td>{{c.date}}</td>
+                      <td><a href="{% url 'deletecontact' c.id %}"><button type="button" class="btn btn-primary"><small>D</small></button></a></td>
                     </tr>
                   </tbody>
                 </a>

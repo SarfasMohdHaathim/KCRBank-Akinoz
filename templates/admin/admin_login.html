@@ -3,7 +3,11 @@
 <html lang="en">
 
 <head>
-  <title>Title</title>
+  <title>KCRB</title>
+  <!-- Favicons Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/favicons/apple-touch-icon.png' %}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicons/favicon-32x32.png' %}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicons/favicon-16x16.png' %}" />
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -47,6 +51,15 @@
                       </div>
                   
                       
+                    </div>
+                    <div class="row">
+                              {% if messages %}
+                              <ul class="messages">
+                                  {% for message in messages %}
+                                  <li> {{ message }} </li>
+                                  {% endfor %}
+                              </ul>
+                              {% endif %}
                     </div>
                   
                   
