@@ -16,6 +16,10 @@
                     <label for="formFile" class="form-label">Image1</label>
                     <input class="form-control" type="file" id="id_image" name="img1">
                   </div>
+                  <input type="hidden" name="x" id="x">
+                  <input type="hidden" name="y" id="y">
+                  <input type="hidden" name="height" id="height">
+                  <input type="hidden" name="width" id="width">
                  
                   <button type="submit" class="btn btn-primary" id="confirm-btn">Submit</button>
             </form>
@@ -25,7 +29,7 @@
           <div class="row">
     			<button class="btn btn-outline-info" id="crop-btn" style="width: 30%; margin-top: 50px; display: none;" type="button">Crop</button>
         </div>
-				<!-- <button class="btn btn-outline-info" id="confirm-btn" style="width: 100%; margin-top: 10px;" type="submit">Post</button>             -->
+
 			  </div>
         </div>
         <div class="row">
@@ -108,13 +112,28 @@
 	      container.items.add(file);
 	      fileInputElement.files = container.files;
 
-	      document.getElementById('image-box').style.display = 'none'
-	      document.getElementById('crop-btn').style.display = 'none'
-	      document.getElementById('confirm-btn').style.display = 'block'
-
+	      document.getElementById('image-box').style.display = 'none';
+	      document.getElementById('crop-btn').style.display = 'none';
+	      document.getElementById('confirm-btn').style.display = 'block';
+        
 	      });
 	    });
 	});	
+  crop_btn.addEventListener('click',()=>{
+    let c=image.cropper.getData(true);
+    let x=document.getElementById('x')
+    let y=document.getElementById('y')
+    let height=document.getElementById('height')
+    let width=document.getElementById('width')
+
+    x.value=c['x']
+    y.value=c['y']
+    height.value=c['height']
+    width.value=c['width']
+
+
+
+  })
 </script>
 
 

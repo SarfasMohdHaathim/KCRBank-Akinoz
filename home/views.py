@@ -9,6 +9,9 @@ from django.db.models import Q
 from datetime import datetime,timedelta
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from PIL import Image
+
+
 
 # Create your views here.
 def home(request):
@@ -95,12 +98,10 @@ def newsingle(request,id):
         try:
             news1=News.objects.get(id=count1)
             f=1
-            print(count,'======news1=========')
             context.update({'f':f,'news1':news1})
         except:
             print('next will be none')
     count=News.objects.all().count()
-    print(count1,count,'=========count')
     if count>0:
         flag=1
         context.update({'flag':flag})
@@ -121,7 +122,7 @@ def newsingle(request,id):
 
     
     except:
-        messages.warning(request, 'Something Will Happen')
+        messages.warning(request, '')
 
 
     
@@ -177,7 +178,6 @@ def emicalculator(request):
         print(Emi.objects.all())
         
 
-        print(amount,loanterm,interest,'==============emicalculator==========')
         context={'amount':amount,'loanterm':loanterm,'interest':interest}
         return redirect(reverse('home')+'#emiform')
 
@@ -199,7 +199,6 @@ def contactus(request):
             recipient_list = [email]
             email_from = settings.EMAIL_HOST_USER
             send_mail( sub, message, email_from, recipient_list )
-            print('erorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
             return redirect('home')
                 
         except:
@@ -229,7 +228,6 @@ def getcontact(request):
             recipient_list = [email]
             email_from = settings.EMAIL_HOST_USER
             send_mail( 'KCRBank', message, email_from, recipient_list )
-            print('erorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
             return redirect('home')
                 
         except:
@@ -293,8 +291,17 @@ def admingallery(request):
     if request.method=='POST':
         title=request.POST['title']
         des=request.POST['des']
+        x=request.POST['x']
+        y=request.POST['y']
+        h=request.POST['height']
+        w=request.POST['width']
         cover=request.FILES['coverimg']
-        Gallery.objects.create(title=title,des=des,cover=cover)
+        gallery=Gallery.objects.create(title=title,des=des,cover=cover)
+        image = Image.open(gallery.cover)
+        cropped_image = image.convert('RGB')
+        # cropped_image = image.crop((x, y, w+x, h+y))
+        resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
+        resized_image.save(gallery.cover.path)
         return redirect('adminviewgallery')
         
 
@@ -304,10 +311,24 @@ def admingallery(request):
 def admingalleryimageadd(request):
     if request.method=='POST':
         id=request.POST['id']
+        x=request.POST['x']
+        y=request.POST['y']
+        h=request.POST['height']
+        w=request.POST['width']
+
+
+        print(x,y,h,w)
         img1=request.FILES['img1']
-        print(img1,'===================+++++++++++++++')
+        img2=img1
         gallery=Gallery.objects.get(id=id)
-        GalleryImage.objects.create(title=gallery,img1=img1).save()
+        gi=GalleryImage.objects.create(title=gallery,img1=img1)
+        
+
+        image = Image.open(gi.img1)
+        cropped_image = image.convert('RGB')
+        # cropped_image = image.crop((x, y, w+x, h+y))
+        resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
+        resized_image.save(gi.img1.path)
         return redirect('admingalleryimage',gallery.id)
     return render(request,'admin/add_galleryimage.html')
 
@@ -334,7 +355,8 @@ def adminnews(request):
         phar2=request.POST['phar2']
         phar3=request.POST['phar3']
         phar4=request.POST['phar4']
-        News.objects.create(title=title,category=category,
+
+        news=News.objects.create(title=title,category=category,
         cover=coverimage,img1=image,
         sectiontitle=section_title,
         paragraph1=phar1,
@@ -342,6 +364,14 @@ def adminnews(request):
         paragraph3=phar3,
         paragraph4=phar4,
         )
+        # image = Image.open(news.cover)
+        # cropped_image = image.convert('RGB')
+        # resized_image = cropped_image.resize((400,300), Image.ANTIALIAS)
+        # resized_image.save(news.cover.path)
+        image = Image.open(news.img1)
+        cropped_image = image.convert('RGB')
+        resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
+        resized_image.save(news.img1.path)
         return redirect('adminnewsview')
     return render(request,'admin/admin_news.html')
 
@@ -393,6 +423,9 @@ def adminnewsview(request):
     return render(request,'admin/anews_view.html',context)
 
 
+def deletecontact(request,id):
+    Contact.objects.get(id=id).delete()
+    return redirect('admincontactview')
 
 
 
@@ -419,6 +452,10 @@ def adminnewsview(request):
 
 
 
+
+
+# cropper new
+from .forms import *
 
 
 
@@ -434,32 +471,40 @@ def adminnewsview(request):
 
 
 # CROPPER
-from .forms import PhotoForm
-from django.views import View
-
-
-class PhotoView(View):
-	def get(self, request):
-		photos = Photo.objects.all()
-		form = PhotoForm
-		context = {
-			'photos': photos,
-			'form': form
-		}
-		return render(request, 'admin/add_photo.html', context)
-
-	def post(self, request):
-		form = PhotoForm(request.POST, request.FILES)
-		if form.is_valid():
-			form.save()
-			messages.success(request, "Image has been saved")
-			return redirect('photos')
-		else:
-			messages.error(request, "Correct the following errors")
-			return redirect('photos')
+def photo_list(request):
+    photos = Photo.objects.all()
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            x = request.POST.get('x')
+            y = request.POST.get('y')
+            w = request.POST.get('width')
+            h = request.POST.get('height')
+            print(x,y,w,h)
+            return redirect('photo_list')
+    else:
+        form = PhotoForm()
+    return render(request, 'admin/add_photo.html', {'form': form, 'photos': photos})
 
 
 
-def deletecontact(request,id):
-    Contact.objects.get(id=id).delete()
-    return redirect('admincontactview')
+
+
+
+def galleryimage(request):
+    photos = GalleryImage.objects.all()
+    if request.method == 'POST':
+        form = GalleryImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('galleryimage')
+    else:
+        form = GalleryImageForm()
+    return render(request, 'admin/gallery_image.html', {'form': form, 'photos': photos})
+
+
+
+
+
+

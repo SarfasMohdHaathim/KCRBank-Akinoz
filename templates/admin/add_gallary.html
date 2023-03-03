@@ -21,6 +21,12 @@ Gallery
                     <label for="formFile" class="form-label">Cover Image</label>
                     <input class="form-control" type="file" id="id_image" name="coverimg">
                   </div>
+                  <input type="hidden" name="x" id="x">
+                  <input type="hidden" name="y" id="y">
+                  <input type="hidden" name="height" id="height">
+                  <input type="hidden" name="width" id="width">
+
+
                   <button type="submit" class="btn btn-primary" id="confirm-btn">Primary</button>
             </form>
         </div>
@@ -96,6 +102,19 @@ Gallery
 	      });
 	    });
 	});	
+  crop_btn.addEventListener('click',()=>{
+    let c=image.cropper.getData(true);
+    let x=document.getElementById('x')
+    let y=document.getElementById('y')
+    let height=document.getElementById('height')
+    let width=document.getElementById('width')
+
+    x.value=c['x']
+    y.value=c['y']
+    height.value=c['height']
+    width.value=c['width']
+
+  })
 </script>
 
 

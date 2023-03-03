@@ -51,6 +51,14 @@ News
                         <label for="exampleInputEmail1">Paragraph 4</label>
                         <input class="form-control" type="text" placeholder="Default input" name="phar4">
                       </div>
+                  <input type="hidden" name="x" id="x1">
+                  <input type="hidden" name="y" id="y1">
+                  <input type="hidden" name="height" id="height1">
+                  <input type="hidden" name="width" id="width1">
+                  <input type="hidden" name="x" id="x2">
+                  <input type="hidden" name="y" id="y2">
+                  <input type="hidden" name="height" id="height2">
+                  <input type="hidden" name="width" id="width2">
                       <button type="submit" class="btn btn-primary" id="confirm-btn">Primary</button>
                 </form>
                 
@@ -130,8 +138,23 @@ crop_btn.addEventListener('click', ()=>{
     });
   });
 });	
+crop_btn.addEventListener('click',()=>{
+    let c=image.cropper.getData(true);
+    let x1=document.getElementById('x1')
+    let y1=document.getElementById('y1')
+    let height1=document.getElementById('height1')
+    let width1=document.getElementById('width1')
+
+    x1.value=c['x']
+    y1.value=c['y']
+    height1.value=c['height']
+    width1.value=c['width']
+
+
+
+  })
 input1.addEventListener('change', ()=>{
-const img_data = input.files[0]
+const img_data = input1.files[0]
 const url = URL.createObjectURL(img_data)
 
 imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
@@ -169,6 +192,21 @@ crop_btn.addEventListener('click', ()=>{
     });
   });
 });	
+crop_btn.addEventListener('click',()=>{
+    let c=image.cropper.getData(true);
+    let x2=document.getElementById('x2')
+    let y2=document.getElementById('y2')
+    let height2=document.getElementById('height2')
+    let width2=document.getElementById('width2')
+
+    x2.value=c['x']
+    y2.value=c['y']
+    height2.value=c['height']
+    width2.value=c['width']
+
+
+
+  })
 </script>
 
 {% endblock contentadmin %}

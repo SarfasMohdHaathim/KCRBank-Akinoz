@@ -27,5 +27,6 @@ urlpatterns = [
     path('contactviewsingle/<str:id>/',contactviewsingle,name='contactviewsingle'),
     path('deletecontact/<str:id>/',deletecontact,name='deletecontact'),
 
-    path('photos', PhotoView.as_view(), name='photos'),
+    path('photo_list',photo_list, name='photo_list'),
+    path('galleryimage',galleryimage, name='galleryimage'),
 ]

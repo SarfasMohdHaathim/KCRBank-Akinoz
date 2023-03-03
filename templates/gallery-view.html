@@ -15,7 +15,7 @@
                             </div>
                             <div class="breadcrumb-menu">
                                 <ul>
-                                    <li class="breadcrumb-item"><a href="./">Home &nbsp;</a></li>
+                                    <li class="breadcrumb-item"><a href="/">Home &nbsp;</a></li>
                                     <li class="breadcrumb-item">Gallery</li>
                                 </ul>
                             </div>
@@ -38,7 +38,7 @@
                 <div class="row">
                     {% for x in galleryimg %}
                     <a href="" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                        <img src="{{x.img1.url}}" class="img-fluid">
+                        <img src="{{x.img1.url}}" class="img-fluid" style="margin-top: 40px;">
                     </a>
                     {% endfor %}
                     <!-- <a href="assets/images/kcrb/CONFERENCE%20HALL.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">

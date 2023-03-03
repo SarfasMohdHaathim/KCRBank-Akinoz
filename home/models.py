@@ -19,6 +19,10 @@ class GalleryImage(models.Model):
     img1=models.ImageField(upload_to="media",blank=True,null=True)
     def __str__(self):
         return self.title.title
+    
+    class Meta:
+        verbose_name = 'photo'
+        verbose_name_plural = 'photos'
 
     
 class News(models.Model):
@@ -70,19 +74,10 @@ class Emi(models.Model):
 
 
 class Photo(models.Model):
-	title = models.CharField(max_length=144)
-	image = models.ImageField(
-		upload_to='%Y/%m/%d/',
-		height_field='image_height',
-		width_field='image_width'
-	)
-	image_height = models.FloatField()
-	image_width = models.FloatField()
-	timestamp = models.DateTimeField(auto_now_add=True)
-	updated = models.DateTimeField(auto_now=True)
+    file = models.ImageField(null=True, blank=True)
+    description = models.CharField(max_length=255, null=True, blank=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True,null=True, blank=True)
 
-	def __str__(self):
-		return str(self.title)
-
-	def get_absolute_url(self):
-		return reverse("photos:detail")
+    class Meta:
+        verbose_name = 'photo'
+        verbose_name_plural = 'photos'
