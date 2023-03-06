@@ -159,8 +159,8 @@
                                             </ul>
                                         </li>
                                         {% if flag %}
-                                        {% url 'news' as url %}
-                                        <li class=" {% if request.path == url %}current{% endif %}">
+                                        {% url 'news' as url %}{% url 'newsingle' as url1 %}
+                                        <li class=" {% if request.path == url or url1 %}current{% endif %}">
                                             <a href="{{url}}">News & Events</a>
                                         </li>
                                         {% endif %}
@@ -246,10 +246,10 @@
                                 </div>
                                 <div class="footer-widget-links">
                                     <ul>
-                                        <li><a href="#">Our Story</a></li>
-                                        <li><a href="#">Board of Directors</a></li>
-                                        <li><a href="#">News& Events</a></li>
-                                        <li><a href="#">Gallery</a></li>
+                                        <li><a href="\about">Our Story</a></li>
+                                        <li><a href="\about">Board of Directors</a></li>
+                                        <li><a href="\news">News& Events</a></li>
+                                        <li><a href="\gallery">Gallery</a></li>
 
                                     </ul>
                                 </div>

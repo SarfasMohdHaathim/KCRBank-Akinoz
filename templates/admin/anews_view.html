@@ -8,14 +8,21 @@ News and Events
     <div class="container" id="newscontainer">
         <div class="row">
             {% for news in news %}
-            <div class="card" style="width: 18rem;">
-                <img  src="{{news.cover.url}}" alt="Card image cap">
+            <div class="card" style="width: 18rem; margin-top: 70px;">
                 <img  src="{{news.img1.url}}" alt="Card image cap">
                 <div class="card-body">
-                  <h5 class="card-title">{{news.title}}</h5>
-                  <a href="#" class="btn btn-primary"></a>
+                  <!-- <h5 class="card-title">{{news.title}}</h5> -->
+                  <!-- <a href="#" class="btn btn-primary"></a> -->
                 </div>
+                <div class="card" style="width: 18rem;">
+                    <img  src="{{news.cover.url}}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">{{news.title}}</h5>
+                      <!-- <a href="#" class="btn btn-primary"></a> -->
+                    </div>
+                  </div>
               </div>
+            
               
               {% endfor %}
         </div>

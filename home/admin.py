@@ -5,8 +5,8 @@ from .models import *
 # admin.site.register(GalleryImage)
 admin.site.register(News)
 admin.site.register(Contact)
-admin.site.register(Emi)
-admin.site.register(Photo)
+# admin.site.register(Emi)
+# admin.site.register(Photo)
 # admin.site.register(Gallery, GalleryImage)
 
 

@@ -20,7 +20,6 @@ def home(request):
     context={'emi':emi}
     count=News.objects.all().count()
     print('===================count',count)
-    
     print(count)
     if count==1:
         print('=======================recentsingle')
@@ -133,7 +132,7 @@ def newsingle(request,id):
 
 def news(request):
     context={}
-    news=News.objects.all()
+    news=News.objects.all().order_by('-id')
     count=News.objects.all().count()
     print(count)
     if count>=2:
@@ -198,8 +197,11 @@ def contactus(request):
 
             recipient_list = [email]
             email_from = settings.EMAIL_HOST_USER
-            send_mail( sub, message, email_from, recipient_list )
-            return redirect('home')
+            try:
+                send_mail( sub, message, email_from, recipient_list )
+                return redirect('home')
+            except:
+                print('mail not success')
                 
         except:
             messages.warning(request, 'Email Failed')
@@ -259,7 +261,7 @@ def adminlogin(request):
             try:
                 User.objects.get(username=username,password=password)
             except:
-                messages.warning(request,'')
+                messages.warning(request,'Invalid Credential')
 
         
         try:
@@ -349,7 +351,7 @@ def adminnews(request):
         title=request.POST['title']
         category=request.POST['category']
         coverimage=request.FILES['img3']
-        image=request.FILES['img']
+        image=request.FILES['nocropimg']
         section_title=request.POST['section_title']
         phar1=request.POST['phar1']
         phar2=request.POST['phar2']
@@ -364,6 +366,7 @@ def adminnews(request):
         paragraph3=phar3,
         paragraph4=phar4,
         )
+        print(news.cover,news.img1)
         # image = Image.open(news.cover)
         # cropped_image = image.convert('RGB')
         # resized_image = cropped_image.resize((400,300), Image.ANTIALIAS)
@@ -393,6 +396,8 @@ def adminadd(request):
 
 @login_required(login_url='adminlogin')
 def admincontactview(request):
+    user=request.user
+    print(user)
     contact=Contact.objects.all().order_by('-id')
     a=datetime.now().date() + timedelta(days=-5)
     print(a,'0000000000')

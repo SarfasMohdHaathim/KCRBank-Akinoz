@@ -24,13 +24,13 @@ News
                       </div>          
                       </div>
                       <div class="mb-3">
-                        <label for="formFile" class="form-label">Cover Image</label>
-                        <input class="form-control" type="file"  name="img3" id="id_image">
+                        <label for="formFile" class="form-label">Image </label>
+                        <input class="form-control" type="file" id="id_image1" name="nocropimg">
                       </div>
                       <div class="mb-3">
-                        <label for="formFile" class="form-label">Image1</label>
-                        <input class="form-control" type="file" id="id_image1" name="img">
-                      </div>
+                        <label for="formFile" class="form-label">Cover Image in Section</label>
+                        <input class="form-control" type="file"  name="img3" id="id_image">
+                      </div>  
                       <div class="form-group">
                         <label for="exampleInputEmail1">Section Title</label>
                         <input class="form-control" type="text" placeholder="Default input" name="section_title">
@@ -59,7 +59,7 @@ News
                   <input type="hidden" name="y" id="y2">
                   <input type="hidden" name="height" id="height2">
                   <input type="hidden" name="width" id="width2">
-                      <button type="submit" class="btn btn-primary" id="confirm-btn">Primary</button>
+                      <button type="submit" class="btn btn-primary my-5" id="confirm-btn">Upload</button>
                 </form>
                 
                 </div>
@@ -89,56 +89,222 @@ padding: 20px;
 height: 450px;
 width: 50%;
 }
+label{
+  margin-top: 30px;
+}
   </style>
 
 
 <script>
-const imagebox = document.getElementById('image-box')
-const crop_btn = document.getElementById('crop-btn')
-const input = document.getElementById('id_image')
-const input1 = document.getElementById('id_image1')
-const newscon = document.getElementById('newscon').style.display="none"
 
-input.addEventListener('change', ()=>{
-const img_data = input.files[0]
-const url = URL.createObjectURL(img_data)
 
-imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+// const imagebox = document.getElementById('image-box')
+// const crop_btn = document.getElementById('crop-btn')
+// const input = document.getElementById('id_image')
+// const input1 = document.getElementById('id_image1')
+// const newscon = document.getElementById('newscon').style.display="none"
 
-const image = document.getElementById('image')
+// input.addEventListener('change', ()=>{
+// const img_data = input.files[0]
+// const url = URL.createObjectURL(img_data)
 
-document.getElementById('image-box').style.display = 'block'
-document.getElementById('crop-btn').style.display = 'block'
-document.getElementById('confirm-btn').style.display = 'none'
-document.getElementById('newscon').style.display="block"
-const cropper = new Cropper(image, {
-autoCropArea: 1,
-viewMode: 1,
-scalable: true,
-zoomable: false,
-movable: false,
-minCropBoxWidth: 350,
-minCropBoxHeight: 250,
-})
+// imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
 
-crop_btn.addEventListener('click', ()=>{
-  cropper.getCroppedCanvas().toBlob((blob)=>{
+// const image = document.getElementById('image')
+
+// document.getElementById('image-box').style.display = 'block'
+// document.getElementById('crop-btn').style.display = 'block'
+// document.getElementById('confirm-btn').style.display = 'none'
+// document.getElementById('newscon').style.display="block"
+// const cropper = new Cropper(image, {
+// autoCropArea: 1,
+// viewMode: 1,
+// scalable: true,
+// zoomable: false,
+// movable: false,
+// minCropBoxWidth: 350,
+// minCropBoxHeight: 250,
+// })
+
+// crop_btn.addEventListener('click', ()=>{
+//   cropper.getCroppedCanvas().toBlob((blob)=>{
     
-    let fileInputElement = document.getElementById('id_image');
-    let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
-    let container = new DataTransfer();
-    container.items.add(file);
-    fileInputElement.files = container.files;
+//     let fileInputElement = document.getElementById('id_image');
+//     let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+//     let container = new DataTransfer();
+//     container.items.add(file);
+//     fileInputElement.files = container.files;
 
-    document.getElementById('image-box').style.display = 'none'
-    document.getElementById('crop-btn').style.display = 'none'
-    document.getElementById('confirm-btn').style.display = 'block'
-    document.getElementById('newscon').style.display="none"
+//     document.getElementById('image-box').style.display = 'none'
+//     document.getElementById('crop-btn').style.display = 'none'
+//     document.getElementById('confirm-btn').style.display = 'block'
+//     document.getElementById('newscon').style.display="none"
 
+//     });
+//   });
+// });	
+// crop_btn.addEventListener('click',()=>{
+//     let c=image.cropper.getData(true);
+//     let x1=document.getElementById('x1')
+//     let y1=document.getElementById('y1')
+//     let height1=document.getElementById('height1')
+//     let width1=document.getElementById('width1')
+
+//     x1.value=c['x']
+//     y1.value=c['y']
+//     height1.value=c['height']
+//     width1.value=c['width']
+
+
+
+//   })
+
+
+
+// input1.addEventListener('change', ()=>{
+// const img_data = input1.files[0]
+// const url = URL.createObjectURL(img_data)
+
+// imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+
+// const image = document.getElementById('image')
+
+// document.getElementById('image-box').style.display = 'block'
+// document.getElementById('crop-btn').style.display = 'block'
+// document.getElementById('confirm-btn').style.display = 'none'
+// document.getElementById('newscon').style.display="block"
+// const cropper = new Cropper(image, {
+// autoCropArea: 1,
+// viewMode: 1,
+// scalable: true,
+// zoomable: false,
+// movable: false,
+// minCropBoxWidth: 350,
+// minCropBoxHeight: 250,
+// })
+
+// crop_btn.addEventListener('click', ()=>{
+//   cropper.getCroppedCanvas().toBlob((blob)=>{
+    
+//     let fileInputElement = document.getElementById('id_image');
+//     let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+//     let container = new DataTransfer();
+//     container.items.add(file);
+//     fileInputElement.files = container.files;
+
+//     document.getElementById('image-box').style.display = 'none'
+//     document.getElementById('crop-btn').style.display = 'none'
+//     document.getElementById('confirm-btn').style.display = 'block'
+//     document.getElementById('newscon').style.display="none"
+
+//     });
+//   });
+// });	
+
+
+
+// crop_btn.addEventListener('click',()=>{
+//     let c=image.cropper.getData(true);
+//     let x2=document.getElementById('x2')
+//     let y2=document.getElementById('y2')
+//     let height2=document.getElementById('height2')
+//     let width2=document.getElementById('width2')
+
+//     x2.value=c['x']
+//     y2.value=c['y']
+//     height2.value=c['height']
+//     width2.value=c['width']
+
+
+
+//   })
+</script>
+<script>
+  const imagebox = document.getElementById('image-box')
+  const crop_btn = document.getElementById('crop-btn')
+  const input = document.getElementById('id_image')
+  const input1 = document.getElementById('id_image1')
+  const newscon = document.getElementById('newscon').style.display="none"
+  input1.addEventListener('change', ()=>{
+  const img_data = input1.files[0]
+  const url = URL.createObjectURL(img_data)
+  
+  imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+  
+  const image = document.getElementById('image')
+  
+  document.getElementById('image-box').style.display = 'block'
+  document.getElementById('crop-btn').style.display = 'block'
+  document.getElementById('confirm-btn').style.display = 'none'
+  document.getElementById('newscon').style.display="block"
+  const cropper = new Cropper(image, {
+  autoCropArea: 1,
+  viewMode: 1,
+  scalable: true,
+  zoomable: false,
+  movable: false,
+  minCropBoxWidth: 350,
+  minCropBoxHeight: 250,
+  })
+  
+  crop_btn.addEventListener('click', ()=>{
+    cropper.getCroppedCanvas().toBlob((blob)=>{
+      
+      let fileInputElement1 = document.getElementById('id_image1');
+      let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+      let container = new DataTransfer();
+      container.items.add(file);
+      fileInputElement1.files = container.files;
+  
+      document.getElementById('image-box').style.display = 'none'
+      document.getElementById('crop-btn').style.display = 'none'
+      document.getElementById('confirm-btn').style.display = 'block'
+      document.getElementById('newscon').style.display="none"
+  
+      });
     });
-  });
-});	
-crop_btn.addEventListener('click',()=>{
+  });	
+    
+  input.addEventListener('change', ()=>{
+  const img_data = input.files[0]
+  const url = URL.createObjectURL(img_data)
+  
+  imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+  
+  const image = document.getElementById('image')
+  
+  document.getElementById('image-box').style.display = 'block'
+  document.getElementById('crop-btn').style.display = 'block'
+  document.getElementById('confirm-btn').style.display = 'none'
+  document.getElementById('newscon').style.display="block"
+  const cropper = new Cropper(image, {
+  autoCropArea: 1,
+  viewMode: 1,
+  scalable: true,
+  zoomable: false,
+  movable: false,
+  minCropBoxWidth: 350,
+  minCropBoxHeight: 250,
+  })
+  
+  crop_btn.addEventListener('click', ()=>{
+    cropper.getCroppedCanvas().toBlob((blob)=>{
+      
+      let fileInputElement = document.getElementById('id_image');
+      let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+      let container = new DataTransfer();
+      container.items.add(file);
+      fileInputElement.files = container.files;
+  
+      document.getElementById('image-box').style.display = 'none'
+      document.getElementById('crop-btn').style.display = 'none'
+      document.getElementById('confirm-btn').style.display = 'block'
+      document.getElementById('newscon').style.display="none"
+  
+      });
+    });
+  });	
+  crop_btn.addEventListener('click',()=>{
     let c=image.cropper.getData(true);
     let x1=document.getElementById('x1')
     let y1=document.getElementById('y1')
@@ -153,60 +319,8 @@ crop_btn.addEventListener('click',()=>{
 
 
   })
-input1.addEventListener('change', ()=>{
-const img_data = input1.files[0]
-const url = URL.createObjectURL(img_data)
 
-imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
-
-const image = document.getElementById('image')
-
-document.getElementById('image-box').style.display = 'block'
-document.getElementById('crop-btn').style.display = 'block'
-document.getElementById('confirm-btn').style.display = 'none'
-document.getElementById('newscon').style.display="block"
-const cropper = new Cropper(image, {
-autoCropArea: 1,
-viewMode: 1,
-scalable: true,
-zoomable: false,
-movable: false,
-minCropBoxWidth: 350,
-minCropBoxHeight: 250,
-})
-
-crop_btn.addEventListener('click', ()=>{
-  cropper.getCroppedCanvas().toBlob((blob)=>{
-    
-    let fileInputElement = document.getElementById('id_image');
-    let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
-    let container = new DataTransfer();
-    container.items.add(file);
-    fileInputElement.files = container.files;
-
-    document.getElementById('image-box').style.display = 'none'
-    document.getElementById('crop-btn').style.display = 'none'
-    document.getElementById('confirm-btn').style.display = 'block'
-    document.getElementById('newscon').style.display="none"
-
-    });
-  });
-});	
-crop_btn.addEventListener('click',()=>{
-    let c=image.cropper.getData(true);
-    let x2=document.getElementById('x2')
-    let y2=document.getElementById('y2')
-    let height2=document.getElementById('height2')
-    let width2=document.getElementById('width2')
-
-    x2.value=c['x']
-    y2.value=c['y']
-    height2.value=c['height']
-    width2.value=c['width']
-
-
-
-  })
-</script>
+  </script>
+  
 
 {% endblock contentadmin %}

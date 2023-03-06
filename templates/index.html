@@ -775,7 +775,7 @@
 
 
 
-
+        {% if emiseections %}
         <section class="emi-calculator-style2-area">
             <div class="container">
                 <div class="sec-title text-center">
@@ -1165,6 +1165,9 @@
                 </div>
             </div>
         </section>
+
+
+            {% endif %}   
         <!--End EMI Calculator Area-->
 
 
@@ -1224,13 +1227,13 @@
 
 
         <!--Start Blog Style2 Area-->
-        {% if singlerecent %}
+        {% if singlerecent or recent %}
         <section id="news" class="blog-style2-area pdb60">
             <div class="container">
                 <div class="blog-style2-area__top">
                     <div class="sec-title">
                         <h2>Latest From News Room</h2>
-                        <div class="sub-title">
+                        <div class="sub-title my-3">
                             <p>Our blog post provides you all the updates & guides.</p>
                         </div>
                     </div>
