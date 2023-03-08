@@ -1,0 +1,51 @@
+{% extends 'admin/admin_home.html' %}
+{% load static %}
+{% block titlehead %}
+Admin
+{% endblock titlehead %}
+{% block contentadmin %}
+
+        
+<div class="container">
+    <div class="row w-50 d-flex justify-content-center">
+      <a href="{% url 'adminadd' %}"><button type="button" class="btn btn-primary w-50">Add</button></a>
+    </div>
+      <div id="contactable">
+      <table class="table">
+        <thead>
+          <tr>
+            
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        {% for c in user %}
+        <tbody>
+          <tr>
+            <td>{{c.username}}</td>
+            <td>{{c.email}}</td>
+  
+            <td><a href="{% url  'deleteadmin' c.id %}"><button type="button" class="btn btn-primary"><small>Delete</small></button></a></td>
+  
+          </tr>
+        </tbody>
+       
+      </a>
+        {% endfor %}
+      </table>
+    </div>
+    </div>
+    <style>
+      .container{
+        padding-top: 100px;
+      }#contactable{
+      margin-top: 45px !important;
+  }
+  
+    </style>
+  
+
+
+{% endblock contentadmin %}
+

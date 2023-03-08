@@ -8,7 +8,7 @@ News & Events
 
 <div class="container">
   <div class="row w-50 d-flex justify-content-center">
-    <button type="button" class="btn btn-primary w-50">Add</button>
+    <a href="{% url 'adminnews' %}"><button type="button" class="btn btn-primary w-50">Add</button></a>
   </div>
     <div id="contactable">
     <table class="table">
@@ -45,7 +45,10 @@ News & Events
   <style>
     .container{
       padding-top: 100px;
-    }
+    }#contactable{
+    margin-top: 45px !important;
+}
+
   </style>
 
 

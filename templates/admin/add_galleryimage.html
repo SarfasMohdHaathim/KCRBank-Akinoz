@@ -41,6 +41,9 @@
               <div class="card-body">
                 <h5 class="card-title">{{x.title}}</h5>
                 <p class="card-text">{{x.des}}</p>
+                <a href="{% url 'deletegallerysingle' x.id %}"><button  class="btn btn-primary">Delete</button></a>
+                
+
               </div>
             </div>
           </div>

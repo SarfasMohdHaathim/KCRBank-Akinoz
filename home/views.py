@@ -114,11 +114,12 @@ def newsingle(request,id):
             f1=1
             news2=News.objects.get(id=count2)
             context.update({'f1':f1,'news2':news2})
+            
         if(count==1):
             recent=News.objects.all()
             context.update({'x':recent})
 
-
+        
     
     except:
         messages.warning(request, '')
@@ -520,6 +521,7 @@ def adminadd(request):
             messages.warning(request,'Password Missmatch')
         try:
             User.objects.create_superuser(username=username,email=email,password=password)
+            return redirect('admintable')
         except:
             messages.warning(request, 'Admin is Already Exist')
     return render(request,'admin/add_admin.html')
@@ -603,6 +605,15 @@ def newsingleview(request,id):
 
 
 
+def admintable(request):
+    user=User.objects.all()
+    return render(request,'admin/admin.html',{'user':user})
+
+
+
+def deleteadmin(request,id):
+    User.objects.get(id=id).delete()
+    return redirect('admintable')
 
 
 
@@ -610,12 +621,11 @@ def newsingleview(request,id):
 
 
 
-
-
-
-
-
-
+def deletegallerysingle(request,id):
+    gi=GalleryImage.objects.get(id=id)
+    gid=gi.title.id
+    gi.delete()
+    return redirect('admingalleryimage',id=str(gid))
 
 
 

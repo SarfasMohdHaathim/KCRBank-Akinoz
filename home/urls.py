@@ -24,6 +24,7 @@ urlpatterns = [
     path('newsview/',newsview,name='newsview'),
     path('adminadd/',adminadd,name='adminadd'),
     path('admincontactview/',admincontactview,name='admincontactview'),
+    path('admintable/',admintable,name='admintable'),
     path('admingalleryimage/<str:id>/',admingalleryimage,name='admingalleryimage'),
     path('contactviewsingle/<str:id>/',contactviewsingle,name='contactviewsingle'),
     path('deletecontact/<str:id>/',deletecontact,name='deletecontact'),
@@ -32,6 +33,8 @@ urlpatterns = [
     path('editnews/<str:id>/',editnews,name='editnews'),
     path('deletenewssingle/<str:id>/',deletenewssingle,name='deletenewssingle'),
     path('newsingleview/<str:id>/',newsingleview,name='newsingleview'),
+    path('deleteadmin/<str:id>/',deleteadmin,name='deleteadmin'),
+    path('deletegallerysingle/<str:id>/',deletegallerysingle,name='deletegallerysingle'),
 
     path('photo_list',photo_list, name='photo_list'),
     path('galleryimage',galleryimage, name='galleryimage'),
