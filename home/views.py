@@ -291,20 +291,46 @@ def admingallery(request):
     cover=None
     context={}
     if request.method=='POST':
-        title=request.POST['title']
-        des=request.POST['des']
-        x=request.POST['x']
-        y=request.POST['y']
-        h=request.POST['height']
-        w=request.POST['width']
-        cover=request.FILES['coverimg']
-        gallery=Gallery.objects.create(title=title,des=des,cover=cover)
-        image = Image.open(gallery.cover)
-        cropped_image = image.convert('RGB')
-        # cropped_image = image.crop((x, y, w+x, h+y))
-        resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
-        resized_image.save(gallery.cover.path)
-        return redirect('adminviewgallery')
+        id=request.POST['gid']
+
+        if id:
+            g=Gallery.objects.get(id=id)
+            gallerycover=g.cover
+            
+            title=request.POST['title']
+            des=request.POST['des']
+            try:
+                cover=request.FILES['coverimg']
+                if cover:
+                    g.cover=cover
+                    g.title=title
+                    g.des=des
+                    g.save()
+                    image = Image.open(g.cover)
+                    cropped_image = image.convert('RGB')
+                    resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
+                    resized_image.save(g.cover.path)
+                    return redirect('adminviewgallery')
+            except:                
+                g.title=title
+                g.des=des
+                g.cover=gallerycover
+                g.save()
+                return redirect('adminviewgallery')
+                
+                    
+
+
+        else:
+                title=request.POST['title']
+                des=request.POST['des']
+                cover=request.FILES['coverimg']
+                gallery=Gallery.objects.create(title=title,des=des,cover=cover)
+                image = Image.open(gallery.cover)
+                cropped_image = image.convert('RGB')
+                resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
+                resized_image.save(gallery.cover.path)
+                return redirect('adminviewgallery')
         
 
     return render(request,'admin/add_gallary.html',context)
@@ -335,47 +361,152 @@ def admingalleryimageadd(request):
     return render(request,'admin/add_galleryimage.html')
 
 
+def editgallery(request,id):
+    gallery=Gallery.objects.get(id=id)
+    img=gallery.cover
+    context={'gallery':gallery,'img':img}
+    return render(request,'admin/add_gallary.html',context)
+
+
+
+
+
+
+
+
+
+
+
+
+
 @login_required(login_url='adminlogin')
 def admingalleryimage(request,id):
     gallery=Gallery.objects.get(id=id)
     galleryimg=GalleryImage.objects.filter(title=id)
     print(galleryimg,'==========999995555555559999=====')
     context={'galleryimg':galleryimg,'gallery':gallery}
-
     return render(request,'admin/add_galleryimage.html',context)
 
 
 @login_required(login_url='adminlogin')
 def adminnews(request):
     if request.method=='POST':
-        title=request.POST['title']
-        category=request.POST['category']
-        coverimage=request.FILES['img3']
-        image=request.FILES['nocropimg']
-        section_title=request.POST['section_title']
-        phar1=request.POST['phar1']
-        phar2=request.POST['phar2']
-        phar3=request.POST['phar3']
-        phar4=request.POST['phar4']
+        nid=request.POST['nid']
+        try:
+            news=News.objects.get(id=nid)
+            im1=news.cover
+            im2=news.img1
+            title=request.POST['title']
+            category=request.POST['category']
+            
+            section_title=request.POST['section_title']
+            phar1=request.POST['phar1']
+            phar2=request.POST['phar2']
+            phar3=request.POST['phar3']
+            phar4=request.POST['phar4']
+            try:
+                coverimage=request.FILES['img3']
+                image=request.FILES['nocropimg']
+                news.title=title
+                news.category=category
+                news.cover=coverimage
+                news.img1=image
+                news.sectiontitle=section_title
+                news.paragraph1=phar1
+                news.paragraph2=phar2
+                news.paragraph3=phar3
+                news.paragraph4=phar4
+                news.save()
+                image = Image.open(news.img1)
+                cropped_image = image.convert('RGB')
+                resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
+                resized_image.save(news.img1.path)
+                return redirect('newsview')
+            except:
+                news.title=title
+                news.category=category
+                news.sectiontitle=section_title
+                news.paragraph1=phar1
+                news.paragraph2=phar2
+                news.paragraph3=phar3
+                news.paragraph4=phar4
+                news.save()
+                return redirect('newsview')
 
-        news=News.objects.create(title=title,category=category,
-        cover=coverimage,img1=image,
-        sectiontitle=section_title,
-        paragraph1=phar1,
-        paragraph2=phar2,
-        paragraph3=phar3,
-        paragraph4=phar4,
-        )
-        print(news.cover,news.img1)
-        # image = Image.open(news.cover)
-        # cropped_image = image.convert('RGB')
-        # resized_image = cropped_image.resize((400,300), Image.ANTIALIAS)
-        # resized_image.save(news.cover.path)
-        image = Image.open(news.img1)
-        cropped_image = image.convert('RGB')
-        resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
-        resized_image.save(news.img1.path)
-        return redirect('adminnewsview')
+
+            # if not coverimage:
+            #     news.title=title
+            #     news.category=category
+            #     news.cover=im1
+            #     news.img1=image
+            #     news.sectiontitle=section_title
+            #     news.paragraph1=phar1
+            #     news.paragraph2=phar2
+            #     news.paragraph3=phar3
+            #     news.paragraph4=phar4
+            #     news.save()
+                
+            #     return redirect('adminnewsview')
+
+            # elif not image:
+            #     news.title=title
+            #     news.category=category
+            #     news.cover=coverimage
+            #     news.img1=im2
+            #     news.sectiontitle=section_title
+            #     news.paragraph1=phar1
+            #     news.paragraph2=phar2
+            #     news.paragraph3=phar3
+            #     news.paragraph4=phar4
+            #     news.save()
+            #     image = Image.open(news.img1)
+            #     cropped_image = image.convert('RGB')
+            #     resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
+            #     resized_image.save(news.img1.path)
+            #     return redirect('adminnewsview')
+
+            # else:
+            #     news.title=title
+            #     news.category=category
+            #     news.cover=im1
+            #     news.img1=im2
+            #     news.sectiontitle=section_title
+            #     news.paragraph1=phar1
+            #     news.paragraph2=phar2
+            #     news.paragraph3=phar3
+            #     news.paragraph4=phar4
+            #     news.save()
+            #     return redirect('adminnewsview')
+        except:
+
+
+
+
+            title=request.POST['title']
+            category=request.POST['category']
+            coverimage=request.FILES['img3']
+            image=request.FILES['nocropimg']
+            section_title=request.POST['section_title']
+            phar1=request.POST['phar1']
+            phar2=request.POST['phar2']
+            phar3=request.POST['phar3']
+            phar4=request.POST['phar4']
+
+            news=News.objects.create(title=title,category=category,
+            cover=coverimage,img1=image,
+            sectiontitle=section_title,
+            paragraph1=phar1,
+            paragraph2=phar2,
+            paragraph3=phar3,
+            paragraph4=phar4,
+            )
+            print(news.cover,news.img1)
+
+            image = Image.open(news.img1)
+            cropped_image = image.convert('RGB')
+            resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
+            resized_image.save(news.img1.path)
+            return redirect('newsview')
     return render(request,'admin/admin_news.html')
 
 @login_required(login_url='adminlogin')
@@ -431,6 +562,50 @@ def adminnewsview(request):
 def deletecontact(request,id):
     Contact.objects.get(id=id).delete()
     return redirect('admincontactview')
+
+
+
+
+
+
+def deletegallery(request,id):
+    Gallery.objects.get(id=id).delete()
+    return redirect('adminviewgallery')
+
+
+def newsview(request):
+    news=News.objects.all().order_by('-id')
+    context={'news':news}
+    return render(request,'admin/newsadmin.html',context)
+
+def editnews(request,id):
+    news=News.objects.get(id=id)
+    context={'news':news}
+    return render(request,'admin/admin_news.html',context)
+
+
+
+
+
+
+
+
+def deletenewssingle(request,id):
+    News.objects.get(id=id).delete()
+    return redirect('newsview')
+
+
+
+def newsingleview(request,id):
+    news=News.objects.get(id=id)
+    return render(request,'admin/newsingleview.html',{'news':news})
+
+
+
+
+
+
+
 
 
 
@@ -507,7 +682,6 @@ def galleryimage(request):
     else:
         form = GalleryImageForm()
     return render(request, 'admin/gallery_image.html', {'form': form, 'photos': photos})
-
 
 
 

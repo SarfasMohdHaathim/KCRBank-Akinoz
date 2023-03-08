@@ -1,0 +1,42 @@
+{% extends 'admin/admin_home.html' %}
+
+{% load static %}
+{% block titlehead %}
+News
+{% endblock titlehead %}
+{% block contentadmin %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="img1 d-flex flex-column justify-content-center align-item-center" style="margin-top: 100px;" >
+                <img src="{{news.img1.url}}" alt="" srcset="" height="300px" width="450px">
+                <h4 class="mt-2">{{news.title}}</h4>
+                <p class="mt-2">{{news.category}}</p>
+            </div>
+        </div>
+        <div class="row d-flex flex-row justify-content-center align-item-center">
+            <div class="coversection">
+            <img src="{{news.cover.url}}" alt="" srcset="" height="500px" width="700px">
+            </div>
+            <div class="content my-5">
+                <h1>{{news.sectiontitle}}</h1>
+                <p>{{news.paragraph1}}</p>
+                <p>{{news.paragraph2}}</p>
+                <p>{{news.paragraph3}}</p>
+                <p>{{news.paragraph4}}</p>
+            </div>
+            <div class="date">
+                <button type="button" class="btn btn-light my-5">{{news.posted_date}}      {{news.posted_time}}</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .coversection{
+            height: 500px;
+            width: 50%;
+        }
+    </style>
+
+{% endblock contentadmin %}

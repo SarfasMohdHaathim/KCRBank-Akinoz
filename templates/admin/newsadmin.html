@@ -1,0 +1,52 @@
+{% extends 'admin/admin_home.html' %}
+{% load static %}
+{% block titlehead %}
+News & Events
+{% endblock titlehead %}
+{% block contentadmin %}
+
+
+<div class="container">
+  <div class="row w-50 d-flex justify-content-center">
+    <button type="button" class="btn btn-primary w-50">Add</button>
+  </div>
+    <div id="contactable">
+    <table class="table">
+      <thead>
+        <tr>
+          
+          <th scope="col">Title</th>
+          <th scope="col">Category</th>
+          <th scope="col">Posted Date</th>
+          <th scope="col">Edit</th>
+          <th scope="col">View</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      {% for c in news %}
+      <tbody>
+        <tr>
+          <td>{{c.title}}</td>
+          <td>{{c.category}}</td>
+          <td>{{c.posted_date}}</td>
+          <td><a href="{% url 'editnews' c.id %}"><button type="button" class="btn btn-primary"><small>Edit</small></button></a></td>
+          <td><a href="{% url 'newsingleview' c.id %}"><button type="button" class="btn btn-primary"><small>View</small></button></a></td>
+
+          <td><a href="{% url  'deletenewssingle' c.id %}"><button type="button" class="btn btn-primary"><small>Delete</small></button></a></td>
+
+        </tr>
+      </tbody>
+     
+    </a>
+      {% endfor %}
+    </table>
+  </div>
+  </div>
+  <style>
+    .container{
+      padding-top: 100px;
+    }
+  </style>
+
+
+{% endblock contentadmin %}

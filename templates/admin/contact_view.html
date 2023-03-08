@@ -11,24 +11,26 @@ Customer Contact Details
                 <table class="table">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
+                      
                       <th scope="col">Name</th>
                       <th scope="col">Phone</th>
                       <th scope="col">Subject</th>
                       <th scope="col">Date</th>
                       <th scope="col">Delete</th>
+                      <th scope="col">View</th>
                     </tr>
                   </thead>
                   {% for c in contact %}
                   <a href="{% url 'contactviewsingle' c.id %}">
                   <tbody>
                     <tr>
-                      <th scope="row"><a href="{% url 'contactviewsingle' c.id %}"><button style="border:none"><i class="bi bi-arrow-bar-right"></i></button></a></th>
                       <td>{{c.name}}</td>
                       <td>{{c.phone}}</td>
                       <td>{{c.subject}}</td>
                       <td>{{c.date}}</td>
-                      <td><a href="{% url 'deletecontact' c.id %}"><button type="button" class="btn btn-primary"><small>D</small></button></a></td>
+                      <td><a href="{% url 'deletecontact' c.id %}"><button type="button" class="btn btn-primary"><small>Delete</small></button></a></td>
+                      <th scope="row"><a href="{% url 'contactviewsingle' c.id %}"><button type="button" class="btn btn-primary"><small>View</small></button></a></th>
+
                     </tr>
                   </tbody>
                 </a>

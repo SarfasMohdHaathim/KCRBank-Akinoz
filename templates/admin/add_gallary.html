@@ -11,15 +11,18 @@ Gallery
               {% csrf_token %}
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Title </label>
-                    <input class="form-control form-control-sm" type="text" aria-label=".form-control-sm example" name="title">
+                    <input class="form-control form-control-sm" type="text" aria-label=".form-control-sm example" name="title" value="{{gallery.title}}">
                   </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Description</label>
-                    <input class="form-control form-control-sm" type="text" aria-label=".form-control-sm example" name="des">
+                    <input class="form-control form-control-sm" type="text" aria-label=".form-control-sm example" name="des" value="{{gallery.des}}">
                   </div>
                   <div class="mb-3">
                     <label for="formFile" class="form-label">Cover Image</label>
-                    <input class="form-control" type="file" id="id_image" name="coverimg">
+                    <input class="form-control" type="file" id="id_image" name="coverimg" value="{{gallery.cover}}">
+                    {% if gallery %}
+                    <input type="hidden" name="gid" value="{{gallery.id}}">
+                    {% endif %}
                   </div>
                   <input type="hidden" name="x" id="x">
                   <input type="hidden" name="y" id="y">
