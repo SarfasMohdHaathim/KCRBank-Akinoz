@@ -123,11 +123,6 @@ def newsingle(request,id):
     
     except:
         messages.warning(request, '')
-
-
-    
-
-
     context.update({'news':news,'count1':count1,'count2':count2})
     return render(request,'news-single.html',context)
 
@@ -292,37 +287,38 @@ def admingallery(request):
     cover=None
     context={}
     if request.method=='POST':
-        id=request.POST['gid']
+        try:
+            id=request.POST['gid']
 
-        if id:
-            g=Gallery.objects.get(id=id)
-            gallerycover=g.cover
-            
-            title=request.POST['title']
-            des=request.POST['des']
-            try:
-                cover=request.FILES['coverimg']
-                if cover:
-                    g.cover=cover
+            if id:
+                g=Gallery.objects.get(id=id)
+                gallerycover=g.cover
+                
+                title=request.POST['title']
+                des=request.POST['des']
+                try:
+                    cover=request.FILES['coverimg']
+                    if cover:
+                        g.cover=cover
+                        g.title=title
+                        g.des=des
+                        g.save()
+                        image = Image.open(g.cover)
+                        cropped_image = image.convert('RGB')
+                        resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
+                        resized_image.save(g.cover.path)
+                        return redirect('adminviewgallery')
+                except:                
                     g.title=title
                     g.des=des
+                    g.cover=gallerycover
                     g.save()
-                    image = Image.open(g.cover)
-                    cropped_image = image.convert('RGB')
-                    resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
-                    resized_image.save(g.cover.path)
                     return redirect('adminviewgallery')
-            except:                
-                g.title=title
-                g.des=des
-                g.cover=gallerycover
-                g.save()
-                return redirect('adminviewgallery')
-                
+                    
                     
 
 
-        else:
+        except:
                 title=request.POST['title']
                 des=request.POST['des']
                 cover=request.FILES['coverimg']

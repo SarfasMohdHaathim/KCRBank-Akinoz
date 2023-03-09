@@ -122,6 +122,10 @@ a{
    headerpd = document.getElementById(headerId)
    
    // Validate that all variables exist
+   nav.classList.add('show')
+   toggle.classList.add('bx-x')
+   bodypd.classList.add('body-pd')
+   headerpd.classList.add('body-pd')
    if(toggle && nav && bodypd && headerpd){
    toggle.addEventListener('click', ()=>{
    // show navbar
