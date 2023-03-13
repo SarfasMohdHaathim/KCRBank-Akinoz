@@ -93,7 +93,7 @@ def newsingle(request,id):
     print(count)
     count1=int(id)+1
     count2=int(id)-1
-    if count1>count:
+    if count1>=count:
         try:
             news1=News.objects.get(id=count1)
             f=1
@@ -101,9 +101,9 @@ def newsingle(request,id):
         except:
             print('next will be none')
     count=News.objects.all().count()
-    if count>0:
-        flag=1
-        context.update({'flag':flag})
+    if count>1:
+        flag1=1
+        context.update({'flag1':flag1})
 
     try:
         if count>=2:
@@ -123,6 +123,10 @@ def newsingle(request,id):
     
     except:
         messages.warning(request, '')
+    count=News.objects.all().count()
+    if count>0:
+        flag=1
+        context.update({'flag':flag})
     context.update({'news':news,'count1':count1,'count2':count2})
     return render(request,'news-single.html',context)
 
@@ -305,7 +309,7 @@ def admingallery(request):
                         g.save()
                         image = Image.open(g.cover)
                         cropped_image = image.convert('RGB')
-                        resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
+                        resized_image = cropped_image.resize((2000,1500), Image.ANTIALIAS)
                         resized_image.save(g.cover.path)
                         return redirect('adminviewgallery')
                 except:                
@@ -325,7 +329,7 @@ def admingallery(request):
                 gallery=Gallery.objects.create(title=title,des=des,cover=cover)
                 image = Image.open(gallery.cover)
                 cropped_image = image.convert('RGB')
-                resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
+                resized_image = cropped_image.resize((2000,1500), Image.ANTIALIAS)
                 resized_image.save(gallery.cover.path)
                 return redirect('adminviewgallery')
         
@@ -352,7 +356,7 @@ def admingalleryimageadd(request):
         image = Image.open(gi.img1)
         cropped_image = image.convert('RGB')
         # cropped_image = image.crop((x, y, w+x, h+y))
-        resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
+        resized_image = cropped_image.resize((2000,1500), Image.ANTIALIAS)
         resized_image.save(gi.img1.path)
         return redirect('admingalleryimage',gallery.id)
     return render(request,'admin/add_galleryimage.html')
@@ -416,7 +420,7 @@ def adminnews(request):
                 news.save()
                 image = Image.open(news.img1)
                 cropped_image = image.convert('RGB')
-                resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
+                resized_image = cropped_image.resize((2000,1500), Image.ANTIALIAS)
                 resized_image.save(news.img1.path)
                 return redirect('newsview')
             except:
@@ -501,7 +505,7 @@ def adminnews(request):
 
             image = Image.open(news.img1)
             cropped_image = image.convert('RGB')
-            resized_image = cropped_image.resize((350,250), Image.ANTIALIAS)
+            resized_image = cropped_image.resize((2000,1500), Image.ANTIALIAS)
             resized_image.save(news.img1.path)
             return redirect('newsview')
     return render(request,'admin/admin_news.html')

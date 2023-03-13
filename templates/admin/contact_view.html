@@ -1,13 +1,11 @@
 {% extends 'admin/admin_home.html' %}
-
 {% load static %}
 {% block titlehead %}
 Customer Contact Details
 {% endblock titlehead %}
 {% block contentadmin %}
-
             <div class="container">
-                <div id="contactable">
+                <div id="contactable" style="margin-top: 145px !important;">
                 <table class="table">
                   <thead>
                     <tr>
@@ -21,7 +19,6 @@ Customer Contact Details
                     </tr>
                   </thead>
                   {% for c in contact %}
-                  <a href="{% url 'contactviewsingle' c.id %}">
                   <tbody>
                     <tr>
                       <td>{{c.name}}</td>
@@ -33,9 +30,11 @@ Customer Contact Details
 
                     </tr>
                   </tbody>
-                </a>
+                
                   {% endfor %}
                 </table>
               </div>
               </div>
+   
+
 {% endblock contentadmin %}

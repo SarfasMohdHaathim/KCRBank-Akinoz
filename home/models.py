@@ -51,7 +51,7 @@ class News(models.Model):
 class Contact(models.Model):
     name=models.CharField(max_length=100,blank=True,null=True)
     email=models.EmailField(blank=True,null=True)
-    phone=models.PositiveIntegerField(null=True, blank=True)
+    phone=models.PositiveBigIntegerField(null=True, blank=True)
     subject=models.CharField(max_length=100,blank=True,null=True)
     message=models.TextField(blank=True,null=True)
     state=models.CharField(max_length=100,blank=True,null=True)

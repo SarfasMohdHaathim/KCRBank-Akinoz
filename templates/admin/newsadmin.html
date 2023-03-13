@@ -10,6 +10,7 @@ News & Events
   <div class="row w-50 d-flex justify-content-center">
     <a href="{% url 'adminnews' %}"><button type="button" class="btn btn-primary w-50">Add</button></a>
   </div>
+  {% if news %}
     <div id="contactable">
     <table class="table">
       <thead>
@@ -41,6 +42,7 @@ News & Events
       {% endfor %}
     </table>
   </div>
+  {% endif %}
   </div>
   <style>
     .container{

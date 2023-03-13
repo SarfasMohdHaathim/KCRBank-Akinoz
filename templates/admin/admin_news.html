@@ -6,16 +6,16 @@ News
 {% endblock titlehead %}
 {% block contentadmin %}
         <div class="container" id="newscontainer">
-            <div class="row">
+            <div class="row ">
                 <form action="{% url 'adminnews' %}" method="post" enctype="multipart/form-data">
                   {% csrf_token %}
                     <div class="form-group">
                         <label for="exampleInputEmail1">Title</label>
-                        <input class="form-control" type="text" placeholder="Default input" name="title" value="{{news.title}}"> 
+                        <input class="form-control" type="text" placeholder="" name="title" value="{{news.title}}"> 
                       </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Category</label>
-                        <input class="form-control" type="text" placeholder="Default input" name="category" value="{{news.category}}">
+                        <input class="form-control" type="text" placeholder="" name="category" value="{{news.category}}">
                       </div>
                       <div class="row" id="newscon">
                         <div id="image-box" class="image-container"></div>
@@ -33,25 +33,25 @@ News
                       </div>  
                       <div class="form-group">
                         <label for="exampleInputEmail1">Section Title</label>
-                        <input class="form-control" type="text" placeholder="Default input" name="section_title" value="{{news.sectiontitle}}">
+                        <input class="form-control" type="text" placeholder="" name="section_title" value="{{news.sectiontitle}}">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Paragraph 1</label>
-                        <input class="form-control" type="text" placeholder="Default input" name="phar1" value="{{news.paragraph1}}">
+                        <input class="form-control" type="text" placeholder="" name="phar1" value="{{news.paragraph1}}">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Paragraph 2</label>
-                        <input class="form-control" type="text" placeholder="Default input" name="phar2" value="{{news.paragraph2}}">
+                        <input class="form-control" type="text" placeholder="" name="phar2" value="{{news.paragraph2}}">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Paragraph 3</label>
-                        <input class="form-control" type="text" placeholder="Default input" name="phar3" value="{{news.paragraph3}}">
+                        <input class="form-control" type="text" placeholder="" name="phar3" value="{{news.paragraph3}}">
                       </div>
                 <input type="hidden" name="nid" value="{{news.id}}">
 
                       <div class="form-group">
                         <label for="exampleInputEmail1">Paragraph 4</label>
-                        <input class="form-control" type="text" placeholder="Default input" name="phar4" value="{{news.paragraph4}}">
+                        <input class="form-control" type="text" placeholder="" name="phar4" value="{{news.paragraph4}}">
                       </div>
                       <button type="submit" class="btn btn-primary my-5" id="confirm-btn">Upload</button>
                 </form>

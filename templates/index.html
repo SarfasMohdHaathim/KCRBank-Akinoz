@@ -4,8 +4,14 @@
 {% block content%}
 
     <style>
-        .div{
+        #sliderbanner1{
             background-image: url("{% static 'assets/images/slides/slide-v3-3.JPG' %}");
+        }
+        #sliderbanner2{
+            background-image: url("{% static 'assets/images/slides/slide-v3-1.JPG' %}");
+        }
+        #sliderbanner3{
+            background-image: url("{% static 'assets/images/slides/slide-v3-2.JPG' %}");
         }
     </style>
 
@@ -57,7 +63,7 @@
                 <div class="swiper-wrapper">
                     <!--Start Single Swiper Slide-->
                     <div class="swiper-slide">
-                        <div class="image-layer" style="background-image: url('static/assets/images/slides/slide-v3-3.JPG');">
+                        <div class="image-layer" id="sliderbanner1">
                         </div>
                         <div class="container">
                             <div class="row">
@@ -88,7 +94,7 @@
                     </div>
                     <!--Start Single Swiper Slide-->
                     <div class="swiper-slide">
-                        <div class="image-layer" style="background-image: url(' static/assets/images/slides/slide-v3-1.JPG ');">
+                        <div class="image-layer" id="sliderbanner2">
                         </div>
                         <div class="container">
                             <div class="row">
@@ -121,7 +127,7 @@
 
                     <!--Start Single Swiper Slide-->
                     <div class="swiper-slide">
-                        <div class="image-layer" style="background-image: url('static/assets/images/slides/slide-v3-2.JPG');">
+                        <div class="image-layer" id="sliderbanner3">
                         </div>
                         <div class="container">
                             <div class="row">
@@ -1258,9 +1264,9 @@
                         <div class="single-blog-style1 single-blog-style1--style2">
                             <div class="img-holder">
                                 <div class="inner">
-                                    <img  src="{% static 'assets/images/blog/blog-v2-1.JPG' %}" alt="">
+                                    <img  src="{{recent.img1.url}}" alt="">
                                     <div class="overlay-icon">
-                                        <a href="news-single.html">
+                                        <a href="{% url 'newsingle' recent.id %}">
                                             <span class="icon-right-arrow"></span>
                                         </a>
                                     </div>
@@ -1280,7 +1286,7 @@
                             </div>
                             <div class="text-holder">
                                 <h3 class="blog-title">
-                                    <a href="">
+                                    <a href="{% url 'newsingle' recent.id %}">
                                         {{recent.title}}
                                     </a>
                                 </h3>
@@ -1311,7 +1317,7 @@
                                 <div class="inner">
                                     <img  src="{% static 'assets/images/blog/blog-v2-1.JPG' %}" alt="">
                                     <div class="overlay-icon">
-                                        <a href="news-single.html">
+                                        <a href="{% url 'newsingle' singlerecent.id %}">
                                             <span class="icon-right-arrow"></span>
                                         </a>
                                     </div>
@@ -1331,7 +1337,7 @@
                             </div>
                             <div class="text-holder">
                                 <h3 class="blog-title">
-                                    <a href="">
+                                    <a href="{% url 'newsingle' singlerecent.id %}">
                                         {{singlerecent.title}}
                                     </a>
                                 </h3>
