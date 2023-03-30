@@ -1,0 +1,319 @@
+{% extends 'admin/admin_home.html' %}
+
+{% load static %}
+{% block titlehead %}
+News
+{% endblock titlehead %}
+{% block contentadmin %}
+        <div class="container" id="newscontainer">
+            <div class="row ">
+                <form action="{% url 'adminnews' %}" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Title</label>
+                        <input class="form-control" type="text" placeholder="" name="title" value="{{news.title}}"> 
+                      </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Category</label>
+                        <input class="form-control" type="text" placeholder="" name="category" value="{{news.category}}">
+                      </div>
+                      <div class="row" id="newscon">
+                        <div id="image-box" class="image-container"></div>
+                        <div class="row">
+                        <button class="btn btn-outline-info" id="crop-btn" style="width: 30%; margin-top: 50px; display: none;" type="button">Crop</button>
+                      </div>          
+                      </div>
+                      <div class="mb-3">
+                        <label for="formFile" class="form-label">Image </label>
+                        <input class="form-control" type="file" id="id_image1" name="nocropimg">
+                      </div>
+                      <div class="mb-3">
+                        <label for="formFile" class="form-label">Cover Image in Section</label>
+                        <input class="form-control" type="file"  name="img3" id="id_image">
+                      </div>  
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Section Title</label>
+                        <input class="form-control" type="text" placeholder="" name="section_title" value="{{news.sectiontitle}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Paragraph 1</label>
+                        <input class="form-control" type="text" placeholder="" name="phar1" value="{{news.paragraph1}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Paragraph 2</label>
+                        <input class="form-control" type="text" placeholder="" name="phar2" value="{{news.paragraph2}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Paragraph 3</label>
+                        <input class="form-control" type="text" placeholder="" name="phar3" value="{{news.paragraph3}}">
+                      </div>
+                <input type="hidden" name="nid" value="{{news.id}}">
+
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Paragraph 4</label>
+                        <input class="form-control" type="text" placeholder="" name="phar4" value="{{news.paragraph4}}">
+                      </div>
+                      <button type="submit" class="btn btn-primary my-5" id="confirm-btn">Upload</button>
+                </form>
+                
+                </div>
+            </div>
+        </div>
+<style>
+  #newscontainer{
+    margin-top: 110px;
+  }
+</style>
+
+<style>
+  #upload {
+      opacity: 0;
+  }
+  .image-area {
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      padding: 1rem;
+  }
+  #condainer1{
+    margin-top: 160px !important;
+  }.not-visible {
+display: none;
+} #image-box{
+padding: 20px;
+height: 450px;
+width: 50%;
+}
+label{
+  margin-top: 30px;
+}
+  </style>
+
+
+<script>
+
+
+// const imagebox = document.getElementById('image-box')
+// const crop_btn = document.getElementById('crop-btn')
+// const input = document.getElementById('id_image')
+// const input1 = document.getElementById('id_image1')
+// const newscon = document.getElementById('newscon').style.display="none"
+
+// input.addEventListener('change', ()=>{
+// const img_data = input.files[0]
+// const url = URL.createObjectURL(img_data)
+
+// imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+
+// const image = document.getElementById('image')
+
+// document.getElementById('image-box').style.display = 'block'
+// document.getElementById('crop-btn').style.display = 'block'
+// document.getElementById('confirm-btn').style.display = 'none'
+// document.getElementById('newscon').style.display="block"
+// const cropper = new Cropper(image, {
+// autoCropArea: 1,
+// viewMode: 1,
+// scalable: true,
+// zoomable: false,
+// movable: false,
+// minCropBoxWidth: 350,
+// minCropBoxHeight: 250,
+// })
+
+// crop_btn.addEventListener('click', ()=>{
+//   cropper.getCroppedCanvas().toBlob((blob)=>{
+    
+//     let fileInputElement = document.getElementById('id_image');
+//     let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+//     let container = new DataTransfer();
+//     container.items.add(file);
+//     fileInputElement.files = container.files;
+
+//     document.getElementById('image-box').style.display = 'none'
+//     document.getElementById('crop-btn').style.display = 'none'
+//     document.getElementById('confirm-btn').style.display = 'block'
+//     document.getElementById('newscon').style.display="none"
+
+//     });
+//   });
+// });	
+// crop_btn.addEventListener('click',()=>{
+//     let c=image.cropper.getData(true);
+//     let x1=document.getElementById('x1')
+//     let y1=document.getElementById('y1')
+//     let height1=document.getElementById('height1')
+//     let width1=document.getElementById('width1')
+
+//     x1.value=c['x']
+//     y1.value=c['y']
+//     height1.value=c['height']
+//     width1.value=c['width']
+
+
+
+//   })
+
+
+
+// input1.addEventListener('change', ()=>{
+// const img_data = input1.files[0]
+// const url = URL.createObjectURL(img_data)
+
+// imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+
+// const image = document.getElementById('image')
+
+// document.getElementById('image-box').style.display = 'block'
+// document.getElementById('crop-btn').style.display = 'block'
+// document.getElementById('confirm-btn').style.display = 'none'
+// document.getElementById('newscon').style.display="block"
+// const cropper = new Cropper(image, {
+// autoCropArea: 1,
+// viewMode: 1,
+// scalable: true,
+// zoomable: false,
+// movable: false,
+// minCropBoxWidth: 350,
+// minCropBoxHeight: 250,
+// })
+
+// crop_btn.addEventListener('click', ()=>{
+//   cropper.getCroppedCanvas().toBlob((blob)=>{
+    
+//     let fileInputElement = document.getElementById('id_image');
+//     let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+//     let container = new DataTransfer();
+//     container.items.add(file);
+//     fileInputElement.files = container.files;
+
+//     document.getElementById('image-box').style.display = 'none'
+//     document.getElementById('crop-btn').style.display = 'none'
+//     document.getElementById('confirm-btn').style.display = 'block'
+//     document.getElementById('newscon').style.display="none"
+
+//     });
+//   });
+// });	
+
+
+
+// crop_btn.addEventListener('click',()=>{
+//     let c=image.cropper.getData(true);
+//     let x2=document.getElementById('x2')
+//     let y2=document.getElementById('y2')
+//     let height2=document.getElementById('height2')
+//     let width2=document.getElementById('width2')
+
+//     x2.value=c['x']
+//     y2.value=c['y']
+//     height2.value=c['height']
+//     width2.value=c['width']
+
+
+
+//   })
+</script>
+<script>
+  const imagebox = document.getElementById('image-box')
+  const crop_btn = document.getElementById('crop-btn')
+  const input = document.getElementById('id_image')
+  const input1 = document.getElementById('id_image1')
+  const newscon = document.getElementById('newscon').style.display="none"
+  input1.addEventListener('change', ()=>{
+  const img_data = input1.files[0]
+  const url = URL.createObjectURL(img_data)
+  
+  imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+  
+  const image = document.getElementById('image')
+  
+  document.getElementById('image-box').style.display = 'block'
+  document.getElementById('crop-btn').style.display = 'block'
+  document.getElementById('confirm-btn').style.display = 'none'
+  document.getElementById('newscon').style.display="block"
+  const cropper = new Cropper(image, {
+  autoCropArea: 1,
+  viewMode: 1,
+  scalable: true,
+  zoomable: false,
+  movable: false,
+  minCropBoxWidth: 350,
+  minCropBoxHeight: 250,
+  })
+  
+  crop_btn.addEventListener('click', ()=>{
+    cropper.getCroppedCanvas().toBlob((blob)=>{
+      
+      let fileInputElement1 = document.getElementById('id_image1');
+      let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+      let container = new DataTransfer();
+      container.items.add(file);
+      fileInputElement1.files = container.files;
+  
+      document.getElementById('image-box').style.display = 'none'
+      document.getElementById('crop-btn').style.display = 'none'
+      document.getElementById('confirm-btn').style.display = 'block'
+      document.getElementById('newscon').style.display="none"
+  
+      });
+    });
+  });	
+    
+  input.addEventListener('change', ()=>{
+  const img_data = input.files[0]
+  const url = URL.createObjectURL(img_data)
+  
+  imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+  
+  const image = document.getElementById('image')
+  
+  document.getElementById('image-box').style.display = 'block'
+  document.getElementById('crop-btn').style.display = 'block'
+  document.getElementById('confirm-btn').style.display = 'none'
+  document.getElementById('newscon').style.display="block"
+  const cropper = new Cropper(image, {
+  autoCropArea: 1,
+  viewMode: 1,
+  scalable: true,
+  zoomable: false,
+  movable: false,
+  minCropBoxWidth: 350,
+  minCropBoxHeight: 250,
+  })
+  
+  crop_btn.addEventListener('click', ()=>{
+    cropper.getCroppedCanvas().toBlob((blob)=>{
+      
+      let fileInputElement = document.getElementById('id_image');
+      let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+      let container = new DataTransfer();
+      container.items.add(file);
+      fileInputElement.files = container.files;
+  
+      document.getElementById('image-box').style.display = 'none'
+      document.getElementById('crop-btn').style.display = 'none'
+      document.getElementById('confirm-btn').style.display = 'block'
+      document.getElementById('newscon').style.display="none"
+  
+      });
+    });
+  });	
+  crop_btn.addEventListener('click',()=>{
+    let c=image.cropper.getData(true);
+    let x1=document.getElementById('x1')
+    let y1=document.getElementById('y1')
+    let height1=document.getElementById('height1')
+    let width1=document.getElementById('width1')
+
+    x1.value=c['x']
+    y1.value=c['y']
+    height1.value=c['height']
+    width1.value=c['width']
+
+
+
+  })
+
+  </script>
+  
+
+{% endblock contentadmin %}

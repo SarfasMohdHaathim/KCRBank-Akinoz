@@ -2386,17 +2386,23 @@
 
 
     .intro-style1-video-gallery {
-        min-height: 600px;
+        min-height: 400px;
         margin-right: 0px;
     }
 
 
+    .intro-style1-area {
+        padding: 0 0 100px;
+    }
 
+    .sec-title h2 {font-size: 28px;}
 
-
-
-
-
+    .footer-area--style3 .footer-top{
+        text-align: center;
+    }
+    .single-wealth-secure-box .inner-title h3{
+        font-size: 18px;
+    }
 
 
 
@@ -3099,15 +3105,94 @@
         font-size: 40px;
         line-height: 1.1em;
     }
+  .main-slider-style3 .image-layer{
+          background-color: #fff !important;
+    }
+    .main-slider-style3 .container{
+        padding: 60px;
+    }
+    .logo-box-style3 {
+        width: 91px;
+    }
+  
+}
+
+@media only screen and (min-width: 601px) {
+    .responsive-class{
+        display: none;
+    }
+.main-slider-style3{display: block;}
+}
+
+@media only screen and (max-width: 600px) {
+    .main-slider-style3{display: none !important;}
+    .responsive-class{
+        display: block;
+    }
+       .logo-box-style3 {
+        width: 180px;
+    }
+  
+     .single-blog-style1--style2 .text-holder .blog-title{
+            font-size: 18px!important;line-height: 22px;
+    }
+    
+
+.single-blog-style1--style2 .text-holder .bottom {
+    padding-top: 8px;}
+    .single-blog-style1--style2 .text-holder .bottom .read-more-btn a{
+        font-size: 14px;
+    }
+    .single-blog-style1--style2 .text-holder .blog-title{   font-size: 14px;}
+    .locker-facility-area {padding: 10px 0 10px;}
+    .blog-style2-area{
+        padding: 20px 0 20px;
+    }
+    .main-slider-style3 .container{
+        padding-bottom: 0;
+    }
+    .main-slider-style3 .main-slider-content .big-title h2{
+        font-size: 25px !important;
+    }
+     .main-slider-style3 .container{
+        padding: 0 !important;
+    }
+    .slogan-content-box .inner-title h2 {    font-size: 27px;
+    }
+    .logo-box-style3 a img{
+        width: 50%;}
+    }
+
+}
 
 
-
-
-
-
-
-
-
-
-
+@media only screen and (max-width: 350px) {
+      .single-team-style1 .text-holder h3{
+        
+        font-size: 16px;
+    }
+    .single-team-style1 .text-holder h5 {
+        margin: 0 0 0;
+        font-size: 13px;}
+    .members-no{
+        font-size: 12px;
+    }
+    .single-team-style1 .img-holder .inner{
+        padding: 5px !important;
+    }
+   
+}
+@media only screen and (min-width: 451px) {
+.responsive-about-pic{
+   display: block;
+}
+@media only screen and (max-width: 450px) {
+.responsive-about-pic{
+   display: none;
+}
+}
+@media only screen and (max-width:1200px) {
+    .clearfix::after{
+        display: block;
+    }
 }

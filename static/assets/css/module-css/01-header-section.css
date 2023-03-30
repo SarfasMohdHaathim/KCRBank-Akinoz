@@ -405,12 +405,12 @@
     transition: all 500ms ease;
 }
 
-.main-menu .main-menu__list>li.current>a,
+/* .main-menu .main-menu__list>li.current>a,
 .main-menu .main-menu__list>li:hover>a,
 .stricky-header .main-menu__list>li.current>a,
 .stricky-header .main-menu__list>li:hover>a {
     color: var(--thm-base);
-}
+} */
 
 .main-menu .main-menu__list>li.dropdown>a,
 .stricky-header .main-menu__list>li.dropdown>a {

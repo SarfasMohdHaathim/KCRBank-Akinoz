@@ -76,6 +76,17 @@ def about(request):
     return render(request,'about.html',context)
     
 
+    
+    
+def downloads(request):
+    context={}
+    count=News.objects.all().count()
+    if count>0:
+        flag=1
+        context.update({'flag':flag})
+    return render(request,'download.html',context)
+    
+    
 
 def services(request):
     context={}

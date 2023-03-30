@@ -83,7 +83,7 @@
                             <div class="header-contact-info-style1">
                                 <ul>
                                     <li><span class="icon-map"></span> Kunnamangalam </li>
-                                    <li><span class="icon-clock"></span> 9am to 5pm, Sun Holiday</li>
+                                    <li><span class="icon-clock"></span> 9am to 7pm</li>
                                 </ul>
                             </div>
                             <div class="header-social-link-style1">
@@ -98,13 +98,9 @@
                                             <i class="fab fa-instagram"></i>
                                         </a>
                                     </li>
+                                    
                                     <li>
-                                        <a href="#">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
+                                        <a href="https://www.facebook.com/KGMRURALBANK?mibextid=ZbWKwL">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
                                     </li>
@@ -129,7 +125,7 @@
                                     </div>
                                 </div>-->
                                 <div class="logo-box-style3">
-                                    <a href="index-2.html">
+                                    <a href="">
                                         <img src="{% static 'assets/images/resources/logo-2.png' %}" alt="Awesome Logo" title="">
                                     </a>
                                 </div>
@@ -175,6 +171,12 @@
                                             <a href="{{url}}">Gallery</a>
 
                                         </li>
+                                        {% url 'downloads' as url %}
+                                        <li class=" {% if request.path == url %}current{% endif %}">
+                                            
+                                            <a href="{{url}}">Downloads</a>
+
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -184,8 +186,8 @@
                                     <div class="icon">
                                         <span class="icon-headphones"></span>
                                     </div>
-                                    <h5>Toll Free</h5>
-                                    <h3><a href="tel:123456789">+800 123 456 78</a></h3>
+                                    <h5>For Enquiry</h5>
+                                    <h3><a href="">0495 2800 245</a></h3>
                                 </div>
 
                             </div>
@@ -223,7 +225,7 @@
                             <div class="single-footer-widget single-footer-widget--link-box">
                                 <div class="our-company-info">
                                     <div class="footer-logo-style1">
-                                        <a href="index-2.html">
+                                        <a href="">
                                             <img src="{% static 'assets/images/resources/logo-3.png' %}" alt="Awesome Logo" title="">
                                         </a>
                                     </div>
@@ -327,7 +329,7 @@
                 <i class="fas fa-plus"></i>
             </span>
             <div class="logo-box">
-                <a href="index-2.html" aria-label="logo image">
+                <a href="" aria-label="logo image">
                     <img src="{% static 'assets/images/resources/logo-3.png' %}" alt="" />
                 </a>
             </div>
@@ -335,16 +337,16 @@
             <ul class="mobile-nav__contact list-unstyled">
                 <li>
                     <i class="fa fa-envelope"></i>
-                    <a href="mailto:info@example.com">info@example.com</a>
+                    <a href="mailto:kgmruralbank@gmail.com">kgmruralbank@gmail.com</a>
                 </li>
                 <li>
                     <i class="fa fa-phone-alt"></i>
-                    <a href="tel:123456789">444 000 777 66</a>
+                    <a href="">0495 2800 245</a>
                 </li>
             </ul>
             <div class="mobile-nav__social">
                 <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-facebook-square"></a>
+                <a href="https://www.facebook.com/KGMRURALBANK?mibextid=ZbWKwL" class="fab fa-facebook-square"></a>
                 <a href="#" class="fab fa-pinterest-p"></a>
                 <a href="#" class="fab fa-instagram"></a>
             </div>
@@ -374,6 +376,7 @@
 
 
 
+   
     <script src="{% static  'assets/vendors/jquery/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static  'assets/vendors/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static  'assets/vendors/bxslider/jquery.bxslider.min.js' %}"></script>
@@ -396,6 +399,8 @@
     <script src="{% static  'assets/vendors/extra-scripts/jquery.paroller.min.js' %}"></script>
     <script src="{% static  'assets/vendors/language-switcher/jquery.polyglot.language.switcher.js' %}"></script>
     <script src="{% static  'assets/vendors/aos/aos.js' %}"></script>
+    <script src="{% static  'https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js' %}"></script>
+
 
     <!--  js -->
     <script src="{% static  'assets/js/custom.js' %}"></script>

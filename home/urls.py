@@ -9,6 +9,7 @@ urlpatterns = [
     path('news/',news,name='news'),
     path('services/',services,name='services'),
     path('gallery/',gallery,name='gallery'),
+    path('downloads/',downloads,name='downloads'),
     path('emicalculator/',emicalculator,name='emicalculator'),
     path('getcontact/',getcontact,name='getcontact'),
     path('galleryview/<str:id>',galleryview,name='galleryview'),

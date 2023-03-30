@@ -1,0 +1,40 @@
+{% extends 'admin/admin_home.html' %}
+{% load static %}
+{% block titlehead %}
+Customer Contact Details
+{% endblock titlehead %}
+{% block contentadmin %}
+            <div class="container">
+                <div id="contactable" style="margin-top: 145px !important;">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      
+                      <th scope="col">Name</th>
+                      <th scope="col">Phone</th>
+                      <th scope="col">Subject</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Delete</th>
+                      <th scope="col">View</th>
+                    </tr>
+                  </thead>
+                  {% for c in contact %}
+                  <tbody>
+                    <tr>
+                      <td>{{c.name}}</td>
+                      <td>{{c.phone}}</td>
+                      <td>{{c.subject}}</td>
+                      <td>{{c.date}}</td>
+                      <td><a href="{% url 'deletecontact' c.id %}"><button type="button" class="btn btn-primary"><small>Delete</small></button></a></td>
+                      <th scope="row"><a href="{% url 'contactviewsingle' c.id %}"><button type="button" class="btn btn-primary"><small>View</small></button></a></th>
+
+                    </tr>
+                  </tbody>
+                
+                  {% endfor %}
+                </table>
+              </div>
+              </div>
+   
+
+{% endblock contentadmin %}

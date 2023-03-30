@@ -4,43 +4,41 @@
 {% block content%}
 
     <style>
-        #sliderbanner1{
-            background-image: url("{% static 'assets/images/slides/slide-v3-3.JPG' %}");
-        }
         #sliderbanner2{
-            background-image: url("{% static 'assets/images/slides/slide-v3-1.JPG' %}");
+            background-image: url("{% static 'assets/images/slides/slider-1.jpg' %}");background-size: contain;
+        }
+        #sliderbanner1{
+            background-image: url("{% static 'assets/images/slides/slider-2.jpg' %}");background-size: contain;
         }
         #sliderbanner3{
-            background-image: url("{% static 'assets/images/slides/slide-v3-2.JPG' %}");
+            background-image: url("{% static 'assets/images/slides/slider-3.jpg' %}");background-size: contain;
         }
+        @media only screen and (max-width: 450px) {
+    .responsive-about-pic{
+    display: none;
+}
+}
     </style>
 
     <!-- Start preloader -->
-    <div class="loader-wrap">
-        <div class="preloader">
-            <div class="preloader-close">x</div>
-            <div id="handle-preloader" class="handle-preloader">
-                <div class="animation-preloader">
-                    <div class="spinner"></div>
-                    <div class="txt-loading">
-                        <span data-text-preloader="K" class="letters-loading">
-                            K
-                        </span>
-                        <span data-text-preloader="C" class="letters-loading">
-                            C
-                        </span>
-                        <span data-text-preloader="R" class="letters-loading">
-                            R
-                        </span>
-                        <span data-text-preloader="B" class="letters-loading">
-                            B
-                        </span>
-
-                    </div>
-                </div>
+      <div id="simpleModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!--<div class="modal-header">
+               
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>-->
+            <div class="modal-body">
+               
+ <img src="{% static 'assets/images/kcrb/openingpic.jpg' %}" alt="">
             </div>
+           
         </div>
     </div>
+</div>
+
     <!-- End preloader -->
 
         <!--Main Slider Start-->
@@ -79,13 +77,7 @@
                                                     and dislike men who are so beguiled.
                                                 </p>
                                             </div>
-                                            <div class="btns-box">
-                                                <a class="btn-one" href="\services">
-                                                    <span class="txt">
-                                                        Start Your Investment
-                                                    </span>
-                                                </a>
-                                            </div>
+                                          
                                         </div>
                                     </div>
                                 </div>
@@ -110,13 +102,7 @@
                                                     and dislike men who are so beguiled.
                                                 </p>
                                             </div>
-                                            <div class="btns-box">
-                                                <a class="btn-one" href="\services">
-                                                    <span class="txt">
-                                                        Our Services
-                                                    </span>
-                                                </a>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -143,13 +129,7 @@
                                                     and dislike men who are so beguiled.
                                                 </p>
                                             </div>
-                                            <div class="btns-box">
-                                                <a class="btn-one" href="\contactpage">
-                                                    <span class="txt">
-                                                        Make Payment
-                                                    </span>
-                                                </a>
-                                            </div>
+                                          
                                         </div>
                                     </div>
                                 </div>
@@ -177,25 +157,28 @@
         </section>
         <!--Main Slider End-->
 
+<section class="responsive-class">
+    <img src="{% static 'assets/images/slides/slider-2.jpg' %}" alt="Mohammed Riyas( Minister for Public Works Department and Tourism, Government of Kerala)">
 
+</section>
 
-
+<br>
         <!--Start Intro Style1 Area-->
         <section id="about" class="intro-style1-area" style="background-color: #f5f8f7;">
             <div class="container">
                 <div class="row">
 
-                    <div class="col-xl-6">
+                    <div class="col-xl-6 responsive-about-pic">
                         <div class="intro-style1-video-gallery">
-                            <div class="intro-style1-video-gallery-bg" style="background-image: url('static/assets/images/resources/intro-style1-video-gallery.JPG');">
+                            <div class="intro-style1-video-gallery-bg" style="background-image: url('static/assets/images/resources/intro-style1-video-gallery.jpg');">
                             </div>
-                            <div class="intro-video-gallery-style1">
+                            <!-- <div class="intro-video-gallery-style1">
                                 <div class="icon wow zoomIn animated" data-wow-delay="300ms" data-wow-duration="1500ms">
                                     <a class="video-popup" title="Video Gallery" href="https://www.youtube.com/watch?v=06dV9txztKY">
                                         <span class="icon-play-button-1"></span>
                                     </a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
@@ -215,8 +198,7 @@
 
                                     എല്ലാവിധ ബാങ്കിംഗ് ഇടപാടുകൾ നടത്തുന്നു</p>
 
-                                <p>Choice is untrammelled and when nothing prevents our being able to do
-                                    what we like best every pleasure is to be welcomed. </p>
+                                
                             </div>
 
                             <div class="row">
@@ -225,14 +207,14 @@
                                     <div class="intro-style1-single-box">
                                         <div class="img-box">
                                             <div class="img-box-inner">
-                                                <img  src="{% static 'assets/images/resources/intro-style1-1.JPG' %}" alt="">
+                                                <img  src="{% static 'assets/images/resources/intro-style1-1.jpg' %}" alt="">
                                             </div>
                                             <div class="overlay-text">
                                                 <h3>Our Journey</h3>
                                             </div>
                                         </div>
                                         <div class="title-box">
-                                            <h3><a href="#">For Over Four Decades Our Bank</a></h3>
+                                            <h3><a href="\about">For Over Four Decades Our Bank</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -242,14 +224,14 @@
                                     <div class="intro-style1-single-box">
                                         <div class="img-box">
                                             <div class="img-box-inner">
-                                                <img  src="{% static 'assets/images/resources/intro-style1-2.JPG' %}" alt="">
+                                                <img  src="{% static 'assets/images/resources/intro-style1-2.jpg' %}" alt="">
                                             </div>
                                             <div class="overlay-text">
                                                 <h3>Our Team</h3>
                                             </div>
                                         </div>
                                         <div class="title-box">
-                                            <h3><a href="#">Passion & Professional Management</a></h3>
+                                            <h3><a href="\about">Passion & Professional Management</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -274,7 +256,7 @@
 
                     <div class="col-xl-5 width100">
                         <div class="service-request-content-one">
-                            <div class="service-request-content-one-bg" style="background-image: url('static/assets/images/resources/service-request-content-one-bg.JPG');">
+                            <div class="service-request-content-one-bg" style="background-image: url('static/assets/images/resources/service-request-content-one-bg.jpg');">
                             </div>
                             <div class="service-request-content-one__title">
                                 <div class="sec-title">
@@ -289,7 +271,7 @@
 
                     <div class="col-xl-7 width100">
                         <div class="service-request-content-two">
-                            <div class="service-request-content-two-bg" style="background-image: url('static/assets/images/resources/service-request-content-two-bg.JPG');">
+                            <div class="service-request-content-two-bg" style="background-image: url('static/assets/images/resources/service-request-content-two-bg.jpg');">
                             </div>
                             <div class="service-request-content-two__inner">
                                 <ul class="row">
@@ -587,15 +569,15 @@
                                     <div class="inner-title">
                                         <div class="arrow-top"></div>
                                         <div class="arrow-bottom"></div>
-                                        <h3><a href="#">Neethi Medicals</a></h3>
+                                        <h3><a href="#">1Neethi Medicals</a></h3>
                                         <div class="right-arrow-btn">
                                             <a href="#"><span class="icon-right-arrow"></span></a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="text-box">
-                                    <p>Address</p>
-                                    <p>Phone</p>
+                                    <p>04952802045</p>
+                                    <p>Working time: 9 AM – 8 PM</p>
                                 </div>
                             </div>
                             <!--End Single Wealth Secure Box-->
@@ -614,8 +596,8 @@
                                     </div>
                                 </div>
                                 <div class="text-box">
-                                   <p>Address</p>
-                                    <p>Phone</p>
+                                   <p>Neethi Store</p>
+                                    <p>Working time: 10 AM – 7.30 PM</p>
                                 </div>
                             </div>
                             <!--End Single Wealth Secure Box-->
@@ -634,8 +616,8 @@
                                     </div>
                                 </div>
                                 <div class="text-box">
-                                   <p>Address</p>
-                                    <p>Phone</p>
+                                   <p>0495 2520245, 9037593186</p>
+                                    <p>Working time: 6.30 AM – 5 PM</p>
                                 </div>
                             </div>
                             <!--End Single Wealth Secure Box-->
@@ -643,7 +625,7 @@
                             <div class="single-wealth-secure-box style3">
                                 <div class="img-box">
                                     <div class="img-box-inner">
-                                        <img width="340" height="350" src="{% static 'assets/images/other-services/pic5.JPG' %}" alt="" decoding="async" srcset="" /> </div>
+                                        <img width="340" height="350" src="{% static 'assets/images/other-services/pic6.JPG' %}" alt="" decoding="async" srcset="" /> </div>
                                     <div class="inner-title">
                                         <div class="arrow-top"></div>
                                         <div class="arrow-bottom"></div>
@@ -654,31 +636,12 @@
                                     </div>
                                 </div>
                                 <div class="text-box">
-                                   <p>Address</p>
-                                    <p>Phone</p>
+                                   <p>Working time: 8 AM – 12 PM 3 PM -5 PM</p>
+                                  
                                 </div>
                             </div>
                             <!--End Single Wealth Secure Box-->
-                            <!--Start Single Wealth Secure Box-->
-                            <div class="single-wealth-secure-box style2">
-                                <div class="img-box">
-                                    <div class="img-box-inner">
-                                        <img width="340" height="350" src="{% static 'assets/images/other-services/pic5.JPG' %}" alt="" decoding="async" srcset="" /> </div>
-                                    <div class="inner-title">
-                                        <div class="arrow-top"></div>
-                                        <div class="arrow-bottom"></div>
-                                        <h3><a href="#">Janaseva Kendram</a></h3>
-                                        <div class="right-arrow-btn">
-                                            <a href="#"><span class="icon-right-arrow"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-box">
-                                   <p>Address</p>
-                                    <p>Phone</p>
-                                </div>
-                            </div>
-                            <!--End Single Wealth Secure Box-->
+                          
                             <!--Start Single Wealth Secure Box-->
                             <div class="single-wealth-secure-box style4">
                                 <div class="img-box">
@@ -694,8 +657,8 @@
                                     </div>
                                 </div>
                                 <div class="text-box">
-                                    <p>Address</p>
-                                    <p>Phone</p>
+                                    <p>Working time: 10 AM – 5 PM</p>
+                                   
                                 </div>
                             </div>
                             <!--End Single Wealth Secure Box-->
@@ -707,38 +670,17 @@
                                     <div class="inner-title">
                                         <div class="arrow-top"></div>
                                         <div class="arrow-bottom"></div>
-                                        <h3><a href="#">Neethi Medical Lab</a></h3>
+                                        <h3><a href="#">Neethi Medical Lab&amp; X Ray Center</a></h3>
                                         <div class="right-arrow-btn">
                                             <a href="#"><span class="icon-right-arrow"></span></a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="text-box">
-                                    <p>Address</p>
-                                    <p>Phone</p>
+                                    <p>0495 2803246 , 8078372245</p>
+                                    <p>Working time: 6.30 AM – 7 PM</p>
                                 </div>
                             </div>
-                            <!--End Single Wealth Secure Box-->
-                            <!--Start Single Wealth Secure Box-->
-                            <div class="single-wealth-secure-box style3">
-                                <div class="img-box">
-                                    <div class="img-box-inner">
-                                        <img width="340" height="350" src="{% static 'assets/images/other-services/pic5.JPG' %}" alt="" decoding="async" srcset="" /> </div>
-                                    <div class="inner-title">
-                                        <div class="arrow-top"></div>
-                                        <div class="arrow-bottom"></div>
-                                        <h3><a href="#">Pension Schemes</a></h3>
-                                        <div class="right-arrow-btn">
-                                            <a href="#"><span class="icon-right-arrow"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-box">
-                                    <p>Demoralized and beguiled by charms pleasure of the moment so blinded by they cannot and trouble.</p>
-                                </div>
-                            </div>
-                            <!--End Single Wealth Secure Box-->
-                            <!--Start Single Wealth Secure Box-->
                             <div class="single-wealth-secure-box style2">
                                 <div class="img-box">
                                     <div class="img-box-inner">
@@ -746,37 +688,19 @@
                                     <div class="inner-title">
                                         <div class="arrow-top"></div>
                                         <div class="arrow-bottom"></div>
-                                        <h3><a href="#">Traides FX</a></h3>
+                                        <h3><a href="#">Janaseva Kendram</a></h3>
                                         <div class="right-arrow-btn">
                                             <a href="#"><span class="icon-right-arrow"></span></a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="text-box">
-                                    <p>Beguiled and demoralized by charms pleasure of the moment so blinded by they cannot and trouble.</p>
+                                    <p>+918075670467</p>
+                                    <p>Working time: 10 AM – 5 PM</p>
                                 </div>
                             </div>
-                            <!--End Single Wealth Secure Box-->
-                            <!--Start Single Wealth Secure Box-->
-                            <div class="single-wealth-secure-box style3">
-                                <div class="img-box">
-                                    <div class="img-box-inner">
-                                        <img width="340" height="350" src="{% static 'assets/images/other-services/pic5.JPG' %}" alt="" decoding="async" srcset="" /> </div>
-                                    <div class="inner-title">
-                                        <div class="arrow-top"></div>
-                                        <div class="arrow-bottom"></div>
-                                        <h3><a href="#">Multii Currency a/c</a></h3>
-                                        <div class="right-arrow-btn">
-                                            <a href="#"><span class="icon-right-arrow"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-box">
-                                    <p>Cases are perfectly simple &#038; easy to distinguish in a free hour when power of choice is prevents.</p>
-                                </div>
-                            </div>
-                            <!--End Single Wealth Secure Box-->
-
+                           
+                         
                         </div>
                     </div>
                 </div>
@@ -1315,7 +1239,7 @@
                         <div class="single-blog-style1 single-blog-style1--style2">
                             <div class="img-holder">
                                 <div class="inner">
-                                    <img  src="{% static 'assets/images/blog/blog-v2-1.JPG' %}" alt="">
+                                    <img  src="{% static 'assets/images/blog/blog-v2-1.jpg' %}" alt="">
                                     <div class="overlay-icon">
                                         <a href="{% url 'newsingle' singlerecent.id %}">
                                             <span class="icon-right-arrow"></span>
@@ -1365,7 +1289,7 @@
                         <div class="single-blog-style1 single-blog-style1--style2">
                             <div class="img-holder">
                                 <div class="inner">
-                                    <img  src="{% static 'assets/images/blog/blog-v2-2.JPG' %}" alt="">
+                                    <img  src="{% static 'assets/images/blog/blog-v2-2.jpg' %}" alt="">
                                     <div class="overlay-icon">
                                         <a href="news-single.html">
                                             <span class="icon-right-arrow"></span>
@@ -1459,8 +1383,8 @@
                                     </div>
                                     <div class="text">
                                         <p>Front Desk</p>
-                                        <h3><a href="tel:123456789">0495 2800 245</a></h3>
-                                        <h3><a href="mailto:yourmail@email.com">kgmruralbank@gmail.com</a></h3>
+                                        <h3><a href="">0495 2800 245</a></h3>
+                                        <h3><a href="mailto:kgmruralbank@gmail.com">kgmruralbank@gmail.com</a></h3>
                                     </div>
                                 </li>
                             </ul>
@@ -1555,107 +1479,46 @@
         </section>
         <!--End Main Contact Form Area-->
 
-        <!--Start Partner Area-->
-        <section class="partner-style2-area">
-            <div class="container">
-                <div class="brand-content">
-                    <div class="owl-carousel owl-theme thm-owl__carousel partner-carousel" data-owl-options='{
-                        "loop": false,
-                        "autoplay": true,
-                        "margin": 25,
-                        "nav": false,
-                        "dots": false,
-                        "smartSpeed": 500,
-                        "autoplayTimeout": 10000,
-                        "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
-                        "responsive": {
-                                "0": {
-                                    "items": 3
-                                },
-                                "768": {
-                                    "items": 4
-                                },
-                                "992": {
-                                    "items": 5
-                                },
-                                "1200": {
-                                    "items": 6
-                                }
-                            }
-                        }'>
-
-                        <!--Start Single Partner Logo Box-->
-                        <div class="single-partner-logo-box">
-                            <a href="#"><img src="static/assets/images/brand/brand-1-1.png" alt="Awesome Image"></a>
-                        </div>
-                        <!--End Single Partner Logo Box-->
-                        <!--Start Single Partner Logo Box-->
-                        <div class="single-partner-logo-box">
-                            <a href="#"><img src="static/assets/images/brand/brand-1-2.png" alt="Awesome Image"></a>
-                        </div>
-                        <!--End Single Partner Logo Box-->
-                        <!--Start Single Partner Logo Box-->
-                        <div class="single-partner-logo-box">
-                            <a href="#"><img src="static/assets/images/brand/brand-1-3.png" alt="Awesome Image"></a>
-                        </div>
-                        <!--End Single Partner Logo Box-->
-                        <!--Start Single Partner Logo Box-->
-                        <div class="single-partner-logo-box">
-                            <a href="#"><img src="static/assets/images/brand/brand-1-4.png" alt="Awesome Image"></a>
-                        </div>
-                        <!--End Single Partner Logo Box-->
-                        <!--Start Single Partner Logo Box-->
-                        <div class="single-partner-logo-box">
-                            <a href="#"><img src="static/assets/images/brand/brand-1-5.png" alt="Awesome Image"></a>
-                        </div>
-                        <!--End Single Partner Logo Box-->
-                        <!--Start Single Partner Logo Box-->
-                        <div class="single-partner-logo-box">
-                            <a href="#"><img src="static/assets/images/brand/brand-1-6.png" alt="Awesome Image"></a>
-                        </div>
-                        <!--End Single Partner Logo Box-->
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--End Partner Area-->
         <!--Start slogan area-->
         <section class="slogan-area slogan-area--style2">
-            <div class="container">
-                <div class="slogan-content-box slogan-content-box--style2">
-                    <div class="slogan-content-box-bg" style="background-image: url('static/assets/images/backgrounds/slogan-content-box-bg.JPG');"></div>
-                    <div class="inner-title">
-                        <h2>Experience a New Digital World.</h2>
-                        <p>Mobile banking application with new & exciting features.</p>
-                    </div>
-                    <div class="get-app-box">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <div class="icon">
-                                        <span class="icon-play-store"></span>
-                                    </div>
-                                    <div class="text">
-                                        <h4>Download</h4>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="style2" href="#">
-                                    <div class="icon">
-                                        <span class="icon-apple"></span>
-                                    </div>
-                                    <div class="text">
-                                        <h4>Download</h4>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="slogan-content-box slogan-content-box--style2">
+            <div class="slogan-content-box-bg"></div>
+            <div class="inner-title">
+                <h2>Now Experience a New Digital World.</h2>
+                <p>Mobile banking application with new & exciting features we can Download Now</p>
             </div>
-        </section>
+            <div class="get-app-box">
+                <ul>
+                    <li>
+                        <a href="https://play.google.com/store/apps/details?id=com.mscore.kunnamangalam_1">
+                            <div class="icon">
+                                <span class="icon-play-store"></span>
+                            </div>
+                            <div class="text">
+                                <h4>Download the APP</h4>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
         <!--End slogan area-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    window.onload = function () {
+        OpenBootstrapPopup();
+    };
+    function OpenBootstrapPopup() {
+        $("#simpleModal").modal('show');
+    }
+</script>
+
+
+
 
 
         <!--Start footer area -->

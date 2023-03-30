@@ -1,0 +1,1520 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content%}
+
+    <style>
+        #sliderbanner1{
+            background-image: url("{% static 'assets/images/slides/slider-1.JPG' %}");background-size: contain;
+        }
+        #sliderbanner2{
+            background-image: url("{% static 'assets/images/slides/slider-2.JPG' %}");background-size: contain;
+        }
+        #sliderbanner3{
+            background-image: url("{% static 'assets/images/slides/slider-3.JPG' %}");background-size: contain;
+        }
+    </style>
+
+    <!-- Start preloader -->
+      <div id="simpleModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!--<div class="modal-header">
+               
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>-->
+            <div class="modal-body">
+               
+ <img src="{% static 'assets/images/kcrb/openingpic.jpg' %}" alt="">
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+    <!-- End preloader -->
+
+        <!--Main Slider Start-->
+        <section id="home" class="main-slider main-slider-style3">
+            <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
+                "effect": "fade",
+                "pagination": {
+                "el": "#main-slider-pagination",
+                "type": "bullets",
+                "clickable": true
+                },
+                "navigation": {
+                "nextEl": "#main-slider__swiper-button-next",
+                "prevEl": "#main-slider__swiper-button-prev"
+                },
+                "autoplay": {
+                "delay": 5000
+                }}'>
+
+                <div class="swiper-wrapper">
+                    <!--Start Single Swiper Slide-->
+                    <div class="swiper-slide">
+                        <div class="image-layer" id="sliderbanner1">
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="main-slider-content">
+                                        <div class="main-slider-content__inner">
+                                            <div class="big-title">
+                                                <h2>Make Yourself<br> Richer and Smarter</h2>
+                                            </div>
+                                            <div class="text">
+                                                <p>
+                                                    On the other hand, we denounce with righteous indignation<br>
+                                                    and dislike men who are so beguiled.
+                                                </p>
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Start Single Swiper Slide-->
+                    <div class="swiper-slide">
+                        <div class="image-layer" id="sliderbanner2">
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="main-slider-content">
+                                        <div class="main-slider-content__inner">
+                                            <div class="big-title">
+                                                <h2>Convenient<br> Banking Options</h2>
+                                            </div>
+                                            <div class="text">
+                                                <p>
+                                                    On the other hand, we denounce with righteous indignation<br>
+                                                    and dislike men who are so beguiled.
+                                                </p>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Single Swiper Slide-->
+
+                    <!--Start Single Swiper Slide-->
+                    <div class="swiper-slide">
+                        <div class="image-layer" id="sliderbanner3">
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="main-slider-content">
+                                        <div class="main-slider-content__inner">
+                                            <div class="big-title">
+                                                <h2>Make a Pay<br> Anyone & Anywhere</h2>
+                                            </div>
+                                            <div class="text">
+                                                <p>
+                                                    On the other hand, we denounce with righteous indignation<br>
+                                                    and dislike men who are so beguiled.
+                                                </p>
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Single Swiper Slide-->
+
+
+                    <!--End Single Swiper Slide-->
+
+                </div>
+
+                <!-- If we need navigation buttons -->
+                <div class="main-slider__nav main-slider__nav--style3">
+                    <div class="swiper-button-prev" id="main-slider__swiper-button-next">
+                        <i class="icon-chevron left"></i>
+                    </div>
+                    <div class="swiper-button-next" id="main-slider__swiper-button-prev">
+                        <i class="icon-chevron right"></i>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!--Main Slider End-->
+
+<section class="responsive-class">
+    <img src="{% static 'assets/images/slides/slider-1.jpg' %}" alt="Mohammed Riyas( Minister for Public Works Department and Tourism, Government of Kerala)">
+
+</section>
+
+<br>
+        <!--Start Intro Style1 Area-->
+        <section id="about" class="intro-style1-area" style="background-color: #f5f8f7;">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-xl-6">
+                        <div class="intro-style1-video-gallery">
+                            <div class="intro-style1-video-gallery-bg" style="background-image: url('static/assets/images/resources/intro-style1-video-gallery.JPG');">
+                            </div>
+                            <div class="intro-video-gallery-style1">
+                                <div class="icon wow zoomIn animated" data-wow-delay="300ms" data-wow-duration="1500ms">
+                                    <a class="video-popup" title="Video Gallery" href="https://www.youtube.com/watch?v=06dV9txztKY">
+                                        <span class="icon-play-button-1"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="intro-style1-content-box">
+                            <div class="sec-title">
+                                <h2>Kunnamangalam Co-Operative Rural Bank</h2>
+                            </div>
+                            <div class="text">
+                                <p class="font">ജില്ലയിലെ പ്രമുഖ CLASS (സ്പെഷ്യൽ ഗ്രേഡ് ബാങ്ക്.
+
+                                    പ്രവർത്തനമൂലധനം 200 കോടിയിലധികം
+
+                                    അംഗങ്ങൾക്ക് ലാഭവിഹിതം നൽകുന്നു
+
+                                    നിക്ഷേപങ്ങൾക്ക് ഉയർന്ന പലിശ
+
+                                    എല്ലാവിധ ബാങ്കിംഗ് ഇടപാടുകൾ നടത്തുന്നു</p>
+
+                                
+                            </div>
+
+                            <div class="row">
+                                <!--Start Intro Style1 Single Box-->
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-6">
+                                    <div class="intro-style1-single-box">
+                                        <div class="img-box">
+                                            <div class="img-box-inner">
+                                                <img  src="{% static 'assets/images/resources/intro-style1-1.JPG' %}" alt="">
+                                            </div>
+                                            <div class="overlay-text">
+                                                <h3>Our Journey</h3>
+                                            </div>
+                                        </div>
+                                        <div class="title-box">
+                                            <h3><a href="\about">For Over Four Decades Our Bank</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End Intro Style1 Single Box-->
+                                <!--Start Intro Style1 Single Box-->
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-6">
+                                    <div class="intro-style1-single-box">
+                                        <div class="img-box">
+                                            <div class="img-box-inner">
+                                                <img  src="{% static 'assets/images/resources/intro-style1-2.JPG' %}" alt="">
+                                            </div>
+                                            <div class="overlay-text">
+                                                <h3>Our Team</h3>
+                                            </div>
+                                        </div>
+                                        <div class="title-box">
+                                            <h3><a href="\about">Passion & Professional Management</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End Intro Style1 Single Box-->
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--End Intro Style1 Area-->
+
+
+
+
+        <!--Start Service Request Area-->
+        <section class="service-request-area">
+            <div class="container">
+                <div class="row service-request-area__inner">
+
+                    <div class="col-xl-5 width100">
+                        <div class="service-request-content-one">
+                            <div class="service-request-content-one-bg" style="background-image: url('static/assets/images/resources/service-request-content-one-bg.JPG');">
+                            </div>
+                            <div class="service-request-content-one__title">
+                                <div class="sec-title">
+                                    <h2>Our <br> Banking Services</h2>
+                                    <div class="sub-title">
+                                        <!--<p>List of our banking service & query requests all in one place.</p>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-7 width100">
+                        <div class="service-request-content-two">
+                            <div class="service-request-content-two-bg" style="background-image: url('static/assets/images/resources/service-request-content-two-bg.JPG');">
+                            </div>
+                            <div class="service-request-content-two__inner">
+                                <ul class="row">
+
+                                    <!--Start Single Service Request Content Box-->
+
+                                    <!--End Single Service Request Content Box-->
+                                    <!--Start Single Service Request Content Box-->
+                                    <li class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                                        <div class="single-service-request-content-box">
+                                            <div class="static-content">
+                                                <div class="icon">
+                                                    <img  src="{% static 'assets/images/icon/thm-icon-5.png' %}" alt="">
+                                                </div>
+                                                <div class="inner-title">
+                                                    <h3>Mobile App Fecility</h3>
+                                                    <h4>Banking</h4>
+                                                </div>
+                                            </div>
+                                            <div class="overlay-content">
+                                                <div class="title">
+                                                    <h3>Mobile App Fecility</h3>
+                                                </div>
+                                                <ul>
+                                                    <p>
+                                                  Mobile app facility is a solution that allows businesses to create and manage their own mobile applications.
+                                                    </p>
+                                                    <p> It can be used for a variety of purposes, including customer engagement, sales, marketing, and customer service.</p>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!--End Single Service Request Content Box-->
+                                    <!--Start Single Service Request Content Box-->
+                                    <li class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                                        <div class="single-service-request-content-box">
+                                            <div class="static-content">
+                                                <div class="icon">
+                                                    <img  src="{% static 'assets/images/icon/thm-icon-6.png' %}" alt="">
+                                                </div>
+
+                                                <div class="inner-title">
+                                                    <h3>Free rent Locker Facility</h3>
+                                                    <h4>Changing</h4>
+                                                </div>
+                                            </div>
+                                            <div class="overlay-content">
+                                                <div class="title">
+                                                    <h3>Service Request</h3>
+                                                </div>
+                                                <ul>
+                                                    <p>These facilities allow customers to store their items securely while they shop or conduct business. </p>
+                                                    <p>The lockers are typically accessed by key or combination code</p>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+                                    <!--End Single Service Request Content Box-->
+
+
+                                    <!--Start Single Service Request Content Box-->
+                                    <li class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                                        <div class="single-service-request-content-box">
+                                            <div class="static-content">
+                                                <div class="icon">
+                                                    <img  src="{% static 'assets/images/icon/thm-icon-4.png' %}" alt="">
+                                                </div>
+
+                                                <div class="inner-title">
+                                                    <h3>Cheque / DD & Debit Card</h3>
+                                                    <h4>Service</h4>
+                                                </div>
+                                            </div>
+                                            <div class="overlay-content">
+                                                <div class="title">
+                                                    <h3>Service Request</h3>
+                                                </div>
+                                                <ul>
+                                                    <p>offer cheque and debit card facilities to their customers.</p>
+                                                    <p>The customer can access these services and use their debit card to make payments.</p>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!--End Single Service Request Content Box-->
+                                    <!--Start Single Service Request Content Box-->
+                                    <li class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                                        <div class="single-service-request-content-box">
+                                            <div class="static-content">
+                                                <div class="icon">
+                                                    <img  src="{% static 'assets/images/icon/thm-icon-2.png' %}" alt="">
+                                                </div>
+
+                                                <div class="inner-title">
+                                                    <h3>RTGS-NEFT Fund Transfer Facility</h3>
+                                                    <h4>Related</h4>
+                                                </div>
+                                            </div>
+                                            <div class="overlay-content">
+                                                <div class="title">
+                                                    <h3>Service Request</h3>
+                                                </div>
+                                                <ul>
+                                                    <p>
+                                                    RTGS refers to fund transfer systems in which the transfer of money or securities takes place from one bank to another on a 'real time' and on 'gross' basis.
+                                                    </p>
+                                                    
+                                                   <p>
+                                                   NEFT is an electronic funds transfer system which enables transfer of funds to other bank accounts across the country. 
+                                                    </p>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!--End Single Service Request Content Box-->
+                                    <!--Start Single Service Request Content Box-->
+                                    <li class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                                        <div class="single-service-request-content-box">
+                                            <div class="static-content">
+                                                <div class="icon">
+                                                    <img  src="{% static 'assets/images/icon/thm-icon-3.png' %}" alt="">
+                                                </div>
+
+                                                <div class="inner-title">
+                                                    <h3>Special Loan & Deposit Schemes </h3>
+                                                    <h4>Alerts</h4>
+                                                </div>
+                                            </div>
+                                            <div class="overlay-content">
+                                                <div class="title">
+                                                    <h3>Service Request</h3>
+                                                </div>
+                                                <!--<ul>
+                                                    <li>Block Debit / ATM Card</li>
+                                                    <li>Generate Debit Card Pin Num</li>
+                                                    <li>Unlock Debit / ATM Card</li>
+                                                    <li>Reissue Lost Debit / ATM Card</li>
+                                                    <li>Block Credit Card</li>
+                                                </ul>-->
+                                                <p>designed to provide financial assistance to specific groups of people or businesses.</p>
+                                                <p>Its may offer lower interest rates, flexible repayment options, and other benefits. Examples of special loan and deposit schemes include microfinance loans, student loans, and agricultural loans.</p>
+                                                
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                                        <div class="single-service-request-content-box special-readmore">
+                                            <div class="static-content">
+                                                <div class="icon">
+                                                    <a href="\services"></a><img src="{% static 'assets/images/icon/thm-icon-1.png' %}" alt=""></a>
+                                                </div>
+                                                <div class="more-btn">
+                                                    <a href="#">
+                                                        <a href="\services"><span class="icon-right-arrow"></span></a>
+                                                    </a>
+                                                </div>
+                                                <div class="inner-title">
+                                                    <a href="\services"><h3>Read More</h3></a>
+                                                    <h4></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!--End Single Service Request Content Box-->
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--End Service Request Area-->
+
+
+
+
+
+        <!--Start Features Style4 Area-->
+        <section class="features-style4-area">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-xl-4">
+                        <div class="features-style4-title-box">
+                            <div class="sec-title">
+                                <h2>KCRB<br> Super Savings<br> a/c in 5 Mins</h2>
+                                <div class="sub-title">
+                                    <p>Opening a savings account is now easier than ever. The process can be completed in as little as five minutes and you can start earning interest on your money right away. </p>
+                                </div>
+                            </div>
+                            <div class="btns-box">
+                                <a class="btn-one" href="\contactpage">
+                                    <span class="txt">Open an Account</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-3">
+                        <div class="app-screen">
+                            <img src="{% static 'assets/images/resources/app-screen.png' %}" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-xl-5 col-lg-9 col-md-9">
+                        <div class="account-creation-step">
+                            <ul>
+                                <li>
+                                    <div class="single-step">
+                                        <div class="counting">01</div>
+                                        <div class="text-box">
+                                            <h3>Submit Documents</h3>
+                                            <p>you will need to provide a valid form of identification such as a driver’s license or passport and proof of address</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="single-step">
+                                        <div class="counting">02</div>
+                                        <div class="text-box">
+                                            <h3>KYC Verification</h3>
+                                            <p>Identification and verification of the client's identity are required by the KYC check process.</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="single-step">
+                                        <div class="counting lnone">03</div>
+                                        <div class="text-box">
+                                            <h3>Open an a/c & Deposit</h3>
+                                            <p>Once you have filled out the necessary forms, you can make your deposit. You may be able to make a deposit by cash, check, or electronic transfer. </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--End Features Style4 Area-->
+
+
+
+        <!--Start Wealth Secure Area-->
+        <section class="wealth-secure-area">
+            <div class="container">
+                <div class="sec-title text-center">
+                    <h2>Other Services</h2>
+                    <div class="sub-title">
+                        <p>Don’t just make a deposit, make an investment today.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="owl-carousel owl-theme thm-owl__carousel wealth-secure-carousel-2 owl-nav-style-one" data-owl-options='{
+                            "loop": true,
+                            "autoplay": true,
+                            "margin": 30,
+                            "nav": false,
+                            "dots": true,
+                            "smartSpeed": 500,
+                            "autoplayTimeout": 10000,
+                            "navText": ["<span class=\"left icon-right-arrow\"></span>","<span class=\"right icon-right-arrow\"></span>"],
+                            "responsive": {
+                                    "0": {
+                                        "items": 2
+                                    },
+                                    "768": {
+                                        "items": 2
+                                    },
+                                    "992": {
+                                        "items": 3
+                                    },
+                                    "1200": {
+                                        "items": 4
+                                    }
+                                }
+                            }'>
+
+                            <!--Start Single Wealth Secure Box-->
+                            <div class="single-wealth-secure-box style2">
+                                <div class="img-box">
+                                    <div class="img-box-inner">
+                                        <img loading="lazy" width="340" height="350" src="{% static 'assets/images/other-services/pic3.JPG' %}" alt="" decoding="async" srcset="" /> </div>
+                                    <div class="inner-title">
+                                        <div class="arrow-top"></div>
+                                        <div class="arrow-bottom"></div>
+                                        <h3><a href="#">1Neethi Medicals</a></h3>
+                                        <div class="right-arrow-btn">
+                                            <a href="#"><span class="icon-right-arrow"></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-box">
+                                    <p>04952802045</p>
+                                    <p>Working time: 9 AM – 8 PM</p>
+                                </div>
+                            </div>
+                            <!--End Single Wealth Secure Box-->
+                            <!--Start Single Wealth Secure Box-->
+                            <div class="single-wealth-secure-box style3">
+                                <div class="img-box">
+                                    <div class="img-box-inner">
+                                        <img width="340" height="350" src="{% static 'assets/images/other-services/pic1.JPG' %}" alt="" decoding="async" srcset="" /> </div>
+                                    <div class="inner-title">
+                                        <div class="arrow-top"></div>
+                                        <div class="arrow-bottom"></div>
+                                        <h3><a href="#">Neethi Store </a></h3>
+                                        <div class="right-arrow-btn">
+                                            <a href="#"><span class="icon-right-arrow"></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-box">
+                                   <p>Neethi Store</p>
+                                    <p>Working time: 10 AM – 7.30 PM</p>
+                                </div>
+                            </div>
+                            <!--End Single Wealth Secure Box-->
+                            <!--Start Single Wealth Secure Box-->
+                            <div class="single-wealth-secure-box style2">
+                                <div class="img-box">
+                                    <div class="img-box-inner">
+                                        <img width="340" height="350" src="{% static 'assets/images/other-services/pic5.JPG' %}" alt="" decoding="async" srcset="" /> </div>
+                                    <div class="inner-title">
+                                        <div class="arrow-top"></div>
+                                        <div class="arrow-bottom"></div>
+                                        <h3><a href="#">Neethi Build Mart</a></h3>
+                                        <div class="right-arrow-btn">
+                                            <a href="#"><span class="icon-right-arrow"></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-box">
+                                   <p>0495 2520245, 9037593186</p>
+                                    <p>Working time: 6.30 AM – 5 PM</p>
+                                </div>
+                            </div>
+                            <!--End Single Wealth Secure Box-->
+                            <!--Start Single Wealth Secure Box-->
+                            <div class="single-wealth-secure-box style3">
+                                <div class="img-box">
+                                    <div class="img-box-inner">
+                                        <img width="340" height="350" src="{% static 'assets/images/other-services/pic6.JPG' %}" alt="" decoding="async" srcset="" /> </div>
+                                    <div class="inner-title">
+                                        <div class="arrow-top"></div>
+                                        <div class="arrow-bottom"></div>
+                                        <h3><a href="#">Manure depot</a></h3>
+                                        <div class="right-arrow-btn">
+                                            <a href="#"><span class="icon-right-arrow"></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-box">
+                                   <p>Working time: 8 AM – 12 PM 3 PM -5 PM</p>
+                                  
+                                </div>
+                            </div>
+                            <!--End Single Wealth Secure Box-->
+                          
+                            <!--Start Single Wealth Secure Box-->
+                            <div class="single-wealth-secure-box style4">
+                                <div class="img-box">
+                                    <div class="img-box-inner">
+                                        <img width="340" height="350" src="{% static 'assets/images/other-services/pic5.JPG' %}" alt="" decoding="async" srcset="" /> </div>
+                                    <div class="inner-title">
+                                        <div class="arrow-top"></div>
+                                        <div class="arrow-bottom"></div>
+                                        <h3><a href="#">Karshika vipanana kendram</a></h3>
+                                        <div class="right-arrow-btn">
+                                            <a href="#"><span class="icon-right-arrow"></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-box">
+                                    <p>Working time: 10 AM – 5 PM</p>
+                                   
+                                </div>
+                            </div>
+                            <!--End Single Wealth Secure Box-->
+                            <!--Start Single Wealth Secure Box-->
+                            <div class="single-wealth-secure-box style2">
+                                <div class="img-box">
+                                    <div class="img-box-inner">
+                                        <img width="340" height="350" src="{% static 'assets/images/other-services/pic5.JPG' %}" alt="" decoding="async" srcset="" /> </div>
+                                    <div class="inner-title">
+                                        <div class="arrow-top"></div>
+                                        <div class="arrow-bottom"></div>
+                                        <h3><a href="#">Neethi Medical Lab&amp; X Ray Center</a></h3>
+                                        <div class="right-arrow-btn">
+                                            <a href="#"><span class="icon-right-arrow"></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-box">
+                                    <p>0495 2803246 , 8078372245</p>
+                                    <p>Working time: 6.30 AM – 7 PM</p>
+                                </div>
+                            </div>
+                            <div class="single-wealth-secure-box style2">
+                                <div class="img-box">
+                                    <div class="img-box-inner">
+                                        <img width="340" height="350" src="{% static 'assets/images/other-services/pic5.JPG' %}" alt="" decoding="async" srcset="" /> </div>
+                                    <div class="inner-title">
+                                        <div class="arrow-top"></div>
+                                        <div class="arrow-bottom"></div>
+                                        <h3><a href="#">Janaseva Kendram</a></h3>
+                                        <div class="right-arrow-btn">
+                                            <a href="#"><span class="icon-right-arrow"></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-box">
+                                    <p>+918075670467</p>
+                                    <p>Working time: 10 AM – 5 PM</p>
+                                </div>
+                            </div>
+                           
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End Wealth Secure Area-->
+
+
+
+
+        {% if emiseections %}
+        <section class="emi-calculator-style2-area">
+            <div class="container">
+                <div class="sec-title text-center">
+                    <h2>Flexible EMI Calculator Online</h2>
+                    <div class="sub-title">
+                        <p>Easily calculate your equated monthly instalment online.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="emi-calculator-tab emi-calculator-tab--style2">
+
+                            <div class="emi-calculator-tab__button">
+                                <div class="emi-calculator-tab__button--bg"></div>
+                                <ul class="tabs-button-box">
+                                    <li data-tab="#home-loan1" class="tab-btn-item active-btn-item">
+                                        <div class="icon-box">
+                                            <span class="icon- icon-loan-1"></span>
+                                            <div class="overlay-text">
+                                                <p>Home Loan</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li data-tab="#home-loan2" class="tab-btn-item ">
+                                        <div class="icon-box">
+                                            <span class="icon- icon-loan-2"></span>
+                                            <div class="overlay-text">
+                                                <p>Personal Loan</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li data-tab="#home-loan3" class="tab-btn-item ">
+                                        <div class="icon-box">
+                                            <span class="icon- icon-car-loan"></span>
+                                            <div class="overlay-text">
+                                                <p>Vehicle Loan</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="emi-calculator-tab-content-box-outer">
+                                <form action="{% url 'emicalculator' %}" method="post" >
+                                    {% csrf_token %}
+                                <!--Start Tabs Content Box-->
+                                <div class="tabs-content-box">
+                                    <!--Tab-->
+                                    <div class="tab-content-box-item tab-content-box-item-active" id="home-loan1">
+                                        <div class="emi-calculator-tab-content-box-item">
+                                                   {% for emi in emi %}
+
+                                            <div class="range-box">
+                                                <div class="row">
+                                                    <div class="col-lg-12 column">
+                                                        <div class="price-range-box">
+                                                            <div class="inner">
+                                                                <h4>Loan Amount</h4>
+                                                                <div class="price-range-slider"></div>
+                                                                <div class="range-input">
+                                                                    <div class="input">
+                                                                        <input type="text" class="property-amount" name="amount" readonly>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="right-box">
+                                                                <h5>{{emi.loanamout}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-12 column">
+                                                        <div class="loan-term-range-box">
+                                                            <div class="inner">
+                                                                <h4>Loan Term <span>(Years)</span></h4>
+                                                                <div class="loan-term-range-slider"></div>
+                                                                <div class="range-input">
+                                                                    <div class="input">
+                                                                        <input type="text" class="loan-term-range" name="loanterm" readonly>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="right-box">
+                                                                <h5>{{emi.loanterm}}Yrs</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-12 column">
+                                                        <div class="interest-rate-range-box">
+                                                            <div class="inner">
+                                                                <h4>Interest Rate</h4>
+                                                                <div class="interest-rate-range-slider"></div>
+                                                                <div class="range-input">
+                                                                    <div class="input">
+                                                                        <input type="text" class="interest-rate-range" name="interest" readonly>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="right-box">
+                                                                <h5>{{emi.intrestrate}}%</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                </div>
+                                            </div>
+
+                                            <div class="emi-calculator-output-box clearfix" id="emiform">
+                                                <div class="left-box">
+                                                    <div class="top">
+                                                        <div class="icon">
+                                                            <span class="icon- icon-loan-3"></span>
+                                                        </div>
+                                                        <div class="inner-title">
+                                                            <h3>Your Monthly EMI</h3>
+                                                            <h2><span>$ {{emi.monthlyemi}}</span></h2>
+                                                        </div>
+                                                    </div>
+                                                    <div class="btns-box">
+                                                        <a class="btn-one" href="">
+                                                            <button onclick="ExistingLogic()"><span class="txt">Apply Online</span></button>
+                                                            
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="right-box">
+                                                    <ul>
+
+                                                        <li>
+                                                            <div class="inner">
+                                                                <div class="icon">
+                                                                    <span class="icon-right-arrow"></span>
+                                                                </div>
+                                                                <div class="text">
+                                                                    <a href="#">Intrest Amount</a>
+                                                                    <p>$ {{emi.intrestamount}}</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                        <li>
+                                                            <div class="inner">
+                                                                <div class="icon">
+                                                                    <span class="icon-right-arrow"></span>
+                                                                </div>
+                                                                <div class="text">
+                                                                    <a href="#">Total Amount Payble</a>
+                                                                    <p>$ {{emi.totalamount}}</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <!--Tab-->
+                                    <div class="tab-content-box-item " id="home-loan2">
+                                        <div class="emi-calculator-tab-content-box-item">
+
+                                            <div class="range-box">
+                                                <div class="row">
+                                                    <div class="col-lg-12 column">
+                                                        <div class="price-range-box">
+                                                            <div class="inner">
+                                                                <h4>Loan Amount</h4>
+                                                                <div class="price-range-slider"></div>
+                                                                <div class="range-input">
+                                                                    <div class="input">
+                                                                        <input type="text" class="property-amount" name="amount" readonly>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="right-box">
+                                                                <h5>{{amount}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-12 column">
+                                                        <div class="loan-term-range-box">
+                                                            <div class="inner">
+                                                                <h4>Loan Term <span>(Years)</span></h4>
+                                                                <div class="loan-term-range-slider"></div>
+                                                                <div class="range-input">
+                                                                    <div class="input">
+                                                                        <input type="text" class="loan-term-range" name="loanterm" readonly>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="right-box">
+                                                                <h5>15Yrs</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-12 column">
+                                                        <div class="interest-rate-range-box">
+                                                            <div class="inner">
+                                                                <h4>Interest Rate</h4>
+                                                                <div class="interest-rate-range-slider"></div>
+                                                                <div class="range-input">
+                                                                    <div class="input">
+                                                                        <input type="text" class="interest-rate-range" name="interest" readonly>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="right-box">
+                                                                <h5>10%</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="emi-calculator-output-box clearfix">
+                                                <div class="left-box">
+                                                    <div class="top">
+                                                        <div class="icon">
+                                                            <span class="icon- icon-loan-3"></span>
+                                                        </div>
+                                                        <div class="inner-title">
+                                                            <h3>Your Monthly EMI</h3>
+                                                            <h2><span>$</span>10,250</h2>
+                                                        </div>
+                                                    </div>
+                                                    <div class="btns-box">
+                                                        <a class="btn-one" href="#">
+                                                            <span class="txt">Apply Online</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="right-box">
+                                                    <ul>
+
+                                                        <li>
+                                                            <div class="inner">
+                                                                <div class="icon">
+                                                                    <span class="icon-right-arrow"></span>
+                                                                </div>
+                                                                <div class="text">
+                                                                    <a href="#">Interest Amount</a>
+                                                                    <p>$720,260</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                        <li>
+                                                            <div class="inner">
+                                                                <div class="icon">
+                                                                    <span class="icon-right-arrow"></span>
+                                                                </div>
+                                                                <div class="text">
+                                                                    <a href="#">Total Amount Payble</a>
+                                                                    <p>$720,260</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!--Tab-->
+                                    <div class="tab-content-box-item " id="home-loan3">
+                                        <div class="emi-calculator-tab-content-box-item">
+
+                                            <div class="range-box">
+                                                <div class="row">
+                                                    <div class="col-lg-12 column">
+                                                        <div class="price-range-box">
+                                                            <div class="inner">
+                                                                <h4>Loan Amount</h4>
+                                                                <div class="price-range-slider"></div>
+                                                                <div class="range-input">
+                                                                    <div class="input">
+                                                                        <input type="text" class="property-amount" name="field-name" readonly>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="right-box">
+                                                                <h5>{{amount}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-12 column">
+                                                        <div class="loan-term-range-box">
+                                                            <div class="inner">
+                                                                <h4>Loan Term <span>(Years)</span></h4>
+                                                                <div class="loan-term-range-slider"></div>
+                                                                <div class="range-input">
+                                                                    <div class="input">
+                                                                        <input type="text" class="loan-term-range" name="field-name" readonly>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="right-box">
+                                                                <h5>25Yrs</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-12 column">
+                                                        <div class="interest-rate-range-box">
+                                                            <div class="inner">
+                                                                <h4>Interest Rate</h4>
+                                                                <div class="interest-rate-range-slider"></div>
+                                                                <div class="range-input">
+                                                                    <div class="input">
+                                                                        <input type="text" class="interest-rate-range" name="field-name" readonly>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="right-box">
+                                                                <h5>12%</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="emi-calculator-output-box clearfix">
+                                                <div class="left-box">
+                                                    <div class="top">
+                                                        <div class="icon">
+                                                            <span class="icon- icon-loan-3"></span>
+                                                        </div>
+                                                        <div class="inner-title">
+                                                            <h3>Your Monthly EMI</h3>
+                                                            <h2><span>$</span>10,250</h2>
+                                                        </div>
+                                                    </div>
+                                                    <div class="btns-box">
+                                                        <a class="btn-one" href="#">
+                                                            <span class="txt">Apply Online</span>
+                                                            
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="right-box">
+                                                    <ul>
+
+                                                        <li>
+                                                            <div class="inner">
+                                                                <div class="icon">
+                                                                    <span class="icon-right-arrow"></span>
+                                                                </div>
+                                                                <div class="text">
+                                                                    <a href="#">Interest Amount</a>
+                                                                    <p>$720,260</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                        <li>
+                                                            <div class="inner">
+                                                                <div class="icon">
+                                                                    <span class="icon-right-arrow"></span>
+                                                                </div>
+                                                                <div class="text">
+                                                                    <a href="#">Total Amount Payble</a>
+                                                                    <p>$720,260</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="display: none;" onclick="document.getElementById('primaryButton').click()">Primary</button>
+                                </form>
+                                <!--End Tabs Content Box-->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+            {% endif %}   
+        <!--End EMI Calculator Area-->
+
+
+        <!--Start Locker Facility Area-->
+        <section class="locker-facility-area">
+            <div class="container-fluid">
+                <div class="row justify-content-md-center">
+                    <div class=" col-xl-5 col-md-5 col-sm-5">
+                        <div class="locker-facility-highlights">
+                            <div class="single-box one">
+                                <div class="icon">
+                                    <span class="icon-checkbox-mark"></span>
+                                </div>
+                                <p>Choose your locker sizes</p>
+                            </div>
+                            <div class="single-box two">
+                                <div class="icon">
+                                    <span class="icon-checkbox-mark"></span>
+                                </div>
+                                <p>Book from anywhere</p>
+                            </div>
+                            <div class="single-box three">
+                                <div class="icon">
+                                    <span class="icon-checkbox-mark"></span>
+                                </div>
+                                <p>Facility of Nomination</p>
+                            </div>
+                            <div class="img-box">
+                                <div class="inner">
+                                    <img class="float-bob-y" src="{% static 'assets/images/kcrb/locker.png' %}" alt="">
+                                    <div class="icon">
+                                        <span class="icon-protection"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class=" col-xl-1 col-0 "></div>-->
+                    <div class="col-xl-4 col-md-7 col-sm-7">
+                        <div class="locker-facility-text-box">
+                            <div class="sec-title">
+                                <h2>Best Locker<br> Facility For Your<br> Valuables</h2>
+                            </div>
+                            <div class="text-box">
+                                <p>Keep your valuables safe & secure. KRC Bank provides lockers in various sizes for your use. Lockers can be availed by individuals, limited companies, associations and trusts.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--End Locker Facility Area-->
+
+
+
+
+
+        <!--Start Blog Style2 Area-->
+        {% if singlerecent or recent %}
+        <section id="news" class="blog-style2-area pdb60">
+            <div class="container">
+                <div class="blog-style2-area__top">
+                    <div class="sec-title">
+                        <h2>Latest From News Room</h2>
+                        <div class="sub-title my-3">
+                            <p>Our blog post provides you all the updates & guides.</p>
+                        </div>
+                    </div>
+                    <div class="btns-box">
+                        <a class="btn-one" href="\news">
+                            <span class="txt">View All Post</span>
+                        </a>
+                    </div>
+                </div>
+{% if recent %}
+                <div class="row">
+                    <!--Start Single blog Style2-->
+                    
+                    {% for recent in recent %}
+                    <div class="col-xl-6 col-6">
+                        <div class="single-blog-style1 single-blog-style1--style2">
+                            <div class="img-holder">
+                                <div class="inner">
+                                    <img  src="{{recent.img1.url}}" alt="">
+                                    <div class="overlay-icon">
+                                        <a href="{% url 'newsingle' recent.id %}">
+                                            <span class="icon-right-arrow"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="category-date-box">
+                                    <div class="category">
+                                        <span class="icon-play-button-1"></span>
+                                        <h5>{{recent.category}}</h5>
+                                    </div>
+                                    <div class="date">
+                                        <h5>{{recent.posted_date}}</h5>
+                                    </div>
+                                    <!-- <div class="author">
+                                        <h5>By <a href="#">Henry Theo</a></h5>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="text-holder">
+                                <h3 class="blog-title">
+                                    <a href="{% url 'newsingle' recent.id %}">
+                                        {{recent.title}}
+                                    </a>
+                                </h3>
+                                <div class="bottom">
+                                    <div class="read-more-btn">
+                                        <a href="{% url 'newsingle' recent.id %}"><span class="icon-right-arrow"></span>Read More</a>
+                                    </div>
+                                    <div class="meta-box">
+                                        <!-- <ul class="meta-info">
+                                            <li><span class="icon-clock"></span> <a href="#">6 Mins Read</a></li>
+                                            <li><span class="icon-comment"></span> <a href="#">10 Cmnts</a></li>
+                                        </ul> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="row">
+                    <!--Start Single blog Style2-->
+                    
+                    {% for singlerecent in singlerecent %}
+                    <div class="col-xl-6 col-6">
+                        <div class="single-blog-style1 single-blog-style1--style2">
+                            <div class="img-holder">
+                                <div class="inner">
+                                    <img  src="{% static 'assets/images/blog/blog-v2-1.JPG' %}" alt="">
+                                    <div class="overlay-icon">
+                                        <a href="{% url 'newsingle' singlerecent.id %}">
+                                            <span class="icon-right-arrow"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="category-date-box">
+                                    <div class="category">
+                                        <span class="icon-play-button-1"></span>
+                                        <h5>{{singlerecent.category}}</h5>
+                                    </div>
+                                    <div class="date">
+                                        <h5>{{singlerecent.posted_date}}</h5>
+                                    </div>
+                                    <!-- <div class="author">
+                                        <h5>By <a href="#">Henry Theo</a></h5>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="text-holder">
+                                <h3 class="blog-title">
+                                    <a href="{% url 'newsingle' singlerecent.id %}">
+                                        {{singlerecent.title}}
+                                    </a>
+                                </h3>
+                                <div class="bottom">
+                                    <div class="read-more-btn">
+                                        <a href="{% url 'newsingle' singlerecent.id %}"><span class="icon-right-arrow"></span>Read More</a>
+                                    </div>
+                                    <div class="meta-box">
+                                        <!-- <ul class="meta-info">
+                                            <li><span class="icon-clock"></span> <a href="#">6 Mins Read</a></li>
+                                            <li><span class="icon-comment"></span> <a href="#">10 Cmnts</a></li>
+                                        </ul> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                    <!--End Single blog Style2-->
+
+                    <!--Start Single blog Style2-->
+                    <!-- <div class="col-xl-6 col-6">
+                        <div class="single-blog-style1 single-blog-style1--style2">
+                            <div class="img-holder">
+                                <div class="inner">
+                                    <img  src="{% static 'assets/images/blog/blog-v2-2.JPG' %}" alt="">
+                                    <div class="overlay-icon">
+                                        <a href="news-single.html">
+                                            <span class="icon-right-arrow"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="category-date-box">
+                                    <div class="category">
+                                        <span class="icon-play-button-1"></span>
+                                        <h5>Press Release</h5>
+                                    </div>
+                                    <div class="date">
+                                        <h5>May 25, 2022</h5>
+                                    </div>
+                                    <div class="author">
+                                        <h5>By <a href="#">Roman Frederick</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-holder">
+                                <h3 class="blog-title">
+                                    <a href="news-single.html">
+                                        Board Approves Capital Raise of<br> Rs. 2000 Crores
+                                    </a>
+                                </h3>
+                                <div class="bottom">
+                                    <div class="read-more-btn">
+                                        <a href="news-single.html"><span class="icon-right-arrow"></span>Read More</a>
+                                    </div>
+                                    <div class="meta-box">
+                                        <ul class="meta-info">
+                                            <li><span class="icon-clock"></span> <a href="#">6 Mins Read</a></li>
+                                            <li><span class="icon-comment"></span> <a href="#">10 Cmnts</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--End Single blog Style2-->
+                  
+
+            </div>
+        </section>
+        {% endif %}
+        <!--End Blog Style2 Area-->
+
+        <!--Start Main Contact Form Area-->
+        <section id="contact" class="main-contact-form-area pdb100">
+            <div class="container">
+                <div class="row">
+
+                    <div class="title resp-hidetitle">
+                        <h2>Get Support for<br> any Queries or Complaints</h2>
+                        <p>Committed to helping you meet all your banking needs.</p>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="contact-info-box-style1">
+                            <div class="box1"></div>
+                            <div class="title remv-title">
+                                <h2>Get Support for<br> any Queries or Complaints</h2>
+                                <p>Committed to helping you meet all your banking needs.</p>
+                            </div>
+
+                            <ul class="contact-info-1">
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-map"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Corporate Office</p>
+                                        <h3>Kunnamangalam Co- Operative Rural Bank. Ltd No.F1246
+                                            P.O Kunnamangalam <br> Kozhikode, Kerala PIN 673571
+                                        </h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-clock"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Office Hours</p>
+                                        <h3>Mon - Fri: 9.00am to 5.00pm</h3>
+                                        <span>[2nd Sat Holiday]</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-phone"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Front Desk</p>
+                                        <h3><a href="tel:123456789">0495 2800 245</a></h3>
+                                        <h3><a href="mailto:yourmail@email.com">kgmruralbank@gmail.com</a></h3>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="bottom-box">
+                                <div class="btn-box">
+                                    <a href="#"><i class="fas fa-arrow-down"></i> Customer Care</a>
+                                </div>
+                                <div class="footer-social-link-style1">
+                                    <ul class="clearfix">
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-youtube"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa-brands fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="contact-form" style="background-color: #ffffff;">
+                            <form id="contact-form" name="contact_form" class="default-form2" action="{% url 'contactus' %}" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <div class="input-box">
+                                        <input type="text" name="fname" id="formName" placeholder="xxxxxx" required="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <div class="input-box">
+                                        <input type="email" name="email" id="formEmail" placeholder="" required="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Ph. Num</label>
+                                    <div class="input-box">
+                                        <input type="text" name="phone" value="" id="formPhone" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Subject</label>
+                                    <div class="input-box">
+                                        <input type="text" name="sub" value="" id="formSubject" placeholder="Subject">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Message</label>
+                                    <div class="input-box">
+                                        <textarea name="message" id="formMessage" placeholder="" required=""></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="button-box">
+                                    <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
+                                    <button class="btn-one" type="submit" data-loading-text="Please wait...">
+                                        <span class="txt">
+                                            send a message
+                                        </span>
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--End Main Contact Form Area-->
+
+        <!--Start slogan area-->
+        <section class="slogan-area slogan-area--style2">
+    <div class="container">
+        <div class="slogan-content-box slogan-content-box--style2">
+            <div class="slogan-content-box-bg"></div>
+            <div class="inner-title">
+                <h2>Now Experience a New Digital World.</h2>
+                <p>Mobile banking application with new & exciting features we can Download Now</p>
+            </div>
+            <div class="get-app-box">
+                <ul>
+                    <li>
+                        <a href="https://play.google.com/store/apps/details?id=com.mscore.kunnamangalam_1">
+                            <div class="icon">
+                                <span class="icon-play-store"></span>
+                            </div>
+                            <div class="text">
+                                <h4>Download the APP</h4>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+        <!--End slogan area-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    window.onload = function () {
+        OpenBootstrapPopup();
+    };
+    function OpenBootstrapPopup() {
+        $("#simpleModal").modal('show');
+    }
+</script>
+
+
+
+
+
+        <!--Start footer area -->
+        {% endblock content%}

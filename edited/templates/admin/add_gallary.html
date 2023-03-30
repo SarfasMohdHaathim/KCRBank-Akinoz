@@ -1,0 +1,126 @@
+{% extends 'admin/admin_home.html' %}
+{% load static %}
+{% block titlehead %}
+Gallery
+{% endblock titlehead %}
+{% block contentadmin %}
+
+    <div class="container mt-5" id="condainer1">
+        <div class="row w-50">
+            <form action="{% url 'admingallery' %}" method="post" id="image-form" enctype="multipart/form-data">
+              {% csrf_token %}
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Title </label>
+                    <input class="form-control form-control-sm" type="text" aria-label=".form-control-sm example" name="title" value="{{gallery.title}}">
+                  </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Description</label>
+                    <input class="form-control form-control-sm" type="text" aria-label=".form-control-sm example" name="des" value="{{gallery.des}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Cover Image</label>
+                    <input class="form-control" type="file" id="id_image" name="coverimg" value="{{gallery.cover}}">
+                    {% if gallery %}
+                    <input type="hidden" name="gid" value="{{gallery.id}}">
+                    {% endif %}
+                  </div>
+                  <input type="hidden" name="x" id="x">
+                  <input type="hidden" name="y" id="y">
+                  <input type="hidden" name="height" id="height">
+                  <input type="hidden" name="width" id="width">
+
+
+                  <button type="submit" class="btn btn-primary" id="confirm-btn">UPLOAD</button>
+            </form>
+        </div>
+        <div class="row">
+          <div id="image-box" class="image-container"></div>
+          <div class="row">
+    			<button class="btn btn-outline-info" id="crop-btn" style="width: 30%; margin-top: 50px; display: none;" type="button">Crop</button>
+			  </div>
+      </div>
+        </div>
+        
+
+    </div>
+    
+    <style>
+      #upload {
+          opacity: 0;
+      }
+      .image-area {
+          border: 2px solid rgba(255, 255, 255, 0.7);
+          padding: 1rem;
+      }
+      #condainer1{
+        margin-top: 160px !important;
+      }.not-visible {
+  display: none;
+} #image-box{
+  padding: 20px;
+  height: 450px;
+  width: 50%;
+}
+      </style>
+
+<script>
+  const imagebox = document.getElementById('image-box')
+	const crop_btn = document.getElementById('crop-btn')
+	const input = document.getElementById('id_image')
+
+	input.addEventListener('change', ()=>{
+	  const img_data = input.files[0]
+	  const url = URL.createObjectURL(img_data)
+	  
+	  imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+
+	  const image = document.getElementById('image')
+
+	  document.getElementById('image-box').style.display = 'block'
+	  document.getElementById('crop-btn').style.display = 'block'
+	  document.getElementById('confirm-btn').style.display = 'none'
+	  const cropper = new Cropper(image, {
+	  autoCropArea: 1,
+	  viewMode: 1,
+	  scalable: true,
+	  zoomable: false,
+	  movable: false,
+	  minCropBoxWidth: 350,
+	  minCropBoxHeight: 250,
+	  })
+
+	  crop_btn.addEventListener('click', ()=>{
+	    cropper.getCroppedCanvas().toBlob((blob)=>{
+	      
+	      let fileInputElement = document.getElementById('id_image');
+	      let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+	      let container = new DataTransfer();
+	      container.items.add(file);
+	      fileInputElement.files = container.files;
+
+	      document.getElementById('image-box').style.display = 'none'
+	      document.getElementById('crop-btn').style.display = 'none'
+	      document.getElementById('confirm-btn').style.display = 'block'
+
+	      });
+	    });
+	});	
+  crop_btn.addEventListener('click',()=>{
+    let c=image.cropper.getData(true);
+    let x=document.getElementById('x')
+    let y=document.getElementById('y')
+    let height=document.getElementById('height')
+    let width=document.getElementById('width')
+
+    x.value=c['x']
+    y.value=c['y']
+    height.value=c['height']
+    width.value=c['width']
+
+  })
+</script>
+
+
+
+{% endblock contentadmin %}
+

@@ -1,0 +1,72 @@
+{% extends 'admin/admin_home.html' %}
+
+{% load static %}
+{% block titlehead %}
+Add Admin
+            {% endblock titlehead %}
+{% block contentadmin %}
+  <main>
+        <div class="container signup mt-5">
+            <div class="row signup_admin">
+              <form action="{% url 'adminadd' %}" method="post">
+                {% csrf_token %}
+                    <!-- Email input -->
+                    <!-- <h1 class="text-center">Add Admin</h1> -->
+                    <div class="form-outline mb-4">
+                      <input type="text" id="form2Example1" class="form-control mt-4" name="username"/>
+                      <label class="form-label " for="form2Example1">Username</label>
+                    </div>
+                    <div class="form-outline mb-4">
+                      <input type="email" id="form2Example1" class="form-control mt-4" name="email"/>
+                      <label class="form-label " for="form2Example1">Email</label>
+                    </div>
+                  
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                      <input type="password" id="form2Example2" class="form-control" name="password" />
+                      <label class="form-label" for="form2Example2">Password</label>
+                    </div>
+                    <div class="form-outline mb-4">
+                      <input type="password" id="form2Example2" class="form-control" name="repassword" />
+                      <label class="form-label" for="form2Example2"> Confrim Password</label>
+                    </div>
+                  
+                    <!-- 2 column grid layout for inline styling -->
+                    <div class="row mb-4">
+                      <div class="col d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Add</button>
+                        
+                        
+                      </div>
+                  
+                      
+                    </div>
+                    <div class="row">
+                      {% if messages %}
+                      <ul class="messages">
+                          {% for message in messages %}
+                          <li> {{ message }} </li>
+                          {% endfor %}
+                      </ul>
+                      {% endif %}
+            </div>
+                  
+                  
+                    
+                  </form>  </main>
+
+
+                  <style>
+                    .signup_admin{
+    width: 40% ;
+    padding: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
+
+}
+.signup{
+    display: flex;
+    justify-content: center;
+    padding-top: 45px;
+}
+                  </style>
+                  {% endblock contentadmin %}

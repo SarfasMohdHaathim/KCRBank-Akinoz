@@ -1,0 +1,40 @@
+{% extends 'admin/admin_home.html' %}
+{% load static %}
+{% block titlehead %}
+View Gallery
+{% endblock titlehead %}
+{% block contentadmin %}
+
+    <div class="container">
+        <div class="row d-flex justify-content-center align-item-center w-50">
+            <a href="{% url 'admingallery' %}"><button type="button" class="btn btn-primary w-50">Add</button></a>
+        </div>
+        <div class="row" id="galleryview">
+            {% for x in gallery %}
+
+            <div class="card mx-3 my-3" style="width: 18rem;">
+                <img src="{{x.cover.url}}" class="card-img-top mt-2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{x.title}}</h5>
+                  <p class="card-text">{{x.des}}</p>
+                  <a href="{% url 'deletegallery' x.id %}"><button type="button" class="btn btn-primary">Delete</button></a>
+                  <a href="{% url 'editgallery' x.id  %}"><button type="button" class="btn btn-primary">Edit</button></a>
+                  <a href="{% url 'admingalleryimage' x.id %}"><button type="button" class="btn btn-primary">Add</button></a>
+                  <input type="hidden" name="idhidden" value="{{x.id}}">
+                </div>
+              </div>
+              {% endfor %}
+        </div>
+    </div>
+<style>
+    #galleryview{
+        padding-top: 20px;
+        margin-top: 0px;
+    }
+    .container{
+        margin-top: 150px;
+    }
+</style>
+
+
+{% endblock contentadmin %}
