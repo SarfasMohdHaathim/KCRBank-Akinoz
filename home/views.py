@@ -301,9 +301,11 @@ def adminhome(request):
 def admingallery(request):
     cover=None
     context={}
+    
     if request.method=='POST':
         try:
-            id=request.POST['gid']
+            
+            id = request.POST.get('gid', False)
 
             if id:
                 g=Gallery.objects.get(id=id)
@@ -403,11 +405,10 @@ def admingalleryimage(request,id):
 @login_required(login_url='adminlogin')
 def adminnews(request):
     if request.method=='POST':
-        nid=request.POST['nid']
+        nid = request.POST.get('nid', False)
         try:
             news=News.objects.get(id=nid)
-            im1=news.cover
-            im2=news.img1
+            
             title=request.POST['title']
             category=request.POST['category']
             
